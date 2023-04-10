@@ -1,0 +1,12 @@
+
+message("VENDOR-CMAKE Loading vendor libraries")
+
+add_subdirectory(glad)
+add_subdirectory(imgui)
+
+add_library(vendor INTERFACE)
+
+target_link_libraries(vendor INTERFACE glfw3)
+target_link_libraries(vendor INTERFACE glmf32)
+target_link_libraries(vendor INTERFACE glad)
+target_link_libraries(vendor INTERFACE imgui)
