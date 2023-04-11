@@ -6,7 +6,7 @@ namespace Wolf
 {
 
     Application* Application::_instance = nullptr;
-
+        
     bool Application::initialize(Window::Configuration config)
     {
 

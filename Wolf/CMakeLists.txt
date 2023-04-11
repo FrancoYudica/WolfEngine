@@ -17,7 +17,8 @@ target_link_libraries(wolf_engine_library INTERFACE lib_sandbox)
 
 # Creates executable
 add_executable(${PROJECT_NAME} main.cpp)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
+
 
 # Links the libraries to the executable
 target_link_libraries(${PROJECT_NAME} wolf_engine_library)

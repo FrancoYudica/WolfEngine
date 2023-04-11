@@ -7,7 +7,7 @@ add_subdirectory(glm)
 
 add_library(vendor INTERFACE)
 
-target_link_libraries(vendor INTERFACE glfw3)
+target_link_libraries(vendor INTERFACE glfw)
 target_link_libraries(vendor INTERFACE glm)
 target_link_libraries(vendor INTERFACE glad)
 target_link_libraries(vendor INTERFACE imgui)
