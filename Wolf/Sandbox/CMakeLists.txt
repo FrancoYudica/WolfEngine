@@ -1,6 +1,8 @@
 file(GLOB WOLF_SANDBOX_H *.h)
 file(GLOB WOLF_SANDBOX_CPP *.cpp)
 
+include_directories(./Wolf/Wolf)
+
 add_library(lib_sandbox STATIC
     ${WOLF_SANDBOX_H}
     ${WOLF_SANDBOX_CPP}

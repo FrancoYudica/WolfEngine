@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Application.h"
 #include <GLFW/glfw3.h>
+#include "../rendering/RenderCommand.h"
+
 
 namespace Wolf
 {
@@ -26,6 +28,10 @@ namespace Wolf
             return false;
         }
         _mainWindow.MakeContextCurrent();
+
+        _GraphicsContext = GraphicsContext::Create(_mainWindow);
+        _GraphicsContext->Init();
+
         return true;
     }
 
@@ -40,7 +46,6 @@ namespace Wolf
 
             (*it)->on_event(event);
         }
-
     }
 
     void Application::on_update(const Time& delta)
@@ -73,32 +78,27 @@ namespace Wolf
 
     void Application::run()
     {
-        //_mainWindow.MakeContextCurrent();
-        _GraphicsContext = GraphicsContext::Create(_mainWindow);
-        _GraphicsContext->Init();
-
-
         _clock = Clock();
         _clock.Start();
-        Clock deltaClock;
+
+        Clock deltaClock, timingClock;
         deltaClock.Start();
         while (!_mainWindow.ShouldClose())
         {
             Time elapsed = deltaClock.Elapsed();
             deltaClock.Start();
+
+            timingClock.Start();
             on_update(elapsed);
-            _update_time = deltaClock.Elapsed();
+            _update_time = timingClock.Elapsed();
 
-            deltaClock.Start();
-
-            //glClearColor(0, 0, 0, 1);
-            //glClear(GL_COLOR_BUFFER_BIT);
+            timingClock.Start();
+            Rendering::RenderCommand::Clear();
             on_render();
-            _GraphicsContext->SwapBuffers();
-            
-            _render_time = deltaClock.Elapsed();
+            _mainWindow.SwapBuffers();            
+            _render_time = timingClock.Elapsed();
             /* Poll for and process events */
-            glfwPollEvents();
+            _mainWindow.PollEvents();
         }
     }
 }

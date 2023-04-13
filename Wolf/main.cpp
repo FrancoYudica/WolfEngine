@@ -3,13 +3,15 @@
 
 #include "WEngine.h"
 #include "Sandbox/OpenGLLayer.h"
+#include "Sandbox/BatchRendererTest.h"
 
 
 int main()
 {
 	auto app = Wolf::Application();
 	app.initialize(Wolf::Window::Configuration());
-	Wolf::Layers::ImGuiLayer imguiLayer = Wolf::Layers::ImGuiLayer();
+	Wolf::
+	Layers::ImGuiLayer imguiLayer = Wolf::Layers::ImGuiLayer();
 	app.add_layer(&imguiLayer);
 
 	Wolf::SandboxLayers::OpenGLLayer openglLayer = Wolf::SandboxLayers::OpenGLLayer();

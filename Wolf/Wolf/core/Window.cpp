@@ -106,7 +106,16 @@ namespace Wolf
         return true;
     }
 
-    bool Wolf::Window::ShouldClose() { return glfwWindowShouldClose((GLFWwindow*)_windowPtr); }
-    void Wolf::Window::MakeContextCurrent() { glfwMakeContextCurrent((GLFWwindow*)_windowPtr); }
+    void Window::SwapBuffers()
+    {
+        glfwSwapBuffers((GLFWwindow*)_windowPtr);   
+    }
+    void Window::PollEvents()
+    {
+        glfwPollEvents();
+    }
+
+    bool Window::ShouldClose() { return glfwWindowShouldClose((GLFWwindow*)_windowPtr); }
+    void Window::MakeContextCurrent() { glfwMakeContextCurrent((GLFWwindow*)_windowPtr); }
 
 }

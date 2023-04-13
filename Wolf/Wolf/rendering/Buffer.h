@@ -147,7 +147,9 @@ namespace Wolf
 			virtual void set_buffer_layout(const BufferLayout& layout) = 0;
 			virtual BufferLayout& get_buffer_layout() = 0;
 			static std::shared_ptr<VertexBuffer> Create(const void* data, unsigned int size);
-			static std::shared_ptr<VertexBuffer> CreateEmpty(unsigned int size);
+
+			// Allocates memory for the VertexBuffer, size is in bytes
+			static std::shared_ptr<VertexBuffer> Allocate(unsigned int size);
 		};
 
 		class IndexBuffer

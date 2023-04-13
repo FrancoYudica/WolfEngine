@@ -5,7 +5,6 @@ add_subdirectory(Wolf)
 add_subdirectory(Platform)
 add_subdirectory(Sandbox)
 
-
 # Creates the wolf_engine_library
 add_library(wolf_engine_library INTERFACE)
 

@@ -22,7 +22,7 @@
 #include "Wolf/rendering/ShaderProgram.h"
 #include "Wolf/rendering/Buffer.h"
 #include "Wolf/rendering/VertexArray.h"
-
 #include "Wolf/rendering/Renderer.h"
+#include "Wolf/rendering/RenderCommand.h"
 
 #endif

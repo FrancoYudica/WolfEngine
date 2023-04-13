@@ -15,7 +15,6 @@ namespace Wolf
             	GLGraphicsContext() = default;
                 GLGraphicsContext(void* glfwWindow) : _glfwWindow(glfwWindow) {}
             	virtual void Init();
-            	virtual void SwapBuffers();
             private:
                     void* _glfwWindow;
             };

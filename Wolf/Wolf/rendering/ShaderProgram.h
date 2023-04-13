@@ -35,7 +35,7 @@ namespace Wolf
 		{
 		public:
 			ShaderLibrary() = default;
-			void add(const std::string& name, std::shared_ptr<ShaderProgram> program)
+			void add(const std::string& name, const std::shared_ptr<ShaderProgram>& program)
 			{
 				_Shaders[name] = program;
 			}

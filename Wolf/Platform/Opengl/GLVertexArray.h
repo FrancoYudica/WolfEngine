@@ -19,10 +19,10 @@ namespace Wolf
 				~GLVertexArray();
 				virtual void bind();
 				virtual void unbind();
-				virtual void add_vertex_buffer(const std::shared_ptr<VertexBuffer> vb);
-				virtual void set_index_buffer(const std::shared_ptr<IndexBuffer> ib);
+				virtual void add_vertex_buffer(const std::shared_ptr<VertexBuffer>& vb);
+				virtual void set_index_buffer(const std::shared_ptr<IndexBuffer>& ib);
 				virtual const std::vector<std::shared_ptr<VertexBuffer>>& get_vertex_buffers() const { return _VertexBuffers; }
-				virtual const std::shared_ptr<IndexBuffer> get_index_buffer() const { return _IndexBuffer; }
+				virtual const std::shared_ptr<IndexBuffer>& get_index_buffer() const { return _IndexBuffer; }
 			private:
 
 				std::shared_ptr<IndexBuffer> _IndexBuffer;

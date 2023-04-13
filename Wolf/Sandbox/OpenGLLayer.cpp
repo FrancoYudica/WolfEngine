@@ -1,11 +1,10 @@
 
-
 #include <glad/glad.h>
 #include "OpenGLLayer.h"
 #include <glm/glm.hpp>
 
 
-const char* vertexShaderSource = "#version 330 core\n"
+const char* vertexSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
 "layout (location = 1) in vec3 aColor;\n"
 "out vec4 _Color;\n"
@@ -15,7 +14,7 @@ const char* vertexShaderSource = "#version 330 core\n"
 "	_Color = vec4(aColor, 1);\n"
 "}\0";
 //Fragment Shader source code
-const char* fragmentShaderSource = "#version 330 core\n"
+const char* fragmentrSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
 "in vec4 _Color;\n"
 "uniform vec3 _UniformColor;\n"
@@ -44,7 +43,7 @@ namespace Wolf
 
 			gladLoadGL();
 
-			auto program = Wolf::Rendering::ShaderProgram::Create(vertexShaderSource, fragmentShaderSource);
+			auto program = Wolf::Rendering::ShaderProgram::Create(vertexSource, fragmentrSource);
 			Shaders.add("shader", program);
 
 			Vertex v0 = Vertex({ 0.5f, 0.5f, 0.0f }, { 1, 0, 0 });
@@ -99,10 +98,7 @@ namespace Wolf
 			program->bind();
 			program->set_float("_UniformColor", glm::vec3(1, .5, .4));
 			VAO->bind();
-			auto index_buffer = VAO->get_index_buffer();
-			index_buffer->bind();
-			glDrawElements(GL_TRIANGLES, index_buffer->get_count(), GL_UNSIGNED_INT, 0);
-			index_buffer->unbind();
+			Rendering::RenderCommand::DrawIndexed(VAO, 6);
 			VAO->unbind();
 		}
 	}

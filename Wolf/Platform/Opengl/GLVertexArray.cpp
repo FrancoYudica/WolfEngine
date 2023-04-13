@@ -1,6 +1,8 @@
 #include "GLVertexArray.h"
 #include <glad/glad.h>
 
+using namespace Wolf::Rendering::GL;
+
 static GLenum ShaderDataTypeToOpenGLBaseType(Wolf::Rendering::ShaderDataType type)
 {
 	switch (type)
@@ -23,28 +25,29 @@ static GLenum ShaderDataTypeToOpenGLBaseType(Wolf::Rendering::ShaderDataType typ
 
 }
 
-Wolf::Rendering::GL::GLVertexArray::GLVertexArray()
+GLVertexArray::GLVertexArray()
 {
+	ID = 0;
 	glGenVertexArrays(1, &ID);
 	_AttributeIndex = 0;
 }
 
-Wolf::Rendering::GL::GLVertexArray::~GLVertexArray()
+GLVertexArray::~GLVertexArray()
 {
 	glDeleteVertexArrays(1, &ID);
 }
 
-void Wolf::Rendering::GL::GLVertexArray::bind()
+void GLVertexArray::bind()
 {
 	glBindVertexArray(ID);
 }
 
-void Wolf::Rendering::GL::GLVertexArray::unbind()
+void GLVertexArray::unbind()
 {
 	glBindVertexArray(0);
 }
 
-void Wolf::Rendering::GL::GLVertexArray::add_vertex_buffer(const std::shared_ptr<VertexBuffer> vb)
+void GLVertexArray::add_vertex_buffer(const std::shared_ptr<VertexBuffer>& vb)
 {
 	_VertexBuffers.push_back(vb);
 	bind();
@@ -67,7 +70,7 @@ void Wolf::Rendering::GL::GLVertexArray::add_vertex_buffer(const std::shared_ptr
 	}
 }
 
-void Wolf::Rendering::GL::GLVertexArray::set_index_buffer(const std::shared_ptr<IndexBuffer> ib)
+void GLVertexArray::set_index_buffer(const std::shared_ptr<IndexBuffer>& ib)
 {
 	bind();
 	ib->bind();

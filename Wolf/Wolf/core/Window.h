@@ -31,6 +31,8 @@ namespace Wolf
         void* GetNativePtr() const { return _windowPtr; }
         bool ShouldClose();
         void MakeContextCurrent();
+        void SwapBuffers();
+        void PollEvents();
 
     private:
         WindowUserData _userData;
