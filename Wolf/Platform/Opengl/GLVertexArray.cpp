@@ -2,22 +2,23 @@
 #include <glad/glad.h>
 
 using namespace Wolf::Rendering::GL;
+using namespace Wolf::Rendering;
 
-static GLenum ShaderDataTypeToOpenGLBaseType(Wolf::Rendering::ShaderDataType type)
+static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
 {
 	switch (type)
 	{
-		case Wolf::Rendering::ShaderDataType::Float:    return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Float2:   return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Float3:   return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Float4:   return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Mat2:     return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Mat3:     return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Mat4:     return GL_FLOAT;
-		case Wolf::Rendering::ShaderDataType::Int:      return GL_INT;
-		case Wolf::Rendering::ShaderDataType::Int2:     return GL_INT;
-		case Wolf::Rendering::ShaderDataType::Int3:     return GL_INT;
-		case Wolf::Rendering::ShaderDataType::Int4:     return GL_INT;
+		case ShaderDataType::Float:    return GL_FLOAT;
+		case ShaderDataType::Float2:   return GL_FLOAT;
+		case ShaderDataType::Float3:   return GL_FLOAT;
+		case ShaderDataType::Float4:   return GL_FLOAT;
+		case ShaderDataType::Mat2:     return GL_FLOAT;
+		case ShaderDataType::Mat3:     return GL_FLOAT;
+		case ShaderDataType::Mat4:     return GL_FLOAT;
+		case ShaderDataType::Int:      return GL_INT;
+		case ShaderDataType::Int2:     return GL_INT;
+		case ShaderDataType::Int3:     return GL_INT;
+		case ShaderDataType::Int4:     return GL_INT;
 		default:
 			std::cout << "Unimplememted shader data type to GL base type: " << type << std::endl;
 	}
@@ -64,7 +65,7 @@ void GLVertexArray::add_vertex_buffer(const std::shared_ptr<VertexBuffer>& vb)
 			ShaderDataTypeToOpenGLBaseType(attribute.Type),
 			attribute.Normalized ? GL_TRUE : GL_FALSE,
 			layout.GetStride(),
-			(void*)0//attribute.Offset
+			(void*)attribute.Offset
 		);
 		_AttributeIndex++;
 	}
@@ -76,4 +77,9 @@ void GLVertexArray::set_index_buffer(const std::shared_ptr<IndexBuffer>& ib)
 	ib->bind();
 	_IndexBuffer = ib;
 
+}
+
+std::shared_ptr<VertexArray> VertexArray::Create()
+{
+    return std::make_shared<GLVertexArray>();
 }

@@ -14,7 +14,7 @@ int main()
 	Layers::ImGuiLayer imguiLayer = Wolf::Layers::ImGuiLayer();
 	app.add_layer(&imguiLayer);
 
-	Wolf::SandboxLayers::OpenGLLayer openglLayer = Wolf::SandboxLayers::OpenGLLayer();
+	Wolf::SandboxLayers::BatchLayer openglLayer = Wolf::SandboxLayers::BatchLayer();
 	app.add_layer(&openglLayer);
 
 	app.run();

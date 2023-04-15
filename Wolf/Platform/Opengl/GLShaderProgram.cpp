@@ -2,8 +2,11 @@
 #include <glad/glad.h>
 #include <iostream>
 
+using namespace Wolf::Rendering;
+using namespace Wolf::Rendering::GL;
 
-Wolf::Rendering::GL::GLShaderProgram::GLShaderProgram(const char* vertex_shader_path, const char* fragment_shader_path)
+
+GLShaderProgram::GLShaderProgram(const char* vertex_shader_path, const char* fragment_shader_path)
 {
 	
 	// Shader compilation
@@ -39,47 +42,47 @@ Wolf::Rendering::GL::GLShaderProgram::GLShaderProgram(const char* vertex_shader_
 	glDeleteShader(fragment_shader);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::bind()
+void GLShaderProgram::bind()
 {
 	glUseProgram(ID);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::unbind()
+void GLShaderProgram::unbind()
 {
 	glUseProgram(0);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::set_float(const std::string& name, float value)
+void GLShaderProgram::set_float(const std::string& name, float value)
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform1f(location, value);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::set_float(const std::string& name, const glm::vec2& value)
+void GLShaderProgram::set_float(const std::string& name, const glm::vec2& value)
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform2f(location, value.x, value.y);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::set_float(const std::string& name, const glm::vec3& value)
+void GLShaderProgram::set_float(const std::string& name, const glm::vec3& value)
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform3f(location, value.x, value.y, value.z);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::set_float(const std::string& name, const glm::vec4& value)
+void GLShaderProgram::set_float(const std::string& name, const glm::vec4& value)
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform4f(location, value.x, value.y, value.z, value.w);
 }
 
-void Wolf::Rendering::GL::GLShaderProgram::set_int(const std::string& name, int value)
+void GLShaderProgram::set_int(const std::string& name, int value)
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform1i(location, value);
 }
 
-unsigned int Wolf::Rendering::GL::GLShaderProgram::compile_shader(const char* source, unsigned int type)
+unsigned int GLShaderProgram::compile_shader(const char* source, unsigned int type)
 {
 
 	unsigned int id = glCreateShader(type);
@@ -100,4 +103,9 @@ unsigned int Wolf::Rendering::GL::GLShaderProgram::compile_shader(const char* so
 	// Sucess in compilation
 	return id;
 
+}
+
+std::shared_ptr<ShaderProgram> ShaderProgram::Create(const char* vertex_src, const char* fragment_src)
+{
+    return std::make_shared<GLShaderProgram>(vertex_src, fragment_src);
 }

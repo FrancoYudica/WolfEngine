@@ -4,6 +4,8 @@
 
 #include "rendering/Buffer.h"
 
+using namespace Wolf::Rendering;
+
 namespace Wolf
 {
 	namespace Rendering

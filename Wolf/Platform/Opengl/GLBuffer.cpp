@@ -1,9 +1,11 @@
 #include "GLBuffer.h"
 #include <glad/glad.h>
 
+using namespace Wolf::Rendering;
+using namespace Wolf::Rendering::GL;
 
 // VERTEX_BUFFER
-Wolf::Rendering::GL::GLVertexBuffer::GLVertexBuffer(const void* vertices, unsigned int size)
+GLVertexBuffer::GLVertexBuffer(const void* vertices, unsigned int size)
 {
 	// Generates the buffer as an array buffer
 	glGenBuffers(1, &ID);
@@ -14,7 +16,7 @@ Wolf::Rendering::GL::GLVertexBuffer::GLVertexBuffer(const void* vertices, unsign
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-Wolf::Rendering::GL::GLVertexBuffer::GLVertexBuffer(unsigned int size)
+GLVertexBuffer::GLVertexBuffer(unsigned int size)
 {
 	// Generates the buffer as an array buffer
 	glGenBuffers(1, &ID);
@@ -26,30 +28,29 @@ Wolf::Rendering::GL::GLVertexBuffer::GLVertexBuffer(unsigned int size)
 }
 
 
-
-Wolf::Rendering::GL::GLVertexBuffer::~GLVertexBuffer()
+GLVertexBuffer::~GLVertexBuffer()
 {
 	glDeleteBuffers(1, &ID);
 }
 
-void Wolf::Rendering::GL::GLVertexBuffer::bind()
+void GLVertexBuffer::bind()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, ID);
 }
 
-void Wolf::Rendering::GL::GLVertexBuffer::unbind()
+void GL::GLVertexBuffer::unbind()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 
-void Wolf::Rendering::GL::GLVertexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
+void GL::GLVertexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
 {
 	glBufferSubData(GL_ARRAY_BUFFER, offset, size, data);
 }
 
 // INDEX_BUFFER
-Wolf::Rendering::GL::GLIndexBuffer::GLIndexBuffer(const unsigned int* indices, unsigned int count)
+GL::GLIndexBuffer::GLIndexBuffer(const unsigned int* indices, unsigned int count)
 {
 	_Count = count;
 	// Generates the buffer as an array buffer
@@ -61,23 +62,42 @@ Wolf::Rendering::GL::GLIndexBuffer::GLIndexBuffer(const unsigned int* indices, u
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-Wolf::Rendering::GL::GLIndexBuffer::~GLIndexBuffer()
+GL::GLIndexBuffer::~GLIndexBuffer()
 {
 	glDeleteBuffers(1, &ID);
 }
 
-void Wolf::Rendering::GL::GLIndexBuffer::bind()
+void GL::GLIndexBuffer::bind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
 }
 
-void Wolf::Rendering::GL::GLIndexBuffer::unbind()
+void GL::GLIndexBuffer::unbind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void Wolf::Rendering::GL::GLIndexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
+void GL::GLIndexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
 {
 	glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, offset, size, data);
 }
 
+
+// Definitions for VertexBuffer::Create and IndexBuffer::Create
+// Links the definitions of all the other RENDERING Static functions
+std::shared_ptr<VertexBuffer> VertexBuffer::Create(const void* data, unsigned int size)
+{
+    // Size is the amount of bytes of the array
+    return std::make_shared<GL::GLVertexBuffer>(data, size);
+}
+
+std::shared_ptr<VertexBuffer> VertexBuffer::Allocate(unsigned int size)
+{
+    return std::make_shared<GL::GLVertexBuffer>(size);
+}
+
+std::shared_ptr<IndexBuffer> IndexBuffer::Create(const unsigned int* data, unsigned int count)
+{
+    // Count is the length of the array
+    return std::make_shared<GL::GLIndexBuffer>(data, count);
+}
