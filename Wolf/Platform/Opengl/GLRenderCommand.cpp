@@ -5,17 +5,17 @@ using namespace Wolf::Rendering;
 
 
 // Links the definitions for the render commands
-void RenderCommand::SetClearColor(float r, float g, float b, float a)
+void RenderCommand::set_clear_color(float r, float g, float b, float a)
 {
     glClearColor(r, g, b, a);
 }
 
-void RenderCommand::Clear()
+void RenderCommand::clear()
 {
     glClear(GL_COLOR_BUFFER_BIT);   
 }
 
-void RenderCommand::DrawIndexed(const std::shared_ptr<VertexArray>& vao, int count)
+void RenderCommand::draw_indexed(const std::shared_ptr<VertexArray>& vao, int count)
 {
     auto ibo = vao->get_index_buffer();
     ibo->bind();

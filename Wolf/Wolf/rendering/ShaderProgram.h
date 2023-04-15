@@ -26,7 +26,7 @@ namespace Wolf
 
 			virtual void set_int(const std::string& name, int value) = 0;
 
-			static std::shared_ptr<ShaderProgram> Create(const char* vertex_src, const char* fragment_src);
+			static std::shared_ptr<ShaderProgram> create(const char* vertex_src, const char* fragment_src);
 
 
 		};
@@ -37,16 +37,16 @@ namespace Wolf
 			ShaderLibrary() = default;
 			void add(const std::string& name, const std::shared_ptr<ShaderProgram>& program)
 			{
-				_Shaders[name] = program;
+				_shaders[name] = program;
 			}
 
 			std::shared_ptr<ShaderProgram> get(const std::string& name)
 			{
-				return _Shaders[name];
+				return _shaders[name];
 			}
 
 		private:
-			std::unordered_map <std::string, std::shared_ptr<ShaderProgram>> _Shaders;
+			std::unordered_map <std::string, std::shared_ptr<ShaderProgram>> _shaders;
 		};
 
 	}

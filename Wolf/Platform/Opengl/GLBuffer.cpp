@@ -38,19 +38,19 @@ void GLVertexBuffer::bind()
 	glBindBuffer(GL_ARRAY_BUFFER, ID);
 }
 
-void GL::GLVertexBuffer::unbind()
+void GLVertexBuffer::unbind()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 
-void GL::GLVertexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
+void GLVertexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
 {
 	glBufferSubData(GL_ARRAY_BUFFER, offset, size, data);
 }
 
 // INDEX_BUFFER
-GL::GLIndexBuffer::GLIndexBuffer(const unsigned int* indices, unsigned int count)
+GLIndexBuffer::GLIndexBuffer(const unsigned int* indices, unsigned int count)
 {
 	_Count = count;
 	// Generates the buffer as an array buffer
@@ -62,22 +62,22 @@ GL::GLIndexBuffer::GLIndexBuffer(const unsigned int* indices, unsigned int count
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-GL::GLIndexBuffer::~GLIndexBuffer()
+GLIndexBuffer::~GLIndexBuffer()
 {
 	glDeleteBuffers(1, &ID);
 }
 
-void GL::GLIndexBuffer::bind()
+void GLIndexBuffer::bind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
 }
 
-void GL::GLIndexBuffer::unbind()
+void GLIndexBuffer::unbind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void GL::GLIndexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
+void GLIndexBuffer::set_sub_data(const void* data, unsigned int size, unsigned int offset)
 {
 	glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, offset, size, data);
 }
@@ -85,19 +85,19 @@ void GL::GLIndexBuffer::set_sub_data(const void* data, unsigned int size, unsign
 
 // Definitions for VertexBuffer::Create and IndexBuffer::Create
 // Links the definitions of all the other RENDERING Static functions
-std::shared_ptr<VertexBuffer> VertexBuffer::Create(const void* data, unsigned int size)
+std::shared_ptr<VertexBuffer> VertexBuffer::create(const void* data, unsigned int size)
 {
     // Size is the amount of bytes of the array
-    return std::make_shared<GL::GLVertexBuffer>(data, size);
+    return std::make_shared<GLVertexBuffer>(data, size);
 }
 
-std::shared_ptr<VertexBuffer> VertexBuffer::Allocate(unsigned int size)
+std::shared_ptr<VertexBuffer> VertexBuffer::allocate(unsigned int size)
 {
-    return std::make_shared<GL::GLVertexBuffer>(size);
+    return std::make_shared<GLVertexBuffer>(size);
 }
 
-std::shared_ptr<IndexBuffer> IndexBuffer::Create(const unsigned int* data, unsigned int count)
+std::shared_ptr<IndexBuffer> IndexBuffer::create(const unsigned int* data, unsigned int count)
 {
     // Count is the length of the array
-    return std::make_shared<GL::GLIndexBuffer>(data, count);
+    return std::make_shared<GLIndexBuffer>(data, count);
 }

@@ -53,19 +53,23 @@ namespace Wolf
 		struct BufferAttribute
 		{
 			// Contains all the data of a single attribute
-			std::string Name;
-			ShaderDataType Type;
-			unsigned int Size;
-			unsigned int Offset;
-			bool Normalized;
+			std::string name;
+			ShaderDataType type;
+			uint32_t size;
+			uint32_t offset;
+			bool normalized;
 
 			BufferAttribute() = default;
-			BufferAttribute(std::string name, ShaderDataType type, bool normalized) : Name(name), Type(type), Normalized(normalized),
-				Size(ShaderDataTypeSize(type)), Offset(0) {}
+			BufferAttribute(std::string name, ShaderDataType type, bool normalized)
+			 : name(name),
+			   type(type),
+			   normalized(normalized),
+			   size(ShaderDataTypeSize(type)), 
+			   offset(0) {}
 
-			unsigned int GetComponentCount() const
+			uint32_t GetComponentCount() const
 			{
-				switch (Type)
+				switch (type)
 				{
 				case Float:
 					return 1;
@@ -90,7 +94,7 @@ namespace Wolf
 				case Mat4:
 					return 16;
 				default:
-					std::cout << "UNINPLEMENTED_SHADER_DATA_TYPE_COMPONENT_COUNT: " << Type << std::endl;
+					std::cout << "UNINPLEMENTED_SHADER_DATA_TYPE_COMPONENT_COUNT: " << type << std::endl;
 				}
 				return 1;
 			}
@@ -106,14 +110,14 @@ namespace Wolf
 			*/
 		public:
 			BufferLayout() = default;
-			BufferLayout(std::initializer_list<BufferAttribute> attributes) : _Attributes(attributes)
+			BufferLayout(std::initializer_list<BufferAttribute> attributes) : _attributes(attributes)
 			{
 				CalculateOffsetsAndStride();
 			}
-			unsigned int GetStride() { return _Stride; }
+			uint32_t GetStride() { return _stride; }
 
-			std::vector<BufferAttribute>::iterator begin() { return _Attributes.begin(); }
-			std::vector<BufferAttribute>::iterator end() { return _Attributes.end(); }
+			std::vector<BufferAttribute>::iterator begin() { return _attributes.begin(); }
+			std::vector<BufferAttribute>::iterator end() { return _attributes.end(); }
 
 		private:
 
@@ -124,17 +128,17 @@ namespace Wolf
 				the atributes and then sets 
 				the stride value
 				*/
-				unsigned int offset = 0;
-				for (BufferAttribute& attribute : _Attributes)
+				uint32_t offset = 0;
+				for (BufferAttribute& attribute : _attributes)
 				{
-					attribute.Offset = offset;
-					offset += attribute.Size;
+					attribute.offset = offset;
+					offset += attribute.size;
 				}
-				_Stride = offset;
+				_stride = offset;
 			}
 
-			std::vector<BufferAttribute> _Attributes;
-			unsigned int _Stride;
+			std::vector<BufferAttribute> _attributes;
+			uint32_t _stride;
 		};
 
 
@@ -146,10 +150,9 @@ namespace Wolf
 			virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset) = 0;
 			virtual void set_buffer_layout(const BufferLayout& layout) = 0;
 			virtual BufferLayout& get_buffer_layout() = 0;
-			static std::shared_ptr<VertexBuffer> Create(const void* data, unsigned int size);
+			static std::shared_ptr<VertexBuffer> create(const void* data, unsigned int size);
 
-			// Allocates memory for the VertexBuffer, size is in bytes
-			static std::shared_ptr<VertexBuffer> Allocate(unsigned int size);
+			static std::shared_ptr<VertexBuffer> allocate(unsigned int size);
 		};
 
 		class IndexBuffer
@@ -159,7 +162,7 @@ namespace Wolf
 			virtual void unbind() = 0;
 			virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset) = 0;
 			virtual unsigned int get_count() const = 0;
-			static std::shared_ptr<IndexBuffer> Create(const unsigned int* data, unsigned int count);
+			static std::shared_ptr<IndexBuffer> create(const unsigned int* data, unsigned int count);
 		};
 	}
 }

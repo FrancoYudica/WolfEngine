@@ -23,8 +23,8 @@ namespace Wolf
 	{
 	public:
 		Clock() = default;
-		void Start() { _start = Time::current(); }
-		Time Elapsed() { return Time::current() - _start; }
+		void start() { _start = Time::current(); }
+		Time elapsed() { return Time::current() - _start; }
 
 	private:
 		Time _start;

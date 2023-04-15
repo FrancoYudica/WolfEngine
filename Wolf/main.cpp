@@ -5,16 +5,16 @@
 #include "Sandbox/OpenGLLayer.h"
 #include "Sandbox/BatchRendererTest.h"
 
+using namespace Wolf;
 
 int main()
 {
-	auto app = Wolf::Application();
-	app.initialize(Wolf::Window::Configuration());
-	Wolf::
-	Layers::ImGuiLayer imguiLayer = Wolf::Layers::ImGuiLayer();
+	auto app = Application();
+	app.initialize(Window::Configuration());
+	Layers::ImGuiLayer imguiLayer = Layers::ImGuiLayer();
 	app.add_layer(&imguiLayer);
 
-	Wolf::SandboxLayers::BatchLayer openglLayer = Wolf::SandboxLayers::BatchLayer();
+	SandboxLayers::BatchLayer openglLayer = SandboxLayers::BatchLayer();
 	app.add_layer(&openglLayer);
 
 	app.run();

@@ -14,7 +14,10 @@ namespace Wolf
             public:
             	GLGraphicsContext() = default;
                 GLGraphicsContext(void* glfwWindow) : _glfwWindow(glfwWindow) {}
-            	virtual void Init();
+
+            	virtual void init();
+        		void on_viewport_resize(uint32_t width, uint32_t height);
+
             private:
                     void* _glfwWindow;
             };

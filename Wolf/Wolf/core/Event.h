@@ -10,8 +10,8 @@ enum EventType { MouseMove, WindowClose, WindowResize, ButtonDown, ButtonUp, Key
 class Event
 {
 public:
-    bool Handled = false;
-    EventType Type;
+    bool handled = false;
+    EventType type;
 };
 
 class MouseMoveEvent : public Event
@@ -20,7 +20,7 @@ public:
     const double x, y;
     MouseMoveEvent() = default;
     MouseMoveEvent(double xPos, double yPos) : x(xPos), y(yPos) {
-        Type = EventType::MouseMove;
+        type = EventType::MouseMove;
     }
 };
 
@@ -30,16 +30,16 @@ public:
     const int width, height;
     WindowResizeEvent() = default;
     WindowResizeEvent(int w, int h) : width(w), height(h) {
-        Type = EventType::WindowResize;
+        type = EventType::WindowResize;
     }
 };
 
 class WindowClosedEvent : public Event
 {
 public:
-    void* windowPtr;
+    void* window_ptr;
     WindowClosedEvent() = default;
-    WindowClosedEvent(void* window) : windowPtr(window) { Type = EventType::WindowClose; }
+    WindowClosedEvent(void* window) : window_ptr(window) { type = EventType::WindowClose; }
 };
 
 enum MouseButton {
@@ -63,7 +63,7 @@ class ButtonDownEvent : public Event
 public:
     const MouseButton button;
     ButtonDownEvent() = default;
-    ButtonDownEvent(MouseButton button, int mods) : button(button), _mods(mods) { Type = EventType::ButtonDown; }
+    ButtonDownEvent(MouseButton button, int mods) : button(button), _mods(mods) { type = EventType::ButtonDown; }
     bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
@@ -200,7 +200,7 @@ class KeyDownEvent : public Event
 public:
     const KeyCode key;
     KeyDownEvent() = default;
-    KeyDownEvent(KeyCode key, int mods) : key(key), _mods(mods) { Type = EventType::KeyDown; }
+    KeyDownEvent(KeyCode key, int mods) : key(key), _mods(mods) { type = EventType::KeyDown; }
     bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
@@ -212,7 +212,7 @@ class KeyUpEvent : public Event
 public:
     const KeyCode key;
     KeyUpEvent() = default;
-    KeyUpEvent(KeyCode key, int mods) : key(key), _mods(mods) { Type = EventType::KeyUp; }
+    KeyUpEvent(KeyCode key, int mods) : key(key), _mods(mods) { type = EventType::KeyUp; }
     bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
@@ -224,7 +224,7 @@ class ButtonUpEvent : public Event
 public:
     const MouseButton button;
     ButtonUpEvent() = default;
-    ButtonUpEvent(MouseButton button, int mods) : button(button), _mods(mods) { Type = EventType::ButtonUp; }
+    ButtonUpEvent(MouseButton button, int mods) : button(button), _mods(mods) { type = EventType::ButtonUp; }
     bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
@@ -243,13 +243,13 @@ public:
     template <typename F>
     bool Dispatch(EventType type, const F& func)
     {
-        if (_event.Handled)
+        if (_event.handled)
             return true;
 
-        if (type == _event.Type)
-            _event.Handled = func(_event);
+        if (type == _event.type)
+            _event.handled = func(_event);
 
-        return _event.Handled;
+        return _event.handled;
     }
 
 private:

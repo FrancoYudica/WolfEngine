@@ -62,10 +62,10 @@ void GLVertexArray::add_vertex_buffer(const std::shared_ptr<VertexBuffer>& vb)
 		glVertexAttribPointer(
 			_AttributeIndex,
 			attribute.GetComponentCount(),
-			ShaderDataTypeToOpenGLBaseType(attribute.Type),
-			attribute.Normalized ? GL_TRUE : GL_FALSE,
+			ShaderDataTypeToOpenGLBaseType(attribute.type),
+			attribute.normalized ? GL_TRUE : GL_FALSE,
 			layout.GetStride(),
-			(void*)attribute.Offset
+			(void*)attribute.offset
 		);
 		_AttributeIndex++;
 	}
@@ -79,7 +79,7 @@ void GLVertexArray::set_index_buffer(const std::shared_ptr<IndexBuffer>& ib)
 
 }
 
-std::shared_ptr<VertexArray> VertexArray::Create()
+std::shared_ptr<VertexArray> VertexArray::create()
 {
     return std::make_shared<GLVertexArray>();
 }

@@ -10,7 +10,7 @@ namespace Wolf
 
     struct WindowUserData
     {
-        void* windowPtr;
+        void* window_ptr;
     };
 
     class Window
@@ -27,16 +27,16 @@ namespace Wolf
 
     public:
         Window() = default;
-        bool Initialize(Window::Configuration config);
-        void* GetNativePtr() const { return _windowPtr; }
-        bool ShouldClose();
-        void MakeContextCurrent();
-        void SwapBuffers();
-        void PollEvents();
+        bool initialize(Window::Configuration config);
+        void* get_native_ptr() const { return _window_ptr; }
+        bool should_close();
+        void make_context_current();
+        void swap_buffers();
+        void poll_events();
 
     private:
-        WindowUserData _userData;
-        void* _windowPtr;
+        WindowUserData _user_data;
+        void* _window_ptr;
     };
 }
 #endif

@@ -49,7 +49,7 @@ struct RendererData
 // Data used for the renderer
 static RendererData _Data;
 
-void Renderer2D::Init()
+void Renderer2D::init()
 {
 	_Data.MaxQuads = 100;
 	_Data.Submitions = 0;
@@ -77,13 +77,13 @@ void Renderer2D::Init()
 	}
 
 	// Creates VAO, IBO and VBO
-	_Data.VAO = VertexArray::Create();
+	_Data.VAO = VertexArray::create();
 	_Data.VAO->bind();
 	// Creates index and vertex buffer
-	_Data.IBO = IndexBuffer::Create(indices, indices_count);
+	_Data.IBO = IndexBuffer::create(indices, indices_count);
 	delete[] indices;
 
-	_Data.VBO = VertexBuffer::Create(_Data.VerticesPtr, buffer_size);
+	_Data.VBO = VertexBuffer::create(_Data.VerticesPtr, buffer_size);
 
 	_Data.VBO->set_buffer_layout(
 		BufferLayout{
@@ -95,16 +95,16 @@ void Renderer2D::Init()
 	_Data.VAO->set_index_buffer(_Data.IBO);
 
 	_Data.VAO->unbind();
-	_Data.ShaderProgram = ShaderProgram::Create(vertexShaderSourceStr, fragmentShaderSourceStr);
+	_Data.ShaderProgram = ShaderProgram::create(vertexShaderSourceStr, fragmentShaderSourceStr);
 }
 
-void Renderer2D::Shutdown()
+void Renderer2D::shutdown()
 {
 	// Deallocates the memory
 	delete[] _Data.VerticesPtr;
 }
 
-void Renderer2D::NewFrame()
+void Renderer2D::new_frame()
 {
 	if (_Data.Submitions != 0)
 	{
@@ -113,37 +113,39 @@ void Renderer2D::NewFrame()
 	_Data.Submitions = 0;
 }
 
-void Renderer2D::EndFrame()
+void Renderer2D::end_frame()
 {
 	if (_Data.Submitions == 0)
 		return;
 
-	_Flush();
+	_flush();
 }
 
-void Renderer2D::SubmitQuad(const glm::vec3& position, const glm::vec3 size, const glm::vec4& color)
+void Renderer2D::submit_quad(const glm::vec3& position, const glm::vec3 size, const glm::vec4& color)
 {
 	unsigned int index = _Data.Submitions * 4;
 
-	_Data.VerticesPtr[index + 0].position = position + glm::vec3(-size.x, -size.y, 0);
-	_Data.VerticesPtr[index + 1].position = position + glm::vec3( size.x, -size.y, 0);
-	_Data.VerticesPtr[index + 2].position = position + glm::vec3( size.x,  size.y, 0);
-	_Data.VerticesPtr[index + 3].position = position + glm::vec3(-size.x,  size.y, 0);
+	// Sets the array data
+	{
+		_Data.VerticesPtr[index + 0].position = position + glm::vec3(-size.x, -size.y, 0);
+		_Data.VerticesPtr[index + 1].position = position + glm::vec3( size.x, -size.y, 0);
+		_Data.VerticesPtr[index + 2].position = position + glm::vec3( size.x,  size.y, 0);
+		_Data.VerticesPtr[index + 3].position = position + glm::vec3(-size.x,  size.y, 0);
 
-	_Data.VerticesPtr[index + 0].color = color;
-	_Data.VerticesPtr[index + 1].color = color;
-	_Data.VerticesPtr[index + 2].color = color;
-	_Data.VerticesPtr[index + 3].color = color;
-
+		_Data.VerticesPtr[index + 0].color = color;
+		_Data.VerticesPtr[index + 1].color = color;
+		_Data.VerticesPtr[index + 2].color = color;
+		_Data.VerticesPtr[index + 3].color = color;
+	}
 
 	_Data.Submitions++;
 
 	if (_Data.Submitions > _Data.MaxQuads)
-		_Flush();
+		_flush();
 
 }
 
-void Renderer2D::_Flush()
+void Renderer2D::_flush()
 {
 
 	// Renders the batched quads
@@ -151,9 +153,8 @@ void Renderer2D::_Flush()
 	_Data.VAO->bind();
 	_Data.VBO->bind();
 	_Data.VBO->set_sub_data(_Data.VerticesPtr, 4 * _Data.Submitions * sizeof(QuadVertex), 0);
-	RenderCommand::DrawIndexed(_Data.VAO, _Data.Submitions * 6);
+	RenderCommand::draw_indexed(_Data.VAO, _Data.Submitions * 6);
 	_Data.VAO->unbind();
-
 	// Rests
 	_Data.Submitions = 0;
 }

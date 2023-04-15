@@ -43,7 +43,7 @@ namespace Wolf
 
 			gladLoadGL();
 
-			auto program = Wolf::Rendering::ShaderProgram::Create(vertexSource, fragmentrSource);
+			auto program = Wolf::Rendering::ShaderProgram::create(vertexSource, fragmentrSource);
 			Shaders.add("shader", program);
 
 			Vertex v0 = Vertex({ 0.5f, 0.5f, 0.0f }, { 1, 0, 0 });
@@ -51,17 +51,17 @@ namespace Wolf
 			Vertex v2 = Vertex({ -0.5f, -0.5f, 0.0f }, { 0, 0, 1 });
 			Vertex v3 = Vertex({ -0.5f,  0.5f, 0.0f }, { 1, 1, 0 });
 
-			Wolf::Rendering::Renderer2D::Init();
+			Wolf::Rendering::Renderer2D::init();
 
 			Vertex vertices[] = {v0, v1, v2, v3};
 
 			// INDEX BUFFER DATA
 			unsigned int indices[] = {0, 1, 2, 0, 2, 3};
 			//unsigned int VBO, IBO;
-			VAO = Wolf::Rendering::VertexArray::Create();
+			VAO = Wolf::Rendering::VertexArray::create();
 			VAO->bind();
 
-			auto vbo = Wolf::Rendering::VertexBuffer::Create(vertices, sizeof(float) * 6 * 4);
+			auto vbo = Wolf::Rendering::VertexBuffer::create(vertices, sizeof(float) * 6 * 4);
 
 			Wolf::Rendering::BufferLayout layout = {
 				Wolf::Rendering::BufferAttribute("aPosition", Wolf::Rendering::Float3, false),
@@ -69,7 +69,7 @@ namespace Wolf
 			};
 			vbo->set_buffer_layout(layout);
 
-			auto ibo = Wolf::Rendering::IndexBuffer::Create(indices, 6);
+			auto ibo = Wolf::Rendering::IndexBuffer::create(indices, 6);
 
 			VAO->add_vertex_buffer(vbo);
 			VAO->set_index_buffer(ibo);
@@ -98,7 +98,7 @@ namespace Wolf
 			program->bind();
 			program->set_float("_UniformColor", glm::vec3(1, .5, .4));
 			VAO->bind();
-			Rendering::RenderCommand::DrawIndexed(VAO, 6);
+			Rendering::RenderCommand::draw_indexed(VAO, 6);
 			VAO->unbind();
 		}
 	}

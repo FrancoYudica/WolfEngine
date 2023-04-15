@@ -22,15 +22,15 @@ namespace Wolf
         }
 
         /* Creates main window */
-        if (!_mainWindow.Initialize(config))
+        if (!_mainWindow.initialize(config))
         {
             glfwTerminate();
             return false;
         }
-        _mainWindow.MakeContextCurrent();
+        _mainWindow.make_context_current();
 
-        _GraphicsContext = GraphicsContext::Create(_mainWindow);
-        _GraphicsContext->Init();
+        _graphics_context = GraphicsContext::create(_mainWindow);
+        _graphics_context->init();
 
         return true;
     }
@@ -41,7 +41,7 @@ namespace Wolf
         auto layers = _layer_stack.get_layers();
         for (auto it = layers.rbegin(); it != layers.rend(); ++it)
         {
-            if (event.Handled)
+            if (event.handled)
                 return;
 
             (*it)->on_event(event);
@@ -79,26 +79,26 @@ namespace Wolf
     void Application::run()
     {
         _clock = Clock();
-        _clock.Start();
+        _clock.start();
 
         Clock deltaClock, timingClock;
-        deltaClock.Start();
-        while (!_mainWindow.ShouldClose())
+        deltaClock.start();
+        while (!_mainWindow.should_close())
         {
-            Time elapsed = deltaClock.Elapsed();
-            deltaClock.Start();
+            Time elapsed = deltaClock.elapsed();
+            deltaClock.start();
 
-            timingClock.Start();
+            timingClock.start();
             on_update(elapsed);
-            _update_time = timingClock.Elapsed();
+            _update_time = timingClock.elapsed();
 
-            timingClock.Start();
-            Rendering::RenderCommand::Clear();
+            timingClock.start();
+            Rendering::RenderCommand::clear();
             on_render();
-            _mainWindow.SwapBuffers();            
-            _render_time = timingClock.Elapsed();
+            _mainWindow.swap_buffers();            
+            _render_time = timingClock.elapsed();
             /* Poll for and process events */
-            _mainWindow.PollEvents();
+            _mainWindow.poll_events();
         }
     }
 }

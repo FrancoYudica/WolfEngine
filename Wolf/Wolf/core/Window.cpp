@@ -6,7 +6,7 @@
 namespace Wolf
 {
 
-    bool Window::Initialize(Window::Configuration config)
+    bool Window::initialize(Window::Configuration config)
     {
         GLFWmonitor* monitor = config.fullscreen ? glfwGetPrimaryMonitor() : NULL;
 
@@ -17,14 +17,14 @@ namespace Wolf
 
         GLFWwindow* windowNativePtr = glfwCreateWindow(config.width, config.height, config.title, monitor, NULL);
 
-        _windowPtr = windowNativePtr;
+        _window_ptr = windowNativePtr;
 
-        if (!_windowPtr)
+        if (!_window_ptr)
         {
             std::cout << "Unable to create GLFWwindow*" << std::endl;
             return false;
         }
-        glfwSetWindowUserPointer(windowNativePtr, &_userData);
+        glfwSetWindowUserPointer(windowNativePtr, &_user_data);
 
 
         // SETS THE EVENT CALLBACKS
@@ -36,7 +36,7 @@ namespace Wolf
 
         glfwSetWindowCloseCallback(windowNativePtr, [](GLFWwindow* window) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-        WindowClosedEvent event(userData->windowPtr);
+        WindowClosedEvent event(userData->window_ptr);
         Application::get_instance()->on_event(event);
             });
 
@@ -106,16 +106,16 @@ namespace Wolf
         return true;
     }
 
-    void Window::SwapBuffers()
+    void Window::swap_buffers()
     {
-        glfwSwapBuffers((GLFWwindow*)_windowPtr);   
+        glfwSwapBuffers((GLFWwindow*)_window_ptr);   
     }
-    void Window::PollEvents()
+    void Window::poll_events()
     {
         glfwPollEvents();
     }
 
-    bool Window::ShouldClose() { return glfwWindowShouldClose((GLFWwindow*)_windowPtr); }
-    void Window::MakeContextCurrent() { glfwMakeContextCurrent((GLFWwindow*)_windowPtr); }
+    bool Window::should_close() { return glfwWindowShouldClose((GLFWwindow*)_window_ptr); }
+    void Window::make_context_current() { glfwMakeContextCurrent((GLFWwindow*)_window_ptr); }
 
 }

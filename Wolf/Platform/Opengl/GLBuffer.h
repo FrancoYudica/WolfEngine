@@ -13,7 +13,7 @@ namespace Wolf
 
 		namespace GL
 		{
-			class GLVertexBuffer : public Wolf::Rendering::VertexBuffer
+			class GLVertexBuffer : public VertexBuffer
 			{
 			public:
 
@@ -25,16 +25,16 @@ namespace Wolf
 				virtual void bind();
 				virtual void unbind();
 				virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset);
-				virtual void set_buffer_layout(const Wolf::Rendering::BufferLayout& layout) { _Layout = layout; }
-				virtual Wolf::Rendering::BufferLayout& get_buffer_layout() { return _Layout; }
+				virtual void set_buffer_layout(const BufferLayout& layout) { _Layout = layout; }
+				virtual BufferLayout& get_buffer_layout() { return _Layout; }
 
 			private:
-				Wolf::Rendering::BufferLayout _Layout;
+				BufferLayout _Layout;
 
 			};
 
 
-			class GLIndexBuffer : public Wolf::Rendering::IndexBuffer
+			class GLIndexBuffer : public IndexBuffer
 			{
 			public:
 				unsigned int ID;

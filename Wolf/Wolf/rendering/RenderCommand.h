@@ -14,9 +14,9 @@ namespace Wolf
         class RenderCommand
         {
             public:
-                static void SetClearColor(float r, float g, float b, float a);
-                static void Clear();
-                static void DrawIndexed(const std::shared_ptr<VertexArray>& vao, int count);
+                static void set_clear_color(float r, float g, float b, float a);
+                static void clear();
+                static void draw_indexed(const std::shared_ptr<VertexArray>& vao, int count);
         };
 
     }

@@ -105,7 +105,7 @@ unsigned int GLShaderProgram::compile_shader(const char* source, unsigned int ty
 
 }
 
-std::shared_ptr<ShaderProgram> ShaderProgram::Create(const char* vertex_src, const char* fragment_src)
+std::shared_ptr<ShaderProgram> ShaderProgram::create(const char* vertex_src, const char* fragment_src)
 {
     return std::make_shared<GLShaderProgram>(vertex_src, fragment_src);
 }

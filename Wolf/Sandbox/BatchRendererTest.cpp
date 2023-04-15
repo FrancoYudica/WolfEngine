@@ -10,7 +10,7 @@ namespace Wolf
 
 		void BatchLayer::on_start()
 		{
-			Rendering::Renderer2D::Init();
+			Rendering::Renderer2D::init();
 		}
 		void BatchLayer::on_update(const Time& delta)
 		{
@@ -30,9 +30,9 @@ namespace Wolf
 		void BatchLayer::on_render()
 		{
 
-			Rendering::Renderer2D::NewFrame();
-			Rendering::Renderer2D::SubmitQuad(glm::vec3(0), glm::vec3(1), glm::vec4(1.0f, 0.6f, 0.3f, 1.0f));
-			Rendering::Renderer2D::EndFrame();
+			Rendering::Renderer2D::new_frame();
+			Rendering::Renderer2D::submit_quad(glm::vec3(0), glm::vec3(1), glm::vec4(1.0f, 0.6f, 0.3f, 1.0f));
+			Rendering::Renderer2D::end_frame();
 
 
 		}

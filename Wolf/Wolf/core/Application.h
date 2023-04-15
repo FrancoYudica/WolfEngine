@@ -53,7 +53,7 @@ namespace Wolf
 
         Time _render_time;
         Time _update_time;
-        std::shared_ptr<GraphicsContext> _GraphicsContext;
+        std::shared_ptr<GraphicsContext> _graphics_context;
     };
 }
 #endif

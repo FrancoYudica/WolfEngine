@@ -16,13 +16,13 @@ namespace Wolf
 			*/
 
 		public:
-			static void Init();
-			static void Shutdown();
-			static void NewFrame();
-			static void EndFrame();
-			static void SubmitQuad(const glm::vec3& position, const glm::vec3 size, const glm::vec4& color);
+			static void init();
+			static void shutdown();
+			static void new_frame();
+			static void end_frame();
+			static void submit_quad(const glm::vec3& position, const glm::vec3 size, const glm::vec4& color);
 		private:
-			static void _Flush();
+			static void _flush();
 
 		};
 
