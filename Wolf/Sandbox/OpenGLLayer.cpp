@@ -80,7 +80,7 @@ namespace Wolf
 		{
 
 		}
-		void OpenGLLayer::on_event(const Event& event)
+		void OpenGLLayer::on_event(Event* event)
 		{
 		}
 		void OpenGLLayer::on_ui_render_start()

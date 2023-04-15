@@ -41,10 +41,10 @@ namespace Wolf
 
 		}
 
-		void ImGuiLayer::on_event(const Event& event)
+		void ImGuiLayer::on_event(Event* event)
 		{
 			EventDispatcher dispatcher(event);
-			dispatcher.Dispatch(EventType::ButtonDown, [](Event e) { std::cout << "Button pressed" << std::endl; return false; });
+			dispatcher.dispatch(EventType::ButtonDown, [](Event* e) { std::cout << "Button pressed" << std::endl; return false; });
 		}
 		void ImGuiLayer::on_ui_render_start()
 		{

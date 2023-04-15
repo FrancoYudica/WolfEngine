@@ -35,17 +35,28 @@ namespace Wolf
         return true;
     }
 
-    void Application::on_event(const Event& event)
+    void Application::on_event(Event* event)
     {
         // Updates from the overlays to the lowest
         auto layers = _layer_stack.get_layers();
         for (auto it = layers.rbegin(); it != layers.rend(); ++it)
         {
-            if (event.handled)
+            if (event->handled)
                 return;
 
             (*it)->on_event(event);
         }
+        EventDispatcher disptacher = EventDispatcher(event);
+
+        disptacher.dispatch(
+            EventType::WindowResize,
+
+            [this](Event* event){
+                WindowResizeEvent* e = dynamic_cast<WindowResizeEvent*>(event);
+                this->_graphics_context->on_viewport_resize(e->width, e->height);
+                return false;
+            }
+        );
     }
 
     void Application::on_update(const Time& delta)

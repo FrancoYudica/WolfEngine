@@ -15,7 +15,7 @@ namespace Wolf
 		void BatchLayer::on_update(const Time& delta)
 		{
 		}
-		void BatchLayer::on_event(const Event& event)
+		void BatchLayer::on_event(Event* event)
 		{
 		}
 		void BatchLayer::on_ui_render_start()

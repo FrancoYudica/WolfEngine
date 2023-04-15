@@ -13,13 +13,13 @@ namespace Wolf
 		{
 			public:
 				BatchLayer() = default;
-				virtual void on_start();
-				virtual void on_update(const Time& delta);
-				virtual void on_event(const Event& event);
-				virtual void on_ui_render_start();
-				virtual void on_ui_render_finish();
-				virtual void on_end();
-				virtual void on_render();
+				virtual void on_start() override;
+				virtual void on_update(const Time& delta) override;
+				virtual void on_event(Event* event) override;
+				virtual void on_ui_render_start() override;
+				virtual void on_ui_render_finish() override;
+				virtual void on_end() override;
+				virtual void on_render() override;
 		};
 	}
 }

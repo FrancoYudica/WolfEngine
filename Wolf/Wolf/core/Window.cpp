@@ -28,22 +28,24 @@ namespace Wolf
 
 
         // SETS THE EVENT CALLBACKS
+        // The event lifetime is only in the duration of the callback
+        // so, events shouldn't be stored, it will cause a nullptr exeption
         glfwSetCursorPosCallback(windowNativePtr, [](GLFWwindow* window, double x, double y) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-        MouseMoveEvent event(x, y);
-        Application::get_instance()->on_event(event);
+            MouseMoveEvent event(x, y);
+            Application::get_instance()->on_event(&event);
             });
 
         glfwSetWindowCloseCallback(windowNativePtr, [](GLFWwindow* window) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-        WindowClosedEvent event(userData->window_ptr);
-        Application::get_instance()->on_event(event);
+            WindowClosedEvent event(userData->window_ptr);
+            Application::get_instance()->on_event(&event);
             });
 
         glfwSetWindowSizeCallback(windowNativePtr, [](GLFWwindow* window, int width, int height) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-        WindowResizeEvent event(width, height);
-        Application::get_instance()->on_event(event);
+            WindowResizeEvent event(width, height);
+            Application::get_instance()->on_event(&event);
             });
 
         glfwSetMouseButtonCallback(windowNativePtr, [](GLFWwindow* window, int button, int action, int mods) {
@@ -85,21 +87,20 @@ namespace Wolf
                 buttonEvent = (Event)ButtonUpEvent(btn, mods);
 
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            Application::get_instance()->on_event(buttonEvent);
+            Application::get_instance()->on_event(&buttonEvent);
             });
 
         glfwSetKeyCallback(windowNativePtr, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
-
             Event keyEvent;
-        if (action == 1)
-            keyEvent = (Event)KeyDownEvent((KeyCode)key, mods);
-        else if (action == 0)
-            keyEvent = (Event)KeyUpEvent((KeyCode)key, mods);
-        else
-            return;
+            if (action == 1)
+                keyEvent = (Event)KeyDownEvent((KeyCode)key, mods);
+            else if (action == 0)
+                keyEvent = (Event)KeyUpEvent((KeyCode)key, mods);
+            else
+                return;
 
-        WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-        Application::get_instance()->on_event(keyEvent);
+            WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
+            Application::get_instance()->on_event(&keyEvent);
             });
 
 

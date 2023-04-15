@@ -24,7 +24,7 @@ namespace Wolf
         }
         bool initialize(Window::Configuration config);
         void run();
-        void on_event(const Event& event);
+        void on_event(Event* event);
         void on_update(const Time& time);
         void on_render();
         void add_layer(Layer* layer) { _layer_stack.add(layer); }
@@ -50,7 +50,6 @@ namespace Wolf
         Window _mainWindow;
         LayerStack _layer_stack;
         Clock _clock;
-
         Time _render_time;
         Time _update_time;
         std::shared_ptr<GraphicsContext> _graphics_context;

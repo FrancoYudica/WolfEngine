@@ -1,9 +1,8 @@
 #pragma once
 #ifndef WOLF_EVENT_H
 #define WOLF_EVENT_H
+#include <iostream>
 
-// Macro used to bind methods in the event dispatcher
-#define BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 
 enum EventType { MouseMove, WindowClose, WindowResize, ButtonDown, ButtonUp, KeyUp, KeyDown };
 
@@ -12,6 +11,11 @@ class Event
 public:
     bool handled = false;
     EventType type;
+    virtual ~Event() = default;
+    virtual void display()
+    {
+        std::cout << "Event(" << type << ")" << std::endl;
+    }
 };
 
 class MouseMoveEvent : public Event
@@ -236,24 +240,24 @@ typedef bool EventProcessor(Event e);
 class EventDispatcher
 {
 public:
-    EventDispatcher(Event event)
+    EventDispatcher(Event* event)
     {
         _event = event;
     }
     template <typename F>
-    bool Dispatch(EventType type, const F& func)
+    bool dispatch(EventType type, const F& func)
     {
-        if (_event.handled)
+        if (_event->handled)
             return true;
 
-        if (type == _event.type)
-            _event.handled = func(_event);
+        if (type == _event->type)
+            _event->handled = func(_event);
 
-        return _event.handled;
+        return _event->handled;
     }
 
 private:
-    Event _event;
+    Event* _event;
 };
 
 #endif

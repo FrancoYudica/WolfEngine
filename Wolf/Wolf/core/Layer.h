@@ -22,7 +22,7 @@ namespace Wolf
 		virtual void on_render() = 0;					// Once per frame
 		virtual void on_ui_render_start() = 0;
 		virtual void on_ui_render_finish() = 0;
-		virtual void on_event(const Event& event) = 0;	// Once per frame at event poll
+		virtual void on_event(Event* event) = 0;	// Once per frame at event poll
 		bool operator==(const Layer& other) { return this == &other; }
 	};
 

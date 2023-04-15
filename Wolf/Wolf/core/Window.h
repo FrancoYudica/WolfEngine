@@ -17,6 +17,7 @@ namespace Wolf
     {
 
     public:
+    
         struct Configuration
         {
             uint32_t width = 600;
