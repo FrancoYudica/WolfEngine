@@ -9,6 +9,11 @@ file(GLOB WOLF_IMGUI_LAYER_CPP   imgui_layer/*.cpp)
 file(GLOB WOLF_RENDERING_H       rendering/*.h)
 file(GLOB WOLF_RENDERING_CPP     rendering/*.cpp)
 
+
+file(GLOB WOLF_NUMERICAL_H       numerical/*.h)
+file(GLOB WOLF_NUMERICAL_CPP     numerical/*.cpp)
+
+
 add_library(
     wolf_engine STATIC
     ${WOLF_CORE_H}
@@ -17,6 +22,8 @@ add_library(
     ${WOLF_IMGUI_LAYER_CPP}
     ${WOLF_RENDERING_H}
     ${WOLF_RENDERING_CPP}
+    ${WOLF_NUMERICAL_H}
+    ${WOLF_NUMERICAL_CPP}
     )
 
 target_link_libraries(wolf_engine PRIVATE vendor)

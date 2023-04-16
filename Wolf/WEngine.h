@@ -17,12 +17,15 @@
 
 // ImGui layer
 #include "Wolf/imgui_layer/imgui_layer.h"
-// Rendering
 
+// Rendering
 #include "Wolf/rendering/ShaderProgram.h"
 #include "Wolf/rendering/Buffer.h"
 #include "Wolf/rendering/VertexArray.h"
 #include "Wolf/rendering/Renderer.h"
 #include "Wolf/rendering/RenderCommand.h"
+
+// Numerical
+#include "Wolf/numerical/Random.h"
 
 #endif
