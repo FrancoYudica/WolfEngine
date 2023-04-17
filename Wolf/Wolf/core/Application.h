@@ -33,7 +33,7 @@ namespace Wolf
         Window* get_main_window() { return &_mainWindow; }
         void quit();
 
-        static Application* get_instance() {
+        inline static Application* get_instance() {
             if (_instance == nullptr)
             {
                 _instance = new Application();
@@ -41,10 +41,9 @@ namespace Wolf
             return _instance;
         }
 
-    public:
-        const Time& get_update_time() { return _update_time; }
-        const Time& get_render_time() { return _render_time; }
-
+        inline const Time& get_update_time() { return _update_time; }
+        inline const Time& get_render_time() { return _render_time; }
+    
     private:
         static Application* _instance;
         Window _mainWindow;

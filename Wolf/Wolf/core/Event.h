@@ -244,14 +244,14 @@ public:
     {
         _event = event;
     }
-    template <typename F>
+    template <typename EventTypeName, typename F>
     bool dispatch(EventType type, const F& func)
     {
         if (_event->handled)
             return true;
 
         if (type == _event->type)
-            _event->handled = func(_event);
+            _event->handled = func(static_cast<EventTypeName*>(_event));
 
         return _event->handled;
     }

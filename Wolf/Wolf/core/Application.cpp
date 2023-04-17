@@ -47,13 +47,11 @@ namespace Wolf
             (*it)->on_event(event);
         }
         EventDispatcher disptacher = EventDispatcher(event);
-
-        disptacher.dispatch(
+        disptacher.dispatch<WindowResizeEvent>(
             EventType::WindowResize,
 
-            [this](Event* event){
-                WindowResizeEvent* e = dynamic_cast<WindowResizeEvent*>(event);
-                this->_graphics_context->on_viewport_resize(e->width, e->height);
+            [this](WindowResizeEvent* event){
+                this->_graphics_context->on_viewport_resize(event->width, event->height);
                 return false;
             }
         );
