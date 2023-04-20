@@ -8,8 +8,8 @@ namespace Wolf
 	{
 		Time() = default;
 		Time(double seconds) { _time = seconds; }
-		double millis() const { return _time / 1000.0; }
-		double seconds() const { return _time; }
+		inline double millis() const { return _time / 1000.0; }
+		inline double seconds() const { return _time; }
 		static Time current();
 
 		Time operator -(const Time& other) { return Time(_time - other.seconds()); }

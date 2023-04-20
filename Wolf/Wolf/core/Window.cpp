@@ -6,7 +6,7 @@
 namespace Wolf
 {
 
-    bool Window::initialize(Window::Configuration config)
+    bool Window::initialize(const Window::Configuration& config)
     {
         GLFWmonitor* monitor = config.fullscreen ? glfwGetPrimaryMonitor() : NULL;
 

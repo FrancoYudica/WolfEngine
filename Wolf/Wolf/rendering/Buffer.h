@@ -60,7 +60,7 @@ namespace Wolf
 			bool normalized;
 
 			BufferAttribute() = default;
-			BufferAttribute(std::string name, ShaderDataType type, bool normalized)
+			BufferAttribute(const std::string& name, ShaderDataType type, bool normalized)
 			 : name(name),
 			   type(type),
 			   normalized(normalized),

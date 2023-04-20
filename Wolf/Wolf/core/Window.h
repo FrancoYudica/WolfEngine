@@ -28,8 +28,8 @@ namespace Wolf
 
     public:
         Window() = default;
-        bool initialize(Window::Configuration config);
-        void* get_native_ptr() const { return _window_ptr; }
+        bool initialize(const Window::Configuration& config);
+        inline void* get_native_ptr() const { return _window_ptr; }
         bool should_close();
         void make_context_current();
         void swap_buffers();

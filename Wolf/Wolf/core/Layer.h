@@ -12,18 +12,16 @@ namespace Wolf
 
 	class Layer
 	{
-	public:
+		public:
 		Layer() = default;
-
+		~Layer() = default;
 		virtual void on_start() = 0;					// Added to the stack
 		virtual void on_end() = 0;						// Removed from the stack 
-		virtual void on_update(const Time& delta) = 0;
-		// Once per frame
+		virtual void on_update(const Time& delta) = 0;	// Once per frame
 		virtual void on_render() = 0;					// Once per frame
 		virtual void on_ui_render_start() = 0;
 		virtual void on_ui_render_finish() = 0;
 		virtual void on_event(Event* event) = 0;	// Once per frame at event poll
-		bool operator==(const Layer& other) { return this == &other; }
 	};
 
 
