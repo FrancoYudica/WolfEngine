@@ -205,7 +205,7 @@ public:
     const KeyCode key;
     KeyDownEvent() = default;
     KeyDownEvent(KeyCode key, int mods) : key(key), _mods(mods) { type = EventType::KeyDown; }
-    bool is_mod(ActionModifier mod) { return mod & _mods; }
+    inline bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
     const int _mods;
@@ -217,7 +217,7 @@ public:
     const KeyCode key;
     KeyUpEvent() = default;
     KeyUpEvent(KeyCode key, int mods) : key(key), _mods(mods) { type = EventType::KeyUp; }
-    bool is_mod(ActionModifier mod) { return mod & _mods; }
+    inline bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
     const int _mods;
