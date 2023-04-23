@@ -13,6 +13,8 @@ file(GLOB WOLF_RENDERING_CPP     rendering/*.cpp)
 file(GLOB WOLF_NUMERICAL_H       numerical/*.h)
 file(GLOB WOLF_NUMERICAL_CPP     numerical/*.cpp)
 
+file(GLOB WOLF_UTILS_H       utils/*.h)
+file(GLOB WOLF_UTILS_CPP     utils/*.cpp)
 
 add_library(
     wolf_engine STATIC
@@ -24,6 +26,8 @@ add_library(
     ${WOLF_RENDERING_CPP}
     ${WOLF_NUMERICAL_H}
     ${WOLF_NUMERICAL_CPP}
+    ${WOLF_UTILS_H}
+    ${WOLF_UTILS_CPP}
     )
 
 target_link_libraries(wolf_engine PRIVATE vendor)

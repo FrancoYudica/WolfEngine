@@ -5,6 +5,8 @@
 #include "ShaderProgram.h"
 #include "VertexArray.h"
 #include "RenderCommand.h"
+#include "../utils/File.h"
+#include "../utils/PathManager.h"
 
 
 using namespace Wolf::Rendering;
@@ -95,8 +97,13 @@ void Renderer2D::init()
 	_Data.VAO->set_index_buffer(_Data.IBO);
 
 	_Data.VAO->unbind();
-	_Data.ShaderProgram = ShaderProgram::create(vertexShaderSourceStr, fragmentShaderSourceStr);
+	
+	const Path assets_path = Wolf::PathManager::get_instance().get_engine_assets_path();
+	const Path vertex_path = assets_path / "shaders/renderer2d.vert";
+	const Path fragment_path = assets_path / "shaders/renderer2d.frag";
+	_Data.ShaderProgram = ShaderProgram::create(vertex_path, fragment_path);
 }
+
 
 void Renderer2D::shutdown()
 {

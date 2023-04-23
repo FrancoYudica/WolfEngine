@@ -28,4 +28,8 @@
 // Numerical
 #include "Wolf/numerical/Random.h"
 
+// Utils
+#include "Wolf/utils/File.h"
+#include "Wolf/utils/PathManager.h"
+
 #endif

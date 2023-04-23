@@ -14,8 +14,8 @@ namespace Wolf
 		}
 		void BatchLayer::on_update(const Time& delta)
 		{
-			static auto generator = Wolf::Numerical::Random::RandomFloat(123);
-			std::cout << generator.unit() << std::endl;
+			//static auto generator = Wolf::Numerical::Random::RandomFloat(123);
+			//std::cout << generator.unit() << std::endl;
 		}
 		void BatchLayer::on_event(Event* event)
 		{

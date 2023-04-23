@@ -6,12 +6,12 @@ using namespace Wolf::Rendering;
 using namespace Wolf::Rendering::GL;
 
 
-GLShaderProgram::GLShaderProgram(const char* vertex_shader_path, const char* fragment_shader_path)
+GLShaderProgram::GLShaderProgram(const string& vertex_src, const string& fragment_src)
 {
 	
 	// Shader compilation
-	unsigned int vertex_shader = compile_shader(vertex_shader_path, GL_VERTEX_SHADER);
-	unsigned int fragment_shader = compile_shader(fragment_shader_path, GL_FRAGMENT_SHADER);
+	unsigned int vertex_shader = compile_shader(vertex_src, GL_VERTEX_SHADER);
+	unsigned int fragment_shader = compile_shader(fragment_src, GL_FRAGMENT_SHADER);
 
 
 	// Creates the program
@@ -82,11 +82,12 @@ void GLShaderProgram::set_int(const std::string& name, int value)
 	glUniform1i(location, value);
 }
 
-unsigned int GLShaderProgram::compile_shader(const char* source, unsigned int type)
+unsigned int GLShaderProgram::compile_shader(const string& source, unsigned int type)
 {
 
 	unsigned int id = glCreateShader(type);
-	glShaderSource(id, 1, &source, NULL);
+	const char* data = source.c_str();
+	glShaderSource(id, 1, &data, NULL);
 	glCompileShader(id);
 
 	int sucess;
@@ -105,7 +106,7 @@ unsigned int GLShaderProgram::compile_shader(const char* source, unsigned int ty
 
 }
 
-std::shared_ptr<ShaderProgram> ShaderProgram::create(const char* vertex_src, const char* fragment_src)
+std::shared_ptr<ShaderProgram> ShaderProgram::create(const string& vertex_src, const string& fragment_src)
 {
     return std::make_shared<GLShaderProgram>(vertex_src, fragment_src);
 }

@@ -9,6 +9,7 @@ using namespace Wolf;
 
 int main()
 {
+
 	auto app = Application();
 	app.initialize(Window::Configuration());
 	Layers::ImGuiLayer imguiLayer = Layers::ImGuiLayer();
