@@ -18,7 +18,7 @@ namespace Wolf
 			ImGui::CreateContext();
 			ImGuiIO& io = ImGui::GetIO(); 
 			ImGui::StyleColorsDark();
-			Application* instance = Application::get_instance();
+			Application* instance = Application::get();
 			Window* window = instance->get_main_window();
 			ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)window->get_native_ptr(), true);
 			ImGui_ImplOpenGL3_Init("#version 330");	

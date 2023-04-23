@@ -9,14 +9,23 @@ using namespace Wolf;
 
 int main()
 {
-	auto app = Application();
-	app.initialize(Window::Configuration());
+	Wolf::init();
+	auto app = Wolf::Application::get();
+	bool sucess = app->initialize(Window::Configuration());
+	if (!sucess)
+	{
+		std::cout << "Appication init fail" << std::endl;
+		return -1;
+	}
+
+	// If imgui is used
 	Layers::ImGuiLayer imguiLayer = Layers::ImGuiLayer();
-	app.add_layer(&imguiLayer);
+	app->add_layer(&imguiLayer);
 
+	// CLient layer	
 	SandboxLayers::BatchLayer openglLayer = SandboxLayers::BatchLayer();
-	app.add_layer(&openglLayer);
+	app->add_layer(&openglLayer);
 
-	app.run();
+	app->run();
 	return 0;
 }

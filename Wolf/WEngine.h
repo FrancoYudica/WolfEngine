@@ -31,5 +31,6 @@
 // Utils
 #include "Wolf/utils/File.h"
 #include "Wolf/utils/PathManager.h"
+#include "Wolf/entry_point.h"
 
 #endif

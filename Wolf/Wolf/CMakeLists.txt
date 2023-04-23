@@ -28,6 +28,7 @@ add_library(
     ${WOLF_NUMERICAL_CPP}
     ${WOLF_UTILS_H}
     ${WOLF_UTILS_CPP}
+    "entry_point.h"
     )
 
 target_link_libraries(wolf_engine_lib PRIVATE vendor_lib)
@@ -35,8 +36,9 @@ target_link_libraries(wolf_engine_lib PRIVATE vendor_lib)
 # Need to link with plaform, because the Rendering definitions are there
 target_link_libraries(wolf_engine_lib PRIVATE platform_lib)
 
-
 target_include_directories(
     wolf_engine_lib INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+target_compile_definitions(wolf_engine_lib INTERFACE WOLF_ENGINE_VERSION=0.1)

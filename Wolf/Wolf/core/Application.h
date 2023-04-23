@@ -20,7 +20,6 @@ namespace Wolf
         {
             _clock = Clock();
             _layer_stack = LayerStack();
-
         }
         bool initialize(Window::Configuration config);
         void run();
@@ -33,11 +32,10 @@ namespace Wolf
         Window* get_main_window() { return &_mainWindow; }
         void quit();
 
-        inline static Application* get_instance() {
+        inline static Application* get() {
             if (_instance == nullptr)
-            {
                 _instance = new Application();
-            }
+
             return _instance;
         }
 

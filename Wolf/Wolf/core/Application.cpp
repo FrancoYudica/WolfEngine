@@ -7,12 +7,13 @@
 namespace Wolf
 {
 
-    Application* Application::_instance = nullptr;
-        
+    Application* Application::_instance;
+    
+    
+
     bool Application::initialize(Window::Configuration config)
     {
-
-        Application::_instance = this;
+        _instance = this;
         /* Initialize the library */
         if (!glfwInit())
         {

@@ -35,8 +35,6 @@ namespace Wolf
 			Rendering::Renderer2D::new_frame();
 			Rendering::Renderer2D::submit_quad(glm::vec3(0), glm::vec3(1), glm::vec4(1.0f, 0.6f, 0.3f, 1.0f));
 			Rendering::Renderer2D::end_frame();
-
-
 		}
 	}
 }

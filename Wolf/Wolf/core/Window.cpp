@@ -33,19 +33,19 @@ namespace Wolf
         glfwSetCursorPosCallback(windowNativePtr, [](GLFWwindow* window, double x, double y) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
             MouseMoveEvent event(x, y);
-            Application::get_instance()->on_event(&event);
+            Application::get()->on_event(&event);
             });
 
         glfwSetWindowCloseCallback(windowNativePtr, [](GLFWwindow* window) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
             WindowClosedEvent event(userData->window_ptr);
-            Application::get_instance()->on_event(&event);
+            Application::get()->on_event(&event);
             });
 
         glfwSetWindowSizeCallback(windowNativePtr, [](GLFWwindow* window, int width, int height) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
             WindowResizeEvent event(width, height);
-            Application::get_instance()->on_event(&event);
+            Application::get()->on_event(&event);
             });
 
         glfwSetMouseButtonCallback(windowNativePtr, [](GLFWwindow* window, int button, int action, int mods) {
@@ -87,7 +87,7 @@ namespace Wolf
                 buttonEvent = (Event)ButtonUpEvent(btn, mods);
 
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            Application::get_instance()->on_event(&buttonEvent);
+            Application::get()->on_event(&buttonEvent);
             });
 
         glfwSetKeyCallback(windowNativePtr, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -100,7 +100,7 @@ namespace Wolf
                 return;
 
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            Application::get_instance()->on_event(&keyEvent);
+            Application::get()->on_event(&keyEvent);
             });
 
 
