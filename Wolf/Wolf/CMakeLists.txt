@@ -17,7 +17,7 @@ file(GLOB WOLF_UTILS_H       utils/*.h)
 file(GLOB WOLF_UTILS_CPP     utils/*.cpp)
 
 add_library(
-    wolf_engine STATIC
+    wolf_engine_lib STATIC
     ${WOLF_CORE_H}
     ${WOLF_CORE_CPP}
     ${WOLF_IMGUI_LAYER_H}
@@ -30,13 +30,13 @@ add_library(
     ${WOLF_UTILS_CPP}
     )
 
-target_link_libraries(wolf_engine PRIVATE vendor)
+target_link_libraries(wolf_engine_lib PRIVATE vendor_lib)
 
 # Need to link with plaform, because the Rendering definitions are there
-target_link_libraries(wolf_engine PRIVATE platform)
+target_link_libraries(wolf_engine_lib PRIVATE platform_lib)
 
 
 target_include_directories(
-    wolf_engine INTERFACE
+    wolf_engine_lib INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )

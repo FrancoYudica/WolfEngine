@@ -43,7 +43,7 @@ namespace Wolf
     
             // Generic use static instances
             static thread_local RandomFloat RandomFloatGenerator;
-            static thread_local RandomFloat RandomDoubleGenerator;
+            static thread_local RandomDouble RandomDoubleGenerator;
     
             // Acess to float methods
             static float unit_f() { return RandomFloatGenerator.unit(); }

@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <string>
 
+using namespace std::filesystem;
+
 namespace Wolf
 {
 
@@ -12,9 +14,9 @@ namespace Wolf
         Path() : _path("empty") {}
         Path(const std::string& file_path)
             : _path(file_path) {}
-
-        Path(const std::filesystem::path& path) 
-            : _path(path) {}
+        Path(const path& path) 
+            : _path(path) {
+            }
 
         operator std::string () const { return _path.string(); }
         bool exists() const { return std::filesystem::exists(_path); }
@@ -31,7 +33,7 @@ namespace Wolf
         Path parent() { return Path(_path.parent_path()); }
         bool is_directory() { return std::filesystem::is_directory(_path); }
         private:
-        std::filesystem::path _path;
+        path _path;
     };
 
     class PathManager
@@ -44,8 +46,7 @@ namespace Wolf
         }
 
         PathManager() {
-            Path path = std::filesystem::current_path().parent_path().parent_path();
-            _root_path = std::string("../../");
+            _root_path = std::string("../");
             _engine_assets_path = _root_path / "Wolf/Wolf/assets";
         }
         const Path& get_root_path() { return _root_path; }
