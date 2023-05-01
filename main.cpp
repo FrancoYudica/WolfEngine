@@ -25,7 +25,6 @@ int main()
 	// CLient layer	
 	SandboxLayers::BatchLayer openglLayer = SandboxLayers::BatchLayer();
 	app->add_layer(&openglLayer);
-
 	app->run();
 	return 0;
 }
