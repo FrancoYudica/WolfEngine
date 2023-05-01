@@ -3,6 +3,8 @@
 #define BATCH_LAYER_H
 
 #include "../WEngine.h"
+#include <unordered_map>
+#include <vector>
 
 namespace Wolf
 {
@@ -20,6 +22,12 @@ namespace Wolf
 				virtual void on_ui_render_finish() override;
 				virtual void on_end() override;
 				virtual void on_render() override;
+
+			private:
+			Wolf::Rendering::Camera _camera;
+			std::unordered_map<KeyCode, bool> _key_states;
+			std::vector <glm::vec3> _points;
+
 		};
 	}
 }

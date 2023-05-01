@@ -22,14 +22,12 @@ namespace Wolf
 			ShaderProgram() = default;
 			virtual void bind() = 0;
 			virtual void unbind() = 0;
-
-			virtual void set_float(const string& name, float value) = 0;
-			virtual void set_float(const string& name, const glm::vec2& value) = 0;
-			virtual void set_float(const string& name, const glm::vec3& value) = 0;
-			virtual void set_float(const string& name, const glm::vec4& value) = 0;
-
-			virtual void set_int(const string& name, int value) = 0;
-
+			virtual void set_float(const string& name, float value) const = 0;
+			virtual void set_float(const string& name, const glm::vec2& value) const = 0;
+			virtual void set_float(const string& name, const glm::vec3& value) const = 0;
+			virtual void set_float(const string& name, const glm::vec4& value) const = 0;
+			virtual void set_int(const string& name, int value) const = 0;
+			virtual void set_matrix(const string& name, const glm::mat4& matrix) const = 0;
 			static std::shared_ptr<ShaderProgram> create(const string& vertex_src, const string& fragment_src);
 
 			static std::shared_ptr<ShaderProgram> create(

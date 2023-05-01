@@ -145,8 +145,8 @@ namespace Wolf
 		class VertexBuffer
 		{
 		public:
-			virtual void bind() = 0;
-			virtual void unbind() = 0;
+			virtual void bind() const = 0;
+			virtual void unbind() const = 0;
 			virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset) = 0;
 			virtual void set_buffer_layout(const BufferLayout& layout) = 0;
 			virtual BufferLayout& get_buffer_layout() = 0;
@@ -158,8 +158,8 @@ namespace Wolf
 		class IndexBuffer
 		{
 		public:
-			virtual void bind() = 0;
-			virtual void unbind() = 0;
+			virtual void bind() const = 0;
+			virtual void unbind() const = 0;
 			virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset) = 0;
 			virtual unsigned int get_count() const = 0;
 			static std::shared_ptr<IndexBuffer> create(const unsigned int* data, unsigned int count);

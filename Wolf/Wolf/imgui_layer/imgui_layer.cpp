@@ -52,13 +52,6 @@ namespace Wolf
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
-			ImGui::Begin("First window");
-			if (ImGui::Button("Press me!"))
-			{
-				std::cout << "Ahh" << std::endl;
-			}
-			ImGui::End();
-
 		}
 
 		void ImGuiLayer::on_ui_render_finish()

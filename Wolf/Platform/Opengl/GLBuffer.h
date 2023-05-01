@@ -18,12 +18,13 @@ namespace Wolf
 			public:
 
 				unsigned int ID;
-				GLVertexBuffer() = default;
+				GLVertexBuffer(const GLVertexBuffer& other) = delete;
 				GLVertexBuffer(const void* vertices, unsigned int size);
 				GLVertexBuffer(unsigned int size);
+
 				virtual ~GLVertexBuffer();
-				virtual void bind();
-				virtual void unbind();
+				virtual void bind() const;
+				virtual void unbind() const;
 				virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset);
 				virtual void set_buffer_layout(const BufferLayout& layout) { _Layout = layout; }
 				virtual BufferLayout& get_buffer_layout() { return _Layout; }
@@ -38,13 +39,11 @@ namespace Wolf
 			{
 			public:
 				unsigned int ID;
-
-				GLIndexBuffer() = default;
+				GLIndexBuffer(const GLIndexBuffer& other) = delete;
 				GLIndexBuffer(const unsigned int* indices, unsigned int count);
-
 				virtual ~GLIndexBuffer();
-				virtual void bind();
-				virtual void unbind();
+				virtual void bind() const;
+				virtual void unbind() const;
 				virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset);
 				virtual unsigned int get_count() const { return _Count; }
 

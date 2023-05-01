@@ -52,35 +52,43 @@ void GLShaderProgram::unbind()
 	glUseProgram(0);
 }
 
-void GLShaderProgram::set_float(const std::string& name, float value)
+void GLShaderProgram::set_float(const std::string& name, float value) const
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform1f(location, value);
 }
 
-void GLShaderProgram::set_float(const std::string& name, const glm::vec2& value)
+void GLShaderProgram::set_float(const std::string& name, const glm::vec2& value) const
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform2f(location, value.x, value.y);
 }
 
-void GLShaderProgram::set_float(const std::string& name, const glm::vec3& value)
+void GLShaderProgram::set_float(const std::string& name, const glm::vec3& value) const
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform3f(location, value.x, value.y, value.z);
 }
 
-void GLShaderProgram::set_float(const std::string& name, const glm::vec4& value)
+void GLShaderProgram::set_float(const std::string& name, const glm::vec4& value) const
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform4f(location, value.x, value.y, value.z, value.w);
 }
 
-void GLShaderProgram::set_int(const std::string& name, int value)
+void GLShaderProgram::set_int(const std::string& name, int value) const
 {
 	unsigned int location = glGetUniformLocation(ID, name.c_str());
 	glUniform1i(location, value);
 }
+
+void GLShaderProgram::set_matrix(const string& name, const glm::mat4& matrix) const
+{
+	unsigned int location = glGetUniformLocation(ID, name.c_str());
+	glUniformMatrix4fv(location, 1, false, &matrix[0][0]);
+
+}
+
 
 unsigned int GLShaderProgram::compile_shader(const string& source, unsigned int type)
 {

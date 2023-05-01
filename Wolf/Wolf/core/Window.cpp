@@ -24,6 +24,7 @@ namespace Wolf
             std::cout << "Unable to create GLFWwindow*" << std::endl;
             return false;
         }
+        _user_data.window_ptr = this;
         glfwSetWindowUserPointer(windowNativePtr, &_user_data);
 
 
@@ -35,6 +36,12 @@ namespace Wolf
             MouseMoveEvent event(x, y);
             Application::get()->on_event(&event);
             });
+
+        glfwSetScrollCallback(windowNativePtr, [](GLFWwindow* window, double x_offset, double y_offset){
+            MouseScrollEvent event(x_offset, y_offset);
+            Application::get()->on_event(&event);
+
+        });
 
         glfwSetWindowCloseCallback(windowNativePtr, [](GLFWwindow* window) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
@@ -78,29 +85,33 @@ namespace Wolf
                 return;
             }
 
-            ActionModifier m = (ActionModifier)mods;
+            ActionModifier m = static_cast<ActionModifier>(mods);
 
-            Event buttonEvent;
             if (action == 1)
-                buttonEvent = (Event)ButtonDownEvent(btn, mods);
-            else
-                buttonEvent = (Event)ButtonUpEvent(btn, mods);
+            {
+                auto event = ButtonDownEvent(btn, mods);
+                Application::get()->on_event(&event);
 
-            WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            Application::get()->on_event(&buttonEvent);
+            }
+            else
+            {
+                auto event = ButtonUpEvent(btn, mods);
+                Application::get()->on_event(&event);
+            }
             });
 
         glfwSetKeyCallback(windowNativePtr, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
-            Event keyEvent;
             if (action == 1)
-                keyEvent = (Event)KeyDownEvent((KeyCode)key, mods);
-            else if (action == 0)
-                keyEvent = (Event)KeyUpEvent((KeyCode)key, mods);
-            else
-                return;
+            {
+                KeyDownEvent event = KeyDownEvent(static_cast<KeyCode>(key), mods);
+                Application::get()->on_event(&event);
 
-            WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            Application::get()->on_event(&keyEvent);
+            }
+            else if (action == 0)
+            {
+                KeyUpEvent event = KeyUpEvent(static_cast<KeyCode>(key), mods);
+                Application::get()->on_event(&event);
+            }
             });
 
 
@@ -114,6 +125,17 @@ namespace Wolf
     void Window::poll_events()
     {
         glfwPollEvents();
+    }
+    uint32_t Window::get_width() const {
+        int width;
+        glfwGetWindowSize(static_cast<GLFWwindow*>(_window_ptr), &width, NULL);
+        return width;
+    }
+
+    uint32_t Window::get_height() const {
+        int height;
+        glfwGetWindowSize(static_cast<GLFWwindow*>(_window_ptr), NULL, &height);
+        return height;
     }
 
     bool Window::should_close() { return glfwWindowShouldClose((GLFWwindow*)_window_ptr); }

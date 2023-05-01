@@ -24,6 +24,7 @@
 #include "Wolf/rendering/VertexArray.h"
 #include "Wolf/rendering/Renderer.h"
 #include "Wolf/rendering/RenderCommand.h"
+#include "Wolf/rendering/Camera.h"
 
 // Numerical
 #include "Wolf/numerical/Random.h"

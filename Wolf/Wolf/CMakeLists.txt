@@ -6,8 +6,8 @@ file(GLOB WOLF_CORE_CPP          core/*.cpp)
 file(GLOB WOLF_IMGUI_LAYER_H     imgui_layer/*.h)
 file(GLOB WOLF_IMGUI_LAYER_CPP   imgui_layer/*.cpp)
 
-file(GLOB WOLF_RENDERING_H       rendering/*.h)
-file(GLOB WOLF_RENDERING_CPP     rendering/*.cpp)
+file(GLOB WOLF_RENDERING_H       rendering/*.h rendering/batch/*.h)
+file(GLOB WOLF_RENDERING_CPP     rendering/*.cpp rendering/batch/*.cpp)
 
 
 file(GLOB WOLF_NUMERICAL_H       numerical/*.h)

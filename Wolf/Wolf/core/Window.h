@@ -20,8 +20,8 @@ namespace Wolf
     
         struct Configuration
         {
-            uint32_t width = 600;
-            uint32_t height = 600;
+            uint32_t width = 700;
+            uint32_t height = 700;
             const char* title = "App";
             bool fullscreen = false;
         };
@@ -34,6 +34,8 @@ namespace Wolf
         void make_context_current();
         void swap_buffers();
         void poll_events();
+        uint32_t get_width() const;
+        uint32_t get_height() const;
 
     private:
         WindowUserData _user_data;

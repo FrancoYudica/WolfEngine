@@ -21,14 +21,14 @@ namespace Wolf
 				unsigned int ID;
 				GLShaderProgram() = default;
 				GLShaderProgram(const string& vertex_src, const string& fragment_src);
-				virtual void bind();
-				virtual void unbind();
-				virtual void set_float(const string& name, float value);
-				virtual void set_float(const string& name, const glm::vec2& value);
-				virtual void set_float(const string& name, const glm::vec3& value);
-				virtual void set_float(const string& name, const glm::vec4& value);
-
-				virtual void set_int(const string& name, int value);
+				void bind() override;
+				void unbind() override;
+				void set_float(const string& name, float value) const override;
+				void set_float(const string& name, const glm::vec2& value) const override;
+				void set_float(const string& name, const glm::vec3& value) const override;
+				void set_float(const string& name, const glm::vec4& value) const override;
+				void set_matrix(const string& name, const glm::mat4& matrix) const override;
+				void set_int(const string& name, int value) const override;
 
 			private:
 				unsigned int compile_shader(const string& source, unsigned int type);

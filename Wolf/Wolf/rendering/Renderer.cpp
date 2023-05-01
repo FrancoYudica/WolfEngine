@@ -1,167 +1,66 @@
 #include "Renderer.h"
 #include <memory>
-#include <glad/glad.h>
-#include "Buffer.h"
-#include "ShaderProgram.h"
-#include "VertexArray.h"
-#include "RenderCommand.h"
-#include "../utils/File.h"
-#include "../utils/PathManager.h"
-
+#include "Material.h"
+#include "batch/Batch.h"
+#include "batch/SpriteBatch.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 using namespace Wolf::Rendering;
 
-
-static const char* vertexShaderSourceStr = "#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"layout (location = 1) in vec4 aColor;\n"
-"out vec4 _Color;\n"
-"void main()\n"
-"{\n"
-"	_Color = aColor;\n"
-"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-"}\0";
-//Fragment Shader source code
-static const char* fragmentShaderSourceStr = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"in vec4 _Color;\n"
-"void main()\n"
-"{\n"
-"   FragColor = _Color;\n"
-"}\n\0";
-
-
-struct QuadVertex
-{
-	glm::vec3 position;
-	glm::vec4 color;
-};
-
 struct RendererData
 {
-	unsigned int MaxQuads; // Max amount of Quads, (4 QuadVertex per quad)
-	unsigned int Submitions;
-	std::shared_ptr<VertexArray> VAO;
-	std::shared_ptr<VertexBuffer> VBO;
-	std::shared_ptr<IndexBuffer> IBO;
-	std::shared_ptr<ShaderProgram> ShaderProgram;
-	QuadVertex* VerticesPtr;
+	SpriteBatch sprite_batch;
+	SpriteBatch circle_batch;
 };
 
 // Data used for the renderer
-static RendererData _Data;
+static RendererData _data;
 
 void Renderer2D::init()
 {
-	_Data.MaxQuads = 100;
-	_Data.Submitions = 0;
-	_Data.VerticesPtr = new QuadVertex[_Data.MaxQuads * 4];
 
-	// The indices are always the same, so i set them once, therefore there is no
-	// need for indices allocation
-	unsigned int vertices_per_quad = 4;
-	unsigned int indices_per_quad = 6;
-	unsigned int total_vertices = _Data.MaxQuads * vertices_per_quad;
-	unsigned int indices_count = total_vertices * indices_per_quad;
-	unsigned int buffer_size = total_vertices * sizeof(QuadVertex);
-	// Creates the indices array, it's not necessary to re-calculate
-	auto indices = new unsigned int[indices_count];
-	for (unsigned int quad_index = 0; quad_index < _Data.MaxQuads; quad_index++)
+	// Gets the default material for SpriteBatch
+	const Path assets_path = Wolf::PathManager::get_instance().get_engine_assets_path();
 	{
-		unsigned int index = 		quad_index * indices_per_quad;
-		unsigned int vertex_index = quad_index * vertices_per_quad;
-		indices[index + 0] = vertex_index + 0;
-		indices[index + 1] = vertex_index + 1;
-		indices[index + 2] = vertex_index + 2;
-		indices[index + 3] = vertex_index + 0;
-		indices[index + 4] = vertex_index + 2;
-		indices[index + 5] = vertex_index + 3;
+		const Path vertex_path = assets_path / "shaders/default_sprite/renderer2d.vert";
+		const Path fragment_path = assets_path / "shaders/default_sprite/renderer2d.frag";
+		auto _material = std::make_shared<Material>();
+		_material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
+		_data.sprite_batch.init(_material);
 	}
 
-	// Creates VAO, IBO and VBO
-	_Data.VAO = VertexArray::create();
-	_Data.VAO->bind();
-	// Creates index and vertex buffer
-	_Data.IBO = IndexBuffer::create(indices, indices_count);
-	delete[] indices;
+	{
+		const Path vertex_path = assets_path / "shaders/default_circle/circle.vert";
+		const Path fragment_path = assets_path / "shaders/default_circle/circle.frag";
+		auto _material = std::make_shared<Material>();
+		_material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
+		_data.circle_batch.init(_material);
+	}
+	//_material->add_float4(std::string("u_Color"), {0.1f, 0, 1, 1});
 
-	_Data.VBO = VertexBuffer::create(_Data.VerticesPtr, buffer_size);
-
-	_Data.VBO->set_buffer_layout(
-		BufferLayout{
-			BufferAttribute("Position", ShaderDataType::Float3, false),
-			BufferAttribute("Color", ShaderDataType::Float4, false)
-			}
-	);
-	_Data.VAO->add_vertex_buffer(_Data.VBO);
-	_Data.VAO->set_index_buffer(_Data.IBO);
-
-	_Data.VAO->unbind();
-	
-	const Path assets_path = Wolf::PathManager::get_instance().get_engine_assets_path();
-	const Path vertex_path = assets_path / "shaders/renderer2d.vert";
-	const Path fragment_path = assets_path / "shaders/renderer2d.frag";
-	_Data.ShaderProgram = ShaderProgram::create(vertex_path, fragment_path);
 }
 
+void Renderer2D::begin_scene(const Camera& camera)
+{
+	_data.sprite_batch.begin_scene(camera);
+}
 
 void Renderer2D::shutdown()
 {
-	// Deallocates the memory
-	delete[] _Data.VerticesPtr;
+	_data.sprite_batch.shutdown();
 }
 
 void Renderer2D::new_frame()
 {
-	if (_Data.Submitions != 0)
-	{
-		assert(false);
-	}
-	_Data.Submitions = 0;
+	_data.sprite_batch.new_frame();
 }
 
 void Renderer2D::end_frame()
 {
-	if (_Data.Submitions == 0)
-		return;
-
-	_flush();
+	_data.sprite_batch.end_frame();
 }
 
-void Renderer2D::submit_quad(const glm::vec3& position, const glm::vec3 size, const glm::vec4& color)
+void Renderer2D::submit_quad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color)
 {
-	unsigned int index = _Data.Submitions * 4;
-
-	// Sets the array data
-	{
-		_Data.VerticesPtr[index + 0].position = position + glm::vec3(-size.x, -size.y, 0);
-		_Data.VerticesPtr[index + 1].position = position + glm::vec3( size.x, -size.y, 0);
-		_Data.VerticesPtr[index + 2].position = position + glm::vec3( size.x,  size.y, 0);
-		_Data.VerticesPtr[index + 3].position = position + glm::vec3(-size.x,  size.y, 0);
-
-		_Data.VerticesPtr[index + 0].color = color;
-		_Data.VerticesPtr[index + 1].color = color;
-		_Data.VerticesPtr[index + 2].color = color;
-		_Data.VerticesPtr[index + 3].color = color;
-	}
-
-	_Data.Submitions++;
-
-	if (_Data.Submitions > _Data.MaxQuads)
-		_flush();
-
-}
-
-void Renderer2D::_flush()
-{
-
-	// Renders the batched quads
-	_Data.ShaderProgram->bind();
-	_Data.VAO->bind();
-	_Data.VBO->bind();
-	_Data.VBO->set_sub_data(_Data.VerticesPtr, 4 * _Data.Submitions * sizeof(QuadVertex), 0);
-	RenderCommand::draw_indexed(_Data.VAO, _Data.Submitions * 6);
-	_Data.VAO->unbind();
-	// Rests
-	_Data.Submitions = 0;
+	_data.sprite_batch.submit_primitive(position, size, color);
 }

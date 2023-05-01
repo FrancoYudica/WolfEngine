@@ -4,13 +4,14 @@
 #include <iostream>
 
 
-enum EventType { MouseMove, WindowClose, WindowResize, ButtonDown, ButtonUp, KeyUp, KeyDown };
+enum EventType { MouseMove, MouseScroll, WindowClose, WindowResize, ButtonDown, ButtonUp, KeyUp, KeyDown };
 
 class Event
 {
 public:
     bool handled = false;
     EventType type;
+    Event(EventType type) : type(type){}
     virtual ~Event() = default;
     virtual void display()
     {
@@ -23,9 +24,16 @@ class MouseMoveEvent : public Event
 public:
     const double x, y;
     MouseMoveEvent() = default;
-    MouseMoveEvent(double xPos, double yPos) : x(xPos), y(yPos) {
-        type = EventType::MouseMove;
-    }
+    MouseMoveEvent(double xPos, double yPos) 
+        : Event(EventType::MouseMove), x(xPos), y(yPos) {}
+};
+
+class MouseScrollEvent : public Event
+{
+    public:
+        const double x_offset, y_offset;
+        MouseScrollEvent(double x, double y) 
+            : Event(EventType::MouseScroll), x_offset(x), y_offset(y) {}        
 };
 
 class WindowResizeEvent : public Event
@@ -33,9 +41,8 @@ class WindowResizeEvent : public Event
 public:
     const int width, height;
     WindowResizeEvent() = default;
-    WindowResizeEvent(int w, int h) : width(w), height(h) {
-        type = EventType::WindowResize;
-    }
+    WindowResizeEvent(int w, int h) 
+        : Event(EventType::WindowResize), width(w), height(h) {}
 };
 
 class WindowClosedEvent : public Event
@@ -43,7 +50,8 @@ class WindowClosedEvent : public Event
 public:
     void* window_ptr;
     WindowClosedEvent() = default;
-    WindowClosedEvent(void* window) : window_ptr(window) { type = EventType::WindowClose; }
+    WindowClosedEvent(void* window) 
+        : Event(EventType::WindowClose), window_ptr(window) {}
 };
 
 enum MouseButton {
@@ -67,12 +75,28 @@ class ButtonDownEvent : public Event
 public:
     const MouseButton button;
     ButtonDownEvent() = default;
-    ButtonDownEvent(MouseButton button, int mods) : button(button), _mods(mods) { type = EventType::ButtonDown; }
+    ButtonDownEvent(MouseButton button, int mods) 
+        : Event(EventType::ButtonDown), button(button), _mods(mods){}
     bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
     const int _mods;
 };
+
+
+class ButtonUpEvent : public Event
+{
+public:
+    const MouseButton button;
+    ButtonUpEvent() = default;
+    ButtonUpEvent(MouseButton button, int mods) 
+        : Event(EventType::ButtonUp), button(button), _mods(mods) {}
+    bool is_mod(ActionModifier mod) { return mod & _mods; }
+
+private:
+    const int _mods;
+};
+
 
 enum KeyCode
 {
@@ -204,7 +228,8 @@ class KeyDownEvent : public Event
 public:
     const KeyCode key;
     KeyDownEvent() = default;
-    KeyDownEvent(KeyCode key, int mods) : key(key), _mods(mods) { type = EventType::KeyDown; }
+    KeyDownEvent(KeyCode key, int mods) 
+        : Event(EventType::KeyDown), key(key), _mods(mods) {}
     inline bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
@@ -216,25 +241,13 @@ class KeyUpEvent : public Event
 public:
     const KeyCode key;
     KeyUpEvent() = default;
-    KeyUpEvent(KeyCode key, int mods) : key(key), _mods(mods) { type = EventType::KeyUp; }
+    KeyUpEvent(KeyCode key, int mods) 
+        : Event(EventType::KeyUp), key(key), _mods(mods) {}
     inline bool is_mod(ActionModifier mod) { return mod & _mods; }
 
 private:
     const int _mods;
 };
-
-class ButtonUpEvent : public Event
-{
-public:
-    const MouseButton button;
-    ButtonUpEvent() = default;
-    ButtonUpEvent(MouseButton button, int mods) : button(button), _mods(mods) { type = EventType::ButtonUp; }
-    bool is_mod(ActionModifier mod) { return mod & _mods; }
-
-private:
-    const int _mods;
-};
-
 
 typedef bool EventProcessor(Event e);
 class EventDispatcher
