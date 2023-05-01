@@ -15,13 +15,14 @@ namespace Wolf
 
 			Window* window = Application::get()->get_main_window();
 			_camera = Wolf::Rendering::Camera(window->get_width(), window->get_height(), 1);
+			_debug_camera = Wolf::Rendering::Camera(window->get_width(), window->get_height(), 1);
 			_key_states[KeyCode::KEY_W] = false;
 			_key_states[KeyCode::KEY_D] = false;
 			_key_states[KeyCode::KEY_S] = false;
 			_key_states[KeyCode::KEY_A] = false;
-			_points.reserve(10000);
+			_points.reserve(1000);
 
-			for (uint32_t i = 0; i < 10000; i++)
+			for (uint32_t i = 0; i < 1000; i++)
 			{
 				float x = Wolf::Numerical::Random::range_f(-2, 2);
 				float y = Wolf::Numerical::Random::range_f(-2, 2);
@@ -37,7 +38,7 @@ namespace Wolf
 				EventType::WindowResize,
 				[this](WindowResizeEvent* resize_event){
 					_camera.on_viewport_resize(resize_event->width, resize_event->height);
-					std::cout << "Window resized: " << resize_event->width << ", " << resize_event->height << std::endl;
+					_debug_camera.on_viewport_resize(resize_event->width, resize_event->height);
 					return false;
 				}
 			);
@@ -46,7 +47,6 @@ namespace Wolf
 				EventType::KeyDown,
 				[this](KeyDownEvent* key_event){
 					_key_states[key_event->key] = true;
-					std::cout << "Key: " << key_event->key << std::endl;
 					return false;
 				}
 			);
@@ -110,6 +110,9 @@ namespace Wolf
 		}
 		void BatchLayer::on_render()
 		{
+			
+
+			// Renders objects
 			Rendering::Renderer2D::begin_scene(_camera);
 			Rendering::Renderer2D::new_frame();
 
@@ -118,10 +121,30 @@ namespace Wolf
 
 			for (glm::vec3& point : _points)
 			{
-				Rendering::Renderer2D::submit_quad(point, size, color);
+				Rendering::Renderer2D::submit_circle(point, 0.05f, color);
+			}
+
+			for (uint32_t i = 0; i < _points.size() - 1; i++)
+			{
+				Rendering::Renderer2D::submit_line(_points[i], _points[i + 1], glm::vec4(1, 1, 1, 1), 0.0005);
+			}
+			Rendering::Renderer2D::end_frame();
+
+			// Debug rendering
+			Rendering::Renderer2D::begin_scene(_debug_camera);
+			Rendering::Renderer2D::new_frame();
+
+			float radius = 0.2;
+			glm::vec3 center = {0.5, 0.5, 0};
+			for (uint32_t i = 0; i < 100; i++)
+			{
+				float angle = 2 * 3.14159265358979 * static_cast<float>(i) / 100;
+				Rendering::Renderer2D::submit_line_interpolated(center, center + glm::vec3(std::cos(angle), std::sin(angle), 0), glm::vec4(1, 0, 1, 1), 0.005);
 			}
 
 			Rendering::Renderer2D::end_frame();
+
+
 		}
 	}
 }

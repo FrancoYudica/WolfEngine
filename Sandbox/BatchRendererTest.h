@@ -25,6 +25,7 @@ namespace Wolf
 
 			private:
 			Wolf::Rendering::Camera _camera;
+			Wolf::Rendering::Camera _debug_camera;
 			std::unordered_map<KeyCode, bool> _key_states;
 			std::vector <glm::vec3> _points;
 

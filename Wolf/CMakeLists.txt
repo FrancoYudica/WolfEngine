@@ -1,12 +1,6 @@
-
-set(WOLF_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
 add_subdirectory(vendor)
 add_subdirectory(Wolf)
 add_subdirectory(Platform)
-#add_subdirectory(Sandbox)
-
-
 
 # Creates the wolf_engine_library
 add_library(engine_lib INTERFACE)
@@ -17,13 +11,3 @@ add_library(engine_lib INTERFACE)
 target_link_libraries(engine_lib INTERFACE vendor_lib)
 target_link_libraries(engine_lib INTERFACE wolf_engine_lib)
 target_link_libraries(engine_lib INTERFACE platform_lib)
-#target_link_libraries(wolf_engine_library INTERFACE lib_sandbox)
-
-# Creates executable
-#add_executable(${PROJECT_NAME} main.cpp)
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
-
-
-# Links the libraries to the executable
-#target_link_libraries(${PROJECT_NAME} wolf_engine_library)
-#target_link_libraries(${PROJECT_NAME} lib_sandbox)
