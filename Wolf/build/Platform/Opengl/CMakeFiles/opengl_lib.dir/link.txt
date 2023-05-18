@@ -1,2 +1,0 @@
-C:/msys64/mingw64/bin/ar.exe qc libopengl_lib.a CMakeFiles/opengl_lib.dir/GLBuffer.obj CMakeFiles/opengl_lib.dir/GLRenderCommand.obj CMakeFiles/opengl_lib.dir/GLShaderProgram.obj CMakeFiles/opengl_lib.dir/GLVertexArray.obj CMakeFiles/opengl_lib.dir/OpenGLContext.obj
-C:/msys64/mingw64/bin/ranlib.exe libopengl_lib.a
