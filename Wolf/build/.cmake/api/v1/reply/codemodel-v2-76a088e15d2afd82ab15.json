@@ -1,0 +1,256 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						7,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "vendor",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor-Debug-fbf6dc3f88f70c22a47e.json",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "vendor"
+				},
+				{
+					"build" : "vendor/glad",
+					"jsonFile" : "directory-vendor.glad-Debug-6487cc5fd304643b4617.json",
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "vendor/glad",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "vendor/glm",
+					"jsonFile" : "directory-vendor.glm-Debug-a552e7a0d5a4f2409ad7.json",
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "vendor/glm",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "vendor/glfw",
+					"childIndexes" : 
+					[
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.glfw-Debug-a40b738ffae8b51684ef.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "vendor/glfw",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "vendor/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.glfw.src-Debug-937165859f43ee084c79.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "vendor/glfw/src",
+					"targetIndexes" : 
+					[
+						1,
+						6
+					]
+				},
+				{
+					"build" : "vendor/imgui",
+					"jsonFile" : "directory-vendor.imgui-Debug-faaa81033d311e89670c.json",
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "vendor/imgui",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "Wolf",
+					"jsonFile" : "directory-Wolf-Debug-29503169b6074c4cd5b5.json",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Wolf",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "Platform",
+					"childIndexes" : 
+					[
+						9
+					],
+					"jsonFile" : "directory-Platform-Debug-c4367f00623003809246.json",
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Platform"
+				},
+				{
+					"build" : "Platform/Opengl",
+					"jsonFile" : "directory-Platform.Opengl-Debug-b847c66338b7cf6b5a85.json",
+					"parentIndex" : 8,
+					"projectIndex" : 0,
+					"source" : "Platform/Opengl",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						6,
+						7,
+						8,
+						9
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4,
+						5
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "glad::@fd4c13af0d758e03700b",
+					"jsonFile" : "target-glad-Debug-8ae201505d45cb1f84d4.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "glfw::@31bd9730e6b8c71cc656",
+					"jsonFile" : "target-glfw-Debug-e2471d4e8cb7b69b34f4.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glm::@1771e774e4950c903856",
+					"jsonFile" : "target-glm-Debug-8bd078fe57369e5bfeb4.json",
+					"name" : "glm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "imgui::@3edc7d76825c910d4a8d",
+					"jsonFile" : "target-imgui-Debug-7d66898c46431dedbdaa.json",
+					"name" : "imgui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "opengl_lib::@a96565bae9233af7f597",
+					"jsonFile" : "target-opengl_lib-Debug-d4f1498bdaa21683b3f6.json",
+					"name" : "opengl_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "uninstall::@0e1c3310cc3779ba9d9b",
+					"jsonFile" : "target-uninstall-Debug-54327c669d8240f5b131.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "update_mappings::@31bd9730e6b8c71cc656",
+					"jsonFile" : "target-update_mappings-Debug-fb371070ac835e64dd2a.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "wolf_engine_lib::@9fe2637e218faedf24d6",
+					"jsonFile" : "target-wolf_engine_lib-Debug-91b2f4ba458e22e08d3b.json",
+					"name" : "wolf_engine_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build",
+		"source" : "D:/Dev/C++/Proyects/WolfEngineCode/Wolf"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

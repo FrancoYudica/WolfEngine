@@ -129,11 +129,26 @@ vendor/glfw/src/CMakeFiles/glfw.dir/monitor.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/monitor.c.s"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/monitor.c -o CMakeFiles/glfw.dir/monitor.c.s
 
+vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/platform.c
+vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj -MF CMakeFiles/glfw.dir/platform.c.obj.d -o CMakeFiles/glfw.dir/platform.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/platform.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/platform.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/platform.c > CMakeFiles/glfw.dir/platform.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/platform.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/platform.c -o CMakeFiles/glfw.dir/platform.c.s
+
 vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
 vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
 vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/vulkan.c
 vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj -MF CMakeFiles/glfw.dir/vulkan.c.obj.d -o CMakeFiles/glfw.dir/vulkan.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/vulkan.c
 
 vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.i: cmake_force
@@ -148,7 +163,7 @@ vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj: vendor/glfw/src/CMakeFiles/glf
 vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
 vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/window.c
 vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj -MF CMakeFiles/glfw.dir/window.c.obj.d -o CMakeFiles/glfw.dir/window.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/window.c
 
 vendor/glfw/src/CMakeFiles/glfw.dir/window.c.i: cmake_force
@@ -159,116 +174,11 @@ vendor/glfw/src/CMakeFiles/glfw.dir/window.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/window.c.s"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/window.c -o CMakeFiles/glfw.dir/window.c.s
 
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj -MF CMakeFiles/glfw.dir/win32_init.c.obj.d -o CMakeFiles/glfw.dir/win32_init.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_init.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c > CMakeFiles/glfw.dir/win32_init.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_init.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c -o CMakeFiles/glfw.dir/win32_init.c.s
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj -MF CMakeFiles/glfw.dir/win32_joystick.c.obj.d -o CMakeFiles/glfw.dir/win32_joystick.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_joystick.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c > CMakeFiles/glfw.dir/win32_joystick.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_joystick.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c -o CMakeFiles/glfw.dir/win32_joystick.c.s
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj -MF CMakeFiles/glfw.dir/win32_monitor.c.obj.d -o CMakeFiles/glfw.dir/win32_monitor.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_monitor.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c > CMakeFiles/glfw.dir/win32_monitor.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_monitor.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c -o CMakeFiles/glfw.dir/win32_monitor.c.s
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj -MF CMakeFiles/glfw.dir/win32_time.c.obj.d -o CMakeFiles/glfw.dir/win32_time.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_time.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c > CMakeFiles/glfw.dir/win32_time.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_time.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c -o CMakeFiles/glfw.dir/win32_time.c.s
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj -MF CMakeFiles/glfw.dir/win32_thread.c.obj.d -o CMakeFiles/glfw.dir/win32_thread.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_thread.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c > CMakeFiles/glfw.dir/win32_thread.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_thread.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c -o CMakeFiles/glfw.dir/win32_thread.c.s
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj -MF CMakeFiles/glfw.dir/win32_window.c.obj.d -o CMakeFiles/glfw.dir/win32_window.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_window.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c > CMakeFiles/glfw.dir/win32_window.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_window.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c -o CMakeFiles/glfw.dir/win32_window.c.s
-
-vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
-vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
-vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c
-vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj -MF CMakeFiles/glfw.dir/wgl_context.c.obj.d -o CMakeFiles/glfw.dir/wgl_context.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c
-
-vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/wgl_context.c.i"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c > CMakeFiles/glfw.dir/wgl_context.c.i
-
-vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/wgl_context.c.s"
-	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c -o CMakeFiles/glfw.dir/wgl_context.c.s
-
 vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
 vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
 vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/egl_context.c
 vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj -MF CMakeFiles/glfw.dir/egl_context.c.obj.d -o CMakeFiles/glfw.dir/egl_context.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/egl_context.c
 
 vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.i: cmake_force
@@ -283,7 +193,7 @@ vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: vendor/glfw/src/CMakeF
 vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
 vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/osmesa_context.c
 vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj -MF CMakeFiles/glfw.dir/osmesa_context.c.obj.d -o CMakeFiles/glfw.dir/osmesa_context.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/osmesa_context.c
 
 vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.i: cmake_force
@@ -294,23 +204,209 @@ vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/osmesa_context.c.s"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/osmesa_context.c -o CMakeFiles/glfw.dir/osmesa_context.c.s
 
+vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_init.c
+vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj -MF CMakeFiles/glfw.dir/null_init.c.obj.d -o CMakeFiles/glfw.dir/null_init.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_init.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/null_init.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_init.c > CMakeFiles/glfw.dir/null_init.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/null_init.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_init.c -o CMakeFiles/glfw.dir/null_init.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_monitor.c
+vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj -MF CMakeFiles/glfw.dir/null_monitor.c.obj.d -o CMakeFiles/glfw.dir/null_monitor.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_monitor.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/null_monitor.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_monitor.c > CMakeFiles/glfw.dir/null_monitor.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/null_monitor.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_monitor.c -o CMakeFiles/glfw.dir/null_monitor.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_window.c
+vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj -MF CMakeFiles/glfw.dir/null_window.c.obj.d -o CMakeFiles/glfw.dir/null_window.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_window.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/null_window.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_window.c > CMakeFiles/glfw.dir/null_window.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/null_window.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_window.c -o CMakeFiles/glfw.dir/null_window.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_joystick.c
+vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj -MF CMakeFiles/glfw.dir/null_joystick.c.obj.d -o CMakeFiles/glfw.dir/null_joystick.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_joystick.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/null_joystick.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_joystick.c > CMakeFiles/glfw.dir/null_joystick.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/null_joystick.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/null_joystick.c -o CMakeFiles/glfw.dir/null_joystick.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_module.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj -MF CMakeFiles/glfw.dir/win32_module.c.obj.d -o CMakeFiles/glfw.dir/win32_module.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_module.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_module.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_module.c > CMakeFiles/glfw.dir/win32_module.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_module.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_module.c -o CMakeFiles/glfw.dir/win32_module.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj -MF CMakeFiles/glfw.dir/win32_time.c.obj.d -o CMakeFiles/glfw.dir/win32_time.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_time.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c > CMakeFiles/glfw.dir/win32_time.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_time.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_time.c -o CMakeFiles/glfw.dir/win32_time.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj -MF CMakeFiles/glfw.dir/win32_thread.c.obj.d -o CMakeFiles/glfw.dir/win32_thread.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_thread.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c > CMakeFiles/glfw.dir/win32_thread.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_thread.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_thread.c -o CMakeFiles/glfw.dir/win32_thread.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj -MF CMakeFiles/glfw.dir/win32_init.c.obj.d -o CMakeFiles/glfw.dir/win32_init.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_init.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c > CMakeFiles/glfw.dir/win32_init.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_init.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_init.c -o CMakeFiles/glfw.dir/win32_init.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj -MF CMakeFiles/glfw.dir/win32_joystick.c.obj.d -o CMakeFiles/glfw.dir/win32_joystick.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_joystick.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c > CMakeFiles/glfw.dir/win32_joystick.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_joystick.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_joystick.c -o CMakeFiles/glfw.dir/win32_joystick.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj -MF CMakeFiles/glfw.dir/win32_monitor.c.obj.d -o CMakeFiles/glfw.dir/win32_monitor.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_monitor.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c > CMakeFiles/glfw.dir/win32_monitor.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_monitor.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_monitor.c -o CMakeFiles/glfw.dir/win32_monitor.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj -MF CMakeFiles/glfw.dir/win32_window.c.obj.d -o CMakeFiles/glfw.dir/win32_window.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/win32_window.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c > CMakeFiles/glfw.dir/win32_window.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/win32_window.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/win32_window.c -o CMakeFiles/glfw.dir/win32_window.c.s
+
+vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/flags.make
+vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/includes_C.rsp
+vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c
+vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: vendor/glfw/src/CMakeFiles/glfw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -MD -MT vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj -MF CMakeFiles/glfw.dir/wgl_context.c.obj.d -o CMakeFiles/glfw.dir/wgl_context.c.obj -c D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c
+
+vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/wgl_context.c.i"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -E D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c > CMakeFiles/glfw.dir/wgl_context.c.i
+
+vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/wgl_context.c.s"
+	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -Wdeclaration-after-statement -S D:/Dev/C++/Proyects/WolfEngineCode/Wolf/vendor/glfw/src/wgl_context.c -o CMakeFiles/glfw.dir/wgl_context.c.s
+
 # Object files for target glfw
 glfw_OBJECTS = \
 "CMakeFiles/glfw.dir/context.c.obj" \
 "CMakeFiles/glfw.dir/init.c.obj" \
 "CMakeFiles/glfw.dir/input.c.obj" \
 "CMakeFiles/glfw.dir/monitor.c.obj" \
+"CMakeFiles/glfw.dir/platform.c.obj" \
 "CMakeFiles/glfw.dir/vulkan.c.obj" \
 "CMakeFiles/glfw.dir/window.c.obj" \
+"CMakeFiles/glfw.dir/egl_context.c.obj" \
+"CMakeFiles/glfw.dir/osmesa_context.c.obj" \
+"CMakeFiles/glfw.dir/null_init.c.obj" \
+"CMakeFiles/glfw.dir/null_monitor.c.obj" \
+"CMakeFiles/glfw.dir/null_window.c.obj" \
+"CMakeFiles/glfw.dir/null_joystick.c.obj" \
+"CMakeFiles/glfw.dir/win32_module.c.obj" \
+"CMakeFiles/glfw.dir/win32_time.c.obj" \
+"CMakeFiles/glfw.dir/win32_thread.c.obj" \
 "CMakeFiles/glfw.dir/win32_init.c.obj" \
 "CMakeFiles/glfw.dir/win32_joystick.c.obj" \
 "CMakeFiles/glfw.dir/win32_monitor.c.obj" \
-"CMakeFiles/glfw.dir/win32_time.c.obj" \
-"CMakeFiles/glfw.dir/win32_thread.c.obj" \
 "CMakeFiles/glfw.dir/win32_window.c.obj" \
-"CMakeFiles/glfw.dir/wgl_context.c.obj" \
-"CMakeFiles/glfw.dir/egl_context.c.obj" \
-"CMakeFiles/glfw.dir/osmesa_context.c.obj"
+"CMakeFiles/glfw.dir/wgl_context.c.obj"
 
 # External object files for target glfw
 glfw_EXTERNAL_OBJECTS =
@@ -319,20 +415,26 @@ vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/context.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/init.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/input.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj
+vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj
-vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj
-vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
-vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj
-vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/build.make
 vendor/glfw/src/libglfw3.a: vendor/glfw/src/CMakeFiles/glfw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking C static library libglfw3.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking C static library libglfw3.a"
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean_target.cmake
 	cd D:/Dev/C++/Proyects/WolfEngineCode/Wolf/build/vendor/glfw/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
 

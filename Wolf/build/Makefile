@@ -201,19 +201,6 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 #=============================================================================
-# Target rules for targets named update_mappings
-
-# Build rule for target.
-update_mappings: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 update_mappings
-.PHONY : update_mappings
-
-# fast build rule for target.
-update_mappings/fast:
-	$(MAKE) $(MAKESILENT) -f vendor/glfw/src/CMakeFiles/update_mappings.dir/build.make vendor/glfw/src/CMakeFiles/update_mappings.dir/build
-.PHONY : update_mappings/fast
-
-#=============================================================================
 # Target rules for targets named glfw
 
 # Build rule for target.
@@ -225,6 +212,19 @@ glfw: cmake_check_build_system
 glfw/fast:
 	$(MAKE) $(MAKESILENT) -f vendor/glfw/src/CMakeFiles/glfw.dir/build.make vendor/glfw/src/CMakeFiles/glfw.dir/build
 .PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named update_mappings
+
+# Build rule for target.
+update_mappings: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 update_mappings
+.PHONY : update_mappings
+
+# fast build rule for target.
+update_mappings/fast:
+	$(MAKE) $(MAKESILENT) -f vendor/glfw/src/CMakeFiles/update_mappings.dir/build.make vendor/glfw/src/CMakeFiles/update_mappings.dir/build
+.PHONY : update_mappings/fast
 
 #=============================================================================
 # Target rules for targets named imgui
