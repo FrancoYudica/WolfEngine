@@ -28,10 +28,15 @@
 
 // Numerical
 #include "Wolf/numerical/Random.h"
+#include "Wolf/numerical/numerical.h"
 
 // Utils
 #include "Wolf/utils/File.h"
 #include "Wolf/utils/PathManager.h"
 #include "Wolf/entry_point.h"
+
+// Input
+#include "Wolf/input/input_transform.h"
+#include "Wolf/input/input.h"
 
 #endif

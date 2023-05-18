@@ -22,6 +22,9 @@ namespace Wolf
 
                 void set_zoom(float zoom);
                 inline float get_zoom() const { return _zoom; }
+                inline uint32_t get_width() const { return _width; }
+                inline uint32_t get_height() const { return _height; }
+                inline float get_aspect_ratio() const { return _aspect_ratio; }
 
                 inline const glm::mat4& get_projection() const { return _projection_matrix; }
                 inline const glm::mat4& get_view() const { return _view_matrix; }
