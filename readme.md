@@ -2,7 +2,7 @@
 INSTALLATION
 Also, it's requiered the following CMakeLists.txt file
 
-set(WOLF_ENGINE_RELATIVE_TO_ROOT_PATH "Dependencies/WolfEngine")
+//set(WOLF_ENGINE_RELATIVE_TO_ROOT_PATH "Dependencies/WolfEngine")
 
 add_subdirectory(WolfEngine/Wolf)
 add_library(dependencies INTERFACE)
