@@ -1,3 +1,5 @@
+Requiered main code
+
 
 #include <iostream>
 
@@ -18,13 +20,15 @@ int main()
 		return -1;
 	}
 
-	// If imgui is used
+	// IMGUI REQUIERED
 	Layers::ImGuiLayer imguiLayer = Layers::ImGuiLayer();
-	app->add_layer(&imguiLayer);
+	app->set_imgui_layer(&imguiLayer);
 
-	// CLient layer	
+	// Add the client layer to the app like this
+	/*
 	SandboxLayers::BatchLayer openglLayer = SandboxLayers::BatchLayer();
 	app->add_layer(&openglLayer);
+	*/
 	app->run();
 	return 0;
 }
