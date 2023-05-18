@@ -46,7 +46,7 @@ namespace Wolf
         }
 
         PathManager() {
-            _root_path = std::string("../");
+            _root_path = std::string("..");
             _engine_assets_path = _root_path / (std::string(WOLF_ENGINE_PATH) + "/Wolf/Wolf/assets");
         }
         const Path& get_root_path() { return _root_path; }
