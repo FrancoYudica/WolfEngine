@@ -12,7 +12,9 @@ target_link_libraries(dependencies INTERFACE engine_lib)
 
 include_directories(dependencies "WolfEngine/Wolf")
 
-USAGE
+<div id="header" align="center">
+	USAGE
+</div>
 Requiered main code
 
 using namespace Wolf;
