@@ -1,5 +1,7 @@
+<div id="header" align="center">
+	INSTALLATION
+</div>
 
-INSTALLATION
 Also, it's requiered the following CMakeLists.txt file
 
 //set(WOLF_ENGINE_RELATIVE_TO_ROOT_PATH "Dependencies/WolfEngine")
