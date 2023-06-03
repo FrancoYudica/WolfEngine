@@ -14,7 +14,7 @@ namespace Wolf
         /// @brief Takes into consideration aspect ratio
         /// @return x in [-as, as], and y in [-1, 1] ranges
         glm::vec2 get_mouse_pos();
-        glm::vec2 set_mouse_pos(glm::vec2 pos);
+        void set_mouse_pos(glm::vec2 pos);
 
 
         /// @brief Mouse position, but normalized

@@ -45,7 +45,7 @@ namespace Wolf
 
             return {(norm_x - 0.5) * 2 * aspect_ratio, ((1 - norm_y) - 0.5) * 2};
         }
-        glm::vec2 set_mouse_pos(glm::vec2 pos)
+        void set_mouse_pos(glm::vec2 pos)
         {
             Wolf::Window* window = Application::get()->get_main_window();
             float aspect_ratio = static_cast<float>(window->get_width()) / static_cast<float>(window->get_height());
