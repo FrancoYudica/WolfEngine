@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-#include "../WEngine.h"
+#include "WEngine.h"
 #include "batch_renderer_test.hpp"
 
 using namespace Wolf;

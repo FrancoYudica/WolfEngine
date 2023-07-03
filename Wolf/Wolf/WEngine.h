@@ -9,35 +9,35 @@
 #include <string>
 
 // Core includes
-#include "Wolf/core/wolf_types.h"
-#include "Wolf/core/Application.h"
-#include "Wolf/core/Event.h"
-#include "Wolf/core/Time.h"
-#include "Wolf/core/Layer.h"
-#include "Wolf/core/Window.h"
+#include "core/wolf_types.h"
+#include "core/Application.h"
+#include "core/Event.h"
+#include "core/Time.h"
+#include "core/Layer.h"
+#include "core/Window.h"
 
 // ImGui layer
-#include "Wolf/imgui_layer/imgui_layer.h"
+#include "imgui_layer/imgui_layer.h"
 
 // Rendering
-#include "Wolf/rendering/ShaderProgram.h"
-#include "Wolf/rendering/Buffer.h"
-#include "Wolf/rendering/VertexArray.h"
-#include "Wolf/rendering/Renderer.h"
-#include "Wolf/rendering/RenderCommand.h"
-#include "Wolf/rendering/Camera.h"
+#include "rendering/ShaderProgram.h"
+#include "rendering/Buffer.h"
+#include "rendering/VertexArray.h"
+#include "rendering/Renderer.h"
+#include "rendering/RenderCommand.h"
+#include "rendering/Camera.h"
 
 // Numerical
-#include "Wolf/numerical/Random.h"
-#include "Wolf/numerical/numerical.h"
+#include "numerical/Random.h"
+#include "numerical/numerical.h"
 
 // Utils
-#include "Wolf/utils/File.h"
-#include "Wolf/utils/PathManager.h"
+#include "utils/File.h"
+#include "utils/PathManager.h"
 
 // Input
-#include "Wolf/input/input_transform.h"
-#include "Wolf/input/input.h"
+#include "input/input_transform.h"
+#include "input/input.h"
 
 
 namespace Wolf

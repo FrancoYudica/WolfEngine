@@ -1,5 +1,4 @@
 #include "batch_renderer_test.hpp"
-#include "../WEngine.h"
 #include <imgui/imgui.h>
 
 namespace Wolf

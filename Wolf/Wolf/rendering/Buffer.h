@@ -45,7 +45,7 @@ namespace Wolf
 				case Mat4:
 					return 4 * 16;
 				default:
-					std::cout << "UNINPLEMENTED_SHADER_DATA_TYPE_SIZE: " << type << std::endl;
+					std::cout << "UNIMPLEMENTED_SHADER_DATA_TYPE_SIZE: " << type << std::endl;
 			}
 			return 1;
 		}

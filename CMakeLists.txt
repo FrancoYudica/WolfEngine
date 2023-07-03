@@ -8,14 +8,14 @@ add_subdirectory(Wolf/Wolf)
 add_subdirectory(Wolf/Platform)
 
 # Creates the wolf_engine_library
-add_library(engine_lib INTERFACE)
+add_library(wolf_engine INTERFACE)
 
 # Adds all it's dependecies
-target_link_libraries(engine_lib INTERFACE vendor_lib)
-target_link_libraries(engine_lib INTERFACE wolf_engine_lib)
-target_link_libraries(engine_lib INTERFACE platform_lib)
+target_link_libraries(wolf_engine INTERFACE vendor_lib)
+target_link_libraries(wolf_engine INTERFACE engine_lib)
+target_link_libraries(wolf_engine INTERFACE platform_lib)
 
-option(WOLF_BUILD_TESTS "Builds the WOLF example programs")
+option(WOLF_BUILD_TESTS "Builds WOLF example programs" OFF)
 
 if (WOLF_BUILD_TESTS)
     add_subdirectory(Wolf/tests)

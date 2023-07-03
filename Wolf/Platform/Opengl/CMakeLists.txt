@@ -11,4 +11,4 @@ add_library(
 )
 
 target_link_libraries(opengl_lib PRIVATE vendor_lib)
-target_link_libraries(opengl_lib PRIVATE wolf_engine_lib)
+target_link_libraries(opengl_lib PRIVATE engine_lib)

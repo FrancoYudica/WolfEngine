@@ -13,14 +13,15 @@ file(GLOB WOLF_RENDERING_CPP     rendering/*.cpp rendering/batch/*.cpp)
 file(GLOB WOLF_NUMERICAL_H       numerical/*.h)
 file(GLOB WOLF_NUMERICAL_CPP     numerical/*.cpp)
 
-file(GLOB WOLF_UTILS_H       utils/*.h)
-file(GLOB WOLF_UTILS_CPP     utils/*.cpp)
+file(GLOB WOLF_UTILS_H           utils/*.h)
+file(GLOB WOLF_UTILS_CPP         utils/*.cpp)
 
-file(GLOB WOLF_INPUT_H       input/*.h)
-file(GLOB WOLF_INPUT_CPP     input/*.cpp)
+file(GLOB WOLF_INPUT_H           input/*.h)
+file(GLOB WOLF_INPUT_CPP         input/*.cpp)
 
 add_library(
-    wolf_engine_lib STATIC
+    engine_lib STATIC
+    WEngine.h
     ${WOLF_CORE_H}
     ${WOLF_CORE_CPP}
     ${WOLF_IMGUI_LAYER_H}
@@ -35,17 +36,17 @@ add_library(
     ${WOLF_INPUT_CPP}
     )
 
-target_link_libraries(wolf_engine_lib PRIVATE vendor_lib)
+target_link_libraries(engine_lib PRIVATE vendor_lib)
 
 # Need to link with plaform, because the Rendering definitions are there
-target_link_libraries(wolf_engine_lib PRIVATE platform_lib)
+target_link_libraries(engine_lib PRIVATE platform_lib)
 
 target_include_directories(
-    wolf_engine_lib INTERFACE
+    engine_lib INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_compile_definitions(wolf_engine_lib INTERFACE WOLF_ENGINE_VERSION=0.1)
+target_compile_definitions(engine_lib INTERFACE WOLF_ENGINE_VERSION=0.1)
 
 # WOLF ENGINE REQUIERES WOLF_ENGINE_RELATIVE_TO_ROOT_PATH to be set by the user
-target_compile_definitions(wolf_engine_lib PUBLIC WOLF_ENGINE_PATH="${WOLF_ENGINE_RELATIVE_TO_ROOT_PATH}")
+target_compile_definitions(engine_lib PUBLIC WOLF_ENGINE_PATH="${WOLF_ENGINE_RELATIVE_TO_ROOT_PATH}")

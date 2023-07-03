@@ -2,7 +2,7 @@
 #ifndef BATCH_LAYER_H
 #define BATCH_LAYER_H
 
-#include "../WEngine.h"
+#include "WEngine.h"
 #include <GLFW/glfw3.h>
 #include <unordered_map>
 #include <vector>
