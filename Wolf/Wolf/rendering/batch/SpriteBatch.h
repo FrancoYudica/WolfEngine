@@ -21,7 +21,7 @@ namespace Wolf
         class SpriteBatch : public Batch
         {
             public:
-            void init(std::shared_ptr<Material>& material) override;    
+            void init(Shared<Material>& material) override;    
 			void shutdown() override;
 			void new_frame() override;
 			void end_frame() override;

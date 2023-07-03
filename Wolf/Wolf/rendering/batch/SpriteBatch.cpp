@@ -4,7 +4,7 @@
 using namespace Wolf::Rendering;
 
 
-void SpriteBatch::init(std::shared_ptr<Material>& material)
+void SpriteBatch::init(Shared<Material>& material)
 {
     Batch::init(material);
     _MAX_SUBMITIONS_CAPACITY = 10000;

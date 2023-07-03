@@ -6,7 +6,7 @@
 #include "Layer.h"
 #include "Time.h"
 #include "GraphicsContext.h"
-
+#include <memory>
 
 namespace Wolf
 {
@@ -26,18 +26,20 @@ namespace Wolf
         void on_event(Event* event);
         void on_update(const Time& time);
         void on_render();
-        void add_layer(Layer* layer) { _layer_stack.add(layer); }
-        void set_imgui_layer(Layer* layer) { _imgui_layer = layer; _layer_stack.add_overlay(layer); }
-        bool remove_layer(Layer* layer) { return _layer_stack.remove(layer); }
-        void add_overlay(Layer* layer) { _layer_stack.add_overlay(layer); }
-        Window* get_main_window() { return &_mainWindow; }
+        void add_layer(const Shared<Layer>& layer) { _layer_stack.add(layer); }
+        void set_imgui_layer(const Shared<Layer>& layer) { _imgui_layer = layer; _layer_stack.add_overlay(layer); }
+        bool remove_layer(const Shared<Layer>& layer) { return _layer_stack.remove(layer); }
+        void add_overlay(const Shared<Layer>& layer) { _layer_stack.add_overlay(layer); }
+        Unique<Window>& get_main_window() { return _main_window; }
         void quit();
 
-        inline static Application* get() {
-            if (_instance == nullptr)
-                _instance = new Application();
+        inline static Unique<Application>& get() {
+            static Unique<Application> application;
+            if (application)
+                return application;
 
-            return _instance;
+            application = std::make_unique<Application>();
+            return application;
         }
 
         inline const Time& get_update_time() { return _update_time; }
@@ -45,13 +47,13 @@ namespace Wolf
     
     private:
         static Application* _instance;
-        Window _mainWindow;
+        Unique<Window> _main_window;
         LayerStack _layer_stack;
         Clock _clock;
         Time _render_time;
         Time _update_time;
-        Layer* _imgui_layer;
-        std::shared_ptr<GraphicsContext> _graphics_context;
+        Shared<Layer> _imgui_layer;
+        Shared<GraphicsContext> _graphics_context;
     };
 }
 #endif

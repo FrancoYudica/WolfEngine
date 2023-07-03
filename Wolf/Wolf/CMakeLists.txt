@@ -33,7 +33,6 @@ add_library(
     ${WOLF_UTILS_CPP}
     ${WOLF_INPUT_H}
     ${WOLF_INPUT_CPP}
-    "entry_point.h"
     )
 
 target_link_libraries(wolf_engine_lib PRIVATE vendor_lib)

@@ -15,7 +15,7 @@ void RenderCommand::clear()
     glClear(GL_COLOR_BUFFER_BIT);   
 }
 
-void RenderCommand::draw_indexed(const std::shared_ptr<VertexArray>& vao, int count, PrimitiveType primitive)
+void RenderCommand::draw_indexed(const Shared<VertexArray>& vao, int count, PrimitiveType primitive)
 {
     auto ibo = vao->get_index_buffer();
     ibo->bind();
@@ -31,12 +31,12 @@ void RenderCommand::draw_indexed(const std::shared_ptr<VertexArray>& vao, int co
         break;
 
     default:
-        std::cout << "RenderCommand::draw_indexed inimplemented primitive type: " << primitive << std::endl;
+        std::cout << "RenderCommand::draw_indexed unimplemented primitive type: " << primitive << std::endl;
         break;
     }
 }
 
-void RenderCommand::draw_arrays(const std::shared_ptr<VertexArray>& vao, uint32_t count, PrimitiveType primitive)
+void RenderCommand::draw_arrays(const Shared<VertexArray>& vao, uint32_t count, PrimitiveType primitive)
 {
     switch (primitive)
     {
@@ -45,7 +45,7 @@ void RenderCommand::draw_arrays(const std::shared_ptr<VertexArray>& vao, uint32_
         break;
 
     default:
-        std::cout << "RenderCommand::draw_arrays inimplemented primitive type: " << primitive << std::endl;
+        std::cout << "RenderCommand::draw_arrays unimplemented primitive type: " << primitive << std::endl;
         break;
     }
 }

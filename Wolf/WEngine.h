@@ -9,6 +9,7 @@
 #include <string>
 
 // Core includes
+#include "Wolf/core/wolf_types.h"
 #include "Wolf/core/Application.h"
 #include "Wolf/core/Event.h"
 #include "Wolf/core/Time.h"
@@ -33,10 +34,29 @@
 // Utils
 #include "Wolf/utils/File.h"
 #include "Wolf/utils/PathManager.h"
-#include "Wolf/entry_point.h"
 
 // Input
 #include "Wolf/input/input_transform.h"
 #include "Wolf/input/input.h"
+
+
+namespace Wolf
+{
+    static bool init()
+    {
+        std::cout << "Welcome to wolf engine v" << WOLF_ENGINE_VERSION << std::endl;
+        auto& app = Application::get();
+        bool success = app->initialize(Window::Configuration());
+        if (!success)
+        {
+            std::cout << "Application init fail" << std::endl;
+            return  false;
+        }
+        // If imgui is used
+        Shared<Layer> imguiLayer = std::make_shared<Layers::ImGuiLayer>();
+        app->set_imgui_layer(imguiLayer);
+        return true;
+    }
+}
 
 #endif

@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <memory>
+#include "../core/wolf_types.h"
 
 namespace Wolf
 {
@@ -150,9 +150,9 @@ namespace Wolf
 			virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset) = 0;
 			virtual void set_buffer_layout(const BufferLayout& layout) = 0;
 			virtual BufferLayout& get_buffer_layout() = 0;
-			static std::shared_ptr<VertexBuffer> create(const void* data, unsigned int size);
+			static Shared<VertexBuffer> create(const void* data, unsigned int size);
 
-			static std::shared_ptr<VertexBuffer> allocate(unsigned int size);
+			static Shared<VertexBuffer> allocate(unsigned int size);
 		};
 
 		class IndexBuffer
@@ -162,7 +162,7 @@ namespace Wolf
 			virtual void unbind() const = 0;
 			virtual void set_sub_data(const void* data, unsigned int size, unsigned int offset) = 0;
 			virtual unsigned int get_count() const = 0;
-			static std::shared_ptr<IndexBuffer> create(const unsigned int* data, unsigned int count);
+			static Shared<IndexBuffer> create(const unsigned int* data, unsigned int count);
 		};
 	}
 }

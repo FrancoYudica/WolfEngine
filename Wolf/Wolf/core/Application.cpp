@@ -4,16 +4,12 @@
 #include "../rendering/RenderCommand.h"
 #include "../imgui_layer/imgui_layer.h"
 
+
 namespace Wolf
 {
 
-    Application* Application::_instance;
-    
-    
-
     bool Application::initialize(Window::Configuration config)
     {
-        _instance = this;
         /* Initialize the library */
         if (!glfwInit())
         {
@@ -21,16 +17,16 @@ namespace Wolf
             glfwTerminate();
             return false;
         }
-
+        _main_window = std::make_unique<Window>();
         /* Creates main window */
-        if (!_mainWindow.initialize(config))
+        if (!_main_window->initialize(config))
         {
             glfwTerminate();
             return false;
         }
-        _mainWindow.make_context_current();
+        _main_window->make_context_current();
 
-        _graphics_context = GraphicsContext::create(_mainWindow);
+        _graphics_context = GraphicsContext::create(_main_window);
         _graphics_context->init();
         return true;
     }
@@ -101,7 +97,7 @@ namespace Wolf
 
         Clock deltaClock, timingClock;
         deltaClock.start();
-        while (!_mainWindow.should_close())
+        while (!_main_window->should_close())
         {
             Time elapsed = deltaClock.elapsed();
             deltaClock.start();
@@ -113,10 +109,10 @@ namespace Wolf
             timingClock.start();
             Rendering::RenderCommand::clear();
             on_render();
-            _mainWindow.swap_buffers();            
+            _main_window->swap_buffers();            
             _render_time = timingClock.elapsed();
             /* Poll for and process events */
-            _mainWindow.poll_events();
+            _main_window->poll_events();
         }
     }
 }

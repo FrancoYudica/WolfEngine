@@ -4,8 +4,8 @@
 
 #include <string>
 #include <glm/glm.hpp>
-#include <memory>
 #include "ShaderProgram.h"
+#include "../core/wolf_types.h"
 
 namespace Wolf
 {
@@ -21,7 +21,7 @@ namespace Wolf
 
             inline const std::string& get_name() const { return _name; }
             inline MatPropType get_type() const { return _type; }
-            virtual void upload_to_shader(const std::shared_ptr<ShaderProgram>& shader) const {
+            virtual void upload_to_shader(const Shared<ShaderProgram>& shader) const {
                 
                 std::cout << "Invalid poly" << std::endl;
 
@@ -41,7 +41,7 @@ namespace Wolf
             FloatProperty(const std::string& name, float value) 
                 : MaterialProperty(name, MatPropType::MatFloat), value(value){}
             
-            void upload_to_shader(const std::shared_ptr<ShaderProgram>& shader) const override
+            void upload_to_shader(const Shared<ShaderProgram>& shader) const override
             {
                 shader->set_float(get_name(), value);
             }
@@ -54,7 +54,7 @@ namespace Wolf
             Float2Property(const std::string& name, glm::vec2 value) 
                 : MaterialProperty(name, MatPropType::MatFloat2), value(value){}
 
-            void upload_to_shader(const std::shared_ptr<ShaderProgram>& shader) const override
+            void upload_to_shader(const Shared<ShaderProgram>& shader) const override
             {
                 shader->set_float(get_name(), value);
             }
@@ -68,7 +68,7 @@ namespace Wolf
             Float3Property(const std::string& name, glm::vec3 value) 
                 : MaterialProperty(name, MatPropType::MatFloat3), value(value){}
 
-            void upload_to_shader(const std::shared_ptr<ShaderProgram>& shader) const override
+            void upload_to_shader(const Shared<ShaderProgram>& shader) const override
             {
                 shader->set_float(get_name(), value);
             }
@@ -81,7 +81,7 @@ namespace Wolf
             Float4Property(const std::string& name, glm::vec4 value) 
                 : MaterialProperty(name, MatPropType::MatFloat4), value(value){}
 
-            void upload_to_shader(const std::shared_ptr<ShaderProgram>& shader) const override
+            void upload_to_shader(const Shared<ShaderProgram>& shader) const override
             {
                 shader->set_float(get_name(), value);
             }

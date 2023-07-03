@@ -7,6 +7,7 @@
 #include "../Buffer.h"
 #include "../Material.h"
 #include "../Camera.h"
+#include "../../core/wolf_types.h"
 
 namespace Wolf
 {
@@ -17,7 +18,7 @@ namespace Wolf
         {
             public:
             
-            virtual void init(std::shared_ptr<Material>& material) 
+            virtual void init(Shared<Material>& material) 
             {
                 _material = material;
             }    
@@ -27,10 +28,10 @@ namespace Wolf
 			virtual void end_frame() {}
 
             protected:
-            std::shared_ptr<VertexArray> _vertex_array;
-            std::shared_ptr<VertexBuffer> _vertex_buffer;
-            std::shared_ptr<IndexBuffer> _index_buffer;
-            std::shared_ptr<Material> _material;
+            Shared<VertexArray> _vertex_array;
+            Shared<VertexBuffer> _vertex_buffer;
+            Shared<IndexBuffer> _index_buffer;
+            Shared<Material> _material;
             uint32_t _submitions_count;
             uint32_t _MAX_SUBMITIONS_CAPACITY;
             Camera _camera;

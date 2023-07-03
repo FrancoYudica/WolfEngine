@@ -4,7 +4,7 @@
 using namespace Wolf::Rendering;
 
 
-void LineBatch::init(std::shared_ptr<Material>& material)
+void LineBatch::init(Shared<Material>& material)
 {
     
     Batch::init(material);

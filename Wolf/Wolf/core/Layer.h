@@ -2,10 +2,11 @@
 #ifndef WOLF_LAYER_H
 #define WOLF_LAYER_H
 #include "Event.h"
+#include "wolf_types.h"
 #include <vector>
 #include <iostream>
 #include "Time.h"
-
+#include <memory>
 
 namespace Wolf
 {
@@ -31,7 +32,7 @@ namespace Wolf
 	class LayerStack
 	{
 		// Data structure for containing and adding the layers
-		// Follows the LIFO (Lirst in -> First out)
+		// Follows the LIFO (First in -> First out)
 	public:
 
 		LayerStack() = default;
@@ -39,20 +40,20 @@ namespace Wolf
 
 		void clear()
 		{
-			for (Layer* layer : _layers)
+			for (const Shared<Layer>& layer : _layers)
 			{
 				layer->on_end();
 			}
 			_layers.clear();
 		}
 
-		void add(Layer* layer)
+		void add(const Shared<Layer>& layer)
 		{
 			_layers.insert(_layers.end() - _overlay_count, layer);
 			layer->on_start();
 
 		}
-		bool remove(Layer* layer)
+		bool remove(const Shared<Layer>& layer)
 		{
 			for (uint32_t i = 0; i < _layers.size(); i++)
 			{
@@ -73,17 +74,17 @@ namespace Wolf
 			}
 			return false;
 		}
-		void add_overlay(Layer* layer)
+		void add_overlay(const Shared<Layer>& layer)
 		{
 			_layers.push_back(layer);
 			_overlay_count++;
 			layer->on_start();
 		}
-		const std::vector<Layer*>& get_layers() const { return _layers; }
+		const std::vector<Shared<Layer>>& get_layers() const { return _layers; }
 
 	private:
 		uint32_t _overlay_count = 0;
-		std::vector<Layer*> _layers;
+		std::vector<Shared<Layer>> _layers;
 	};
 }
 #endif

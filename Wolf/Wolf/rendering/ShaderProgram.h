@@ -8,6 +8,8 @@
 #include <memory>
 #include "../utils/PathManager.h"
 #include "../utils/File.h"
+#include "../core/wolf_types.h"
+
 
 using std::string;
 
@@ -28,9 +30,9 @@ namespace Wolf
 			virtual void set_float(const string& name, const glm::vec4& value) const = 0;
 			virtual void set_int(const string& name, int value) const = 0;
 			virtual void set_matrix(const string& name, const glm::mat4& matrix) const = 0;
-			static std::shared_ptr<ShaderProgram> create(const string& vertex_src, const string& fragment_src);
+			static Shared<ShaderProgram> create(const string& vertex_src, const string& fragment_src);
 
-			static std::shared_ptr<ShaderProgram> create(
+			static Shared<ShaderProgram> create(
 				const Wolf::Path& vertex_path,
 				const Wolf::Path& fragment_path)
 			{
@@ -57,18 +59,18 @@ namespace Wolf
 		{
 		public:
 			ShaderLibrary() = default;
-			void add(const string& name, const std::shared_ptr<ShaderProgram>& program)
+			void add(const string& name, const Shared<ShaderProgram>& program)
 			{
 				_shaders[name] = program;
 			}
 
-			std::shared_ptr<ShaderProgram> get(const string& name)
+			Shared<ShaderProgram> get(const string& name)
 			{
 				return _shaders[name];
 			}
 
 		private:
-			std::unordered_map <string, std::shared_ptr<ShaderProgram>> _shaders;
+			std::unordered_map <string, Shared<ShaderProgram>> _shaders;
 		};
 
 	}
