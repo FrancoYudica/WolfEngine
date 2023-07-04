@@ -26,6 +26,8 @@
 #include "rendering/Renderer.h"
 #include "rendering/RenderCommand.h"
 #include "rendering/Camera.h"
+#include "rendering/BitMap.h"
+#include "rendering/Texture.h"
 
 // Numerical
 #include "numerical/Random.h"
@@ -52,6 +54,9 @@ namespace Wolf
             std::cout << "Application init fail" << std::endl;
             return  false;
         }
+
+        Rendering::Renderer2D::init();
+
         // If imgui is used
         Shared<Layer> imguiLayer = std::make_shared<Layers::ImGuiLayer>();
         app->set_imgui_layer(imguiLayer);

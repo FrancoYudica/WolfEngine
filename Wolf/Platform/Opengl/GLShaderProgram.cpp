@@ -98,18 +98,17 @@ unsigned int GLShaderProgram::compile_shader(const string& source, unsigned int 
 	glShaderSource(id, 1, &data, NULL);
 	glCompileShader(id);
 
-	int sucess;
+	int success;
 	char infoLog[512];
 
-	glGetShaderiv(id, GL_COMPILE_STATUS, &sucess);
+	glGetShaderiv(id, GL_COMPILE_STATUS, &success);
 
-	if (!sucess)
+	if (!success)
 	{
 		glGetShaderInfoLog(id, 512, NULL, infoLog);
 		std::cout << "ERROR::SHADER::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 
-	// Sucess in compilation
 	return id;
 
 }

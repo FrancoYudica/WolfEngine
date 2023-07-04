@@ -4,7 +4,10 @@ set(TEST_EXECUTABLE_NAME TestWolf)
 
 project(${TEST_EXECUTABLE_NAME})
 
-add_executable(${TEST_EXECUTABLE_NAME} test.cpp batch_renderer_test.hpp batch_renderer_test.cpp)
+file(GLOB TEST_SOURCES *.cpp)
+file(GLOB TEST_HEADERS *.h *.hpp)
+
+add_executable(${TEST_EXECUTABLE_NAME} test.cpp ${TEST_SOURCES} ${TEST_HEADERS})
 
 target_link_libraries(${TEST_EXECUTABLE_NAME} wolf_engine)
 

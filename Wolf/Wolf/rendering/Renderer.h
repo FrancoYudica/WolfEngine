@@ -4,6 +4,7 @@
 
 #include <glm/glm.hpp>
 #include "Camera.h"
+#include "Material.h"
 
 namespace Wolf
 {
@@ -26,6 +27,7 @@ namespace Wolf
 			static void submit_circle(const glm::vec3& position, const float radius, const glm::vec4& color, float fade=0.003f);
 			static void submit_line(const glm::vec2& p0, const glm::vec2& p1, const glm::vec4& color, const float thickness);
 			static void submit_line_interpolated(const glm::vec2& p0, const glm::vec2& p1, const glm::vec4& color, const float thickness);
+			static void render_material(const Shared<Material>& material);
 		};
 
 	}

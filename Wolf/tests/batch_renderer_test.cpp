@@ -26,6 +26,7 @@ namespace Wolf
 				float y = Wolf::Numerical::Random::range_f(-2, 2);
 				_points.emplace_back(glm::vec3(x, y, 0));
 			}
+
 			std::cout << "Layer started" << std::endl;
 		}
 

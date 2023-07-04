@@ -21,17 +21,12 @@ namespace Wolf
 
             inline const std::string& get_name() const { return _name; }
             inline MatPropType get_type() const { return _type; }
-            virtual void upload_to_shader(const Shared<ShaderProgram>& shader) const {
-                
-                std::cout << "Invalid poly" << std::endl;
+            virtual void upload_to_shader(const Shared<ShaderProgram>& shader) const = 0;
 
-            }
-
-            // TODO - Layer
             private:
-            std::string _name;
-            MatPropType _type;
-            uint32_t _render_layer;
+                std::string _name;
+                MatPropType _type;
+                uint32_t _render_layer;
         };
 
         class FloatProperty : public MaterialProperty
