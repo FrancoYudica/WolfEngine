@@ -9,20 +9,7 @@ namespace Wolf
 
         namespace GL
         {
-            struct GLTextureConfig
-            {
-                // OpenGL types equivalent to Wolf::Rendering::TextureConfig
-                GLenum target;
-                GLint pixel_format, internal_pixel_format;
-                GLenum pixel_type;
-
-                // Texture parameters
-                GLint wrap_mode;
-                GLint mag_filter, min_filter;
-                GLuint samples;
-            };
-
-            static GLint parse_gl(TextureTypes::WrapMode mode)
+            static int32_t parse_gl(TextureTypes::WrapMode mode)
             {
                 switch (mode)
                 {
@@ -44,7 +31,7 @@ namespace Wolf
                 }     
             }
 
-            static GLint parse_gl(TextureTypes::Filter filter)
+            static int32_t parse_gl(TextureTypes::Filter filter)
             {
                 switch (filter)
                 {
@@ -63,16 +50,12 @@ namespace Wolf
 
             }
 
-            static GLint parse_gl(TextureTypes::PixelFormat format)
+            static int32_t parse_gl(TextureTypes::PixelFormat format)
             {
                 switch (format)
                 {
                     case TextureTypes::PixelFormat::R:
                         return GL_RED;
-                        break;
-
-                    case TextureTypes::PixelFormat::RG:
-                        return GL_RG;
                         break;
 
                     case TextureTypes::PixelFormat::RGB:
@@ -89,19 +72,40 @@ namespace Wolf
                 }        
             }
 
-            static GLint parse_gl(TextureTypes::PixelType pixel_type)
+            static int32_t parse_gl(TextureTypes::PixelInternalFormat format)
+            {
+                switch (format)
+                {
+                    case TextureTypes::PixelInternalFormat::R_8:
+                        return GL_RED;
+                        break;
+                    case TextureTypes::PixelInternalFormat::RGB_8:
+                        return GL_RGB8;
+                        break;
+
+                    case TextureTypes::PixelInternalFormat::RGBA_8:
+                        return GL_RGBA8;
+                        break;
+
+                    default:
+                        throw "Unimplemented 'Pixel Format' GLTextureConfig type in parse_gl()";
+                        break;                
+                }        
+            }
+
+            static uint32_t parse_gl(TextureTypes::PixelType pixel_type)
             {
                 switch (pixel_type)
                 {
-                    case TextureTypes::PixelType::UnsignedByte:
+                    case TextureTypes::PixelType::UNSIGNED_BYTE:
                         return GL_UNSIGNED_BYTE;
                         break;
 
-                    case TextureTypes::PixelType::Byte:
+                    case TextureTypes::PixelType::BYTE:
                         return GL_BYTE;
                         break;
 
-                    case TextureTypes::PixelType::Float:
+                    case TextureTypes::PixelType::FLOAT:
                         return GL_FLOAT;
                         break;
                     default:
@@ -113,12 +117,12 @@ namespace Wolf
             static GLTextureConfig parse_gl(const TextureConfig& config)
             {
                 GLTextureConfig gl_config;
-                gl_config.wrap_mode = parse_gl(config.wrap_mode);
-                gl_config.mag_filter = parse_gl(config.mag_filter);
-                gl_config.min_filter = parse_gl(config.min_filter);
-                gl_config.pixel_format = parse_gl(config.pixel_format);
-                gl_config.internal_pixel_format = parse_gl(config.internal_pixel_format);
-                gl_config.pixel_type = parse_gl(config.pixel_type);
+                gl_config.wrap_mode =               parse_gl(config.wrap_mode);
+                gl_config.mag_filter =              parse_gl(config.mag_filter);
+                gl_config.min_filter =              parse_gl(config.min_filter);
+                gl_config.pixel_format =            parse_gl(config.pixel_format);
+                gl_config.internal_pixel_format =   parse_gl(config.internal_pixel_format);
+                gl_config.pixel_type =              parse_gl(config.pixel_type);
                 gl_config.samples = config.samples;
                 return gl_config;
             }
@@ -131,7 +135,7 @@ namespace Wolf
 
         void GL::GLTexture::bind()
         {
-            glBindTexture(_target, _renderer_id);
+            glBindTexture(target, _renderer_id);
         }
 
         void Texture::activate_texture(const Shared<Texture>& texture, uint8_t slot)
@@ -144,33 +148,40 @@ namespace Wolf
 #endif
             glActiveTexture(GL_TEXTURE0 + slot);
             texture->bind();
+
+            glActiveTexture(GL_TEXTURE0);
         }
 
-
-        Shared<Texture> Texture::initialize_from_bitmap(const Shared<BitMap>& bitmap, const TextureConfig& config)
+        template<typename T>
+        Shared<Texture> _initialize_from_bitmap_impl(const Shared<BitMap<T>>& bitmap, const TextureConfig& config)
         {
+            
+            uint32_t texture_renderer_id;
+            glGenTextures(1, &texture_renderer_id);
 
-            Shared<GL::GLTexture> texture = std::make_shared<GL::GLTexture>();
-            glGenTextures(1, &texture->_renderer_id);
+            Shared<GL::GLTexture> texture = std::make_shared<GL::GLTexture>(texture_renderer_id);
 
             GL::GLTextureConfig gl_config = GL::parse_gl(config);
 
             // Changes target if multi sampled
             bool multi_sampled = gl_config.samples > 1;
-            texture->_target = multi_sampled ? GL_TEXTURE_2D_MULTISAMPLE_ARRAY : GL_TEXTURE_2D;
+            texture->target = multi_sampled ? GL_TEXTURE_2D_MULTISAMPLE_ARRAY : GL_TEXTURE_2D;
             // Texture setup
-            glBindTexture(texture->_target, texture->_renderer_id);
+            glBindTexture(texture->target, texture->get_id());
 
-            glTexParameteri(texture->_target, GL_TEXTURE_WRAP_S, gl_config.wrap_mode);
-            glTexParameteri(texture->_target, GL_TEXTURE_WRAP_T, gl_config.wrap_mode);
-            glTexParameteri(texture->_target, GL_TEXTURE_WRAP_R, gl_config.wrap_mode);
-            glTexParameteri(texture->_target, GL_TEXTURE_MAG_FILTER, gl_config.mag_filter);
-            glTexParameteri(texture->_target, GL_TEXTURE_MIN_FILTER, gl_config.min_filter);
+            glTexParameteri(texture->target, GL_TEXTURE_WRAP_S, gl_config.wrap_mode);
+            glTexParameteri(texture->target, GL_TEXTURE_WRAP_T, gl_config.wrap_mode);
+            glTexParameteri(texture->target, GL_TEXTURE_WRAP_R, gl_config.wrap_mode);
+            glTexParameteri(texture->target, GL_TEXTURE_MAG_FILTER, gl_config.mag_filter);
+            glTexParameteri(texture->target, GL_TEXTURE_MIN_FILTER, gl_config.min_filter);
+
+            // Set the unpack alignment parameter to 1
+            glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
             if (multi_sampled)
             {
                 glTexImage2DMultisample(
-                    texture->_target,
+                    texture->target,
                     gl_config.samples,
                     gl_config.internal_pixel_format,
                     bitmap->width,
@@ -181,7 +192,7 @@ namespace Wolf
             else
             {
                 glTexImage2D(
-                    texture->_target,
+                    texture->target,
                     0,
                     gl_config.internal_pixel_format,
                     bitmap->width,
@@ -189,11 +200,35 @@ namespace Wolf
                     0,
                     gl_config.pixel_format,
                     gl_config.pixel_type,
-                    bitmap->get_buffer().data()
+                    bitmap->buffer_raw_ptr()
                 );
             }
 
             return texture;
+        }
+
+        Shared<Texture> Texture::from_bitmap(const Shared<BitMap<glm::u8vec3>>& bitmap, const TextureConfig& config)
+        {
+            return _initialize_from_bitmap_impl(bitmap, config);
+        }
+
+        Shared<Texture> Texture::from_bitmap(const Shared<BitMap<glm::u8vec4>>& bitmap, const TextureConfig& config)
+        {
+            return _initialize_from_bitmap_impl(bitmap, config);
+        }
+
+        Shared<Texture> Texture::from_bitmap(const Shared<BitMap<glm::vec4>>& bitmap, const TextureConfig& config)
+        {
+            return _initialize_from_bitmap_impl(bitmap, config);
+        }
+        Shared<Texture> Texture::from_bitmap(const Shared<BitMap<glm::vec3>>& bitmap, const TextureConfig& config)
+        {
+            return _initialize_from_bitmap_impl(bitmap, config);
+        }
+
+        Shared<Texture> Texture::from_bitmap(const Shared<BitMap<float>>& bitmap, const TextureConfig& config)
+        {
+            return _initialize_from_bitmap_impl(bitmap, config);
         }
     }
 }
