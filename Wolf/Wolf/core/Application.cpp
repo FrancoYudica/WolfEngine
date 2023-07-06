@@ -31,7 +31,7 @@ namespace Wolf
         return true;
     }
 
-    void Application::on_event(Event* event)
+    void Application::on_event(const Unique<Event>& event)
     {
         // Updates from the overlays to the lowest
         auto layers = _layer_stack.get_layers();
@@ -39,15 +39,15 @@ namespace Wolf
         for (auto it = layers.rbegin(); it != layers.rend(); it++)
         {
             if (event->handled)
-                return;
+                break;
             (*it)->on_event(event);
         }
 
-        EventDispatcher disptacher = EventDispatcher(event);
-        disptacher.dispatch<WindowResizeEvent>(
+        EventDispatcher dispatcher = EventDispatcher(event);
+        dispatcher.dispatch<WindowResizeEvent>(
             EventType::WindowResize,
 
-            [this](WindowResizeEvent* event){
+            [this](const Unique<WindowResizeEvent>& event){
                 this->_graphics_context->on_viewport_resize(event->width, event->height);
                 return false;
             }

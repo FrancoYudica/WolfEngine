@@ -20,7 +20,7 @@ static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
 		case ShaderDataType::Int3:     return GL_INT;
 		case ShaderDataType::Int4:     return GL_INT;
 		default:
-			std::cout << "Unimplememted shader data type to GL base type: " << type << std::endl;
+			std::cout << "Unimplemented shader data type to GL base type: " << type << std::endl;
 	}
 	return 1;
 

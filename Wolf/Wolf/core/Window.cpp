@@ -31,29 +31,28 @@ namespace Wolf
         // so, events shouldn't be stored, it will cause a nullptr exeption
         glfwSetCursorPosCallback(windowNativePtr, [](GLFWwindow* window, double x, double y) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            MouseMoveEvent event(x, y);
-            Application::get()->on_event(&event);
+            Unique<Event> event = std::make_unique<MouseMoveEvent>(x, y);
+            Application::get()->on_event(event);
             });
 
         glfwSetScrollCallback(windowNativePtr, [](GLFWwindow* window, double x_offset, double y_offset){
-            MouseScrollEvent event(x_offset, y_offset);
-            Application::get()->on_event(&event);
+            Unique<Event> event = std::make_unique<MouseScrollEvent>(x_offset, y_offset);
+            Application::get()->on_event(event);
 
         });
         glfwSetWindowCloseCallback(windowNativePtr, [](GLFWwindow* window) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            WindowClosedEvent event(userData->window_ptr);
-            Application::get()->on_event(&event);
+            Unique<Event> event = std::make_unique<WindowClosedEvent>(userData->window_ptr);
+            Application::get()->on_event(event);
             });
 
         glfwSetWindowSizeCallback(windowNativePtr, [](GLFWwindow* window, int width, int height) {
             WindowUserData* userData = (WindowUserData*)glfwGetWindowUserPointer(window);
-            WindowResizeEvent event(width, height);
-            Application::get()->on_event(&event);
+            Unique<Event> event = std::make_unique<WindowResizeEvent>(width, height);
+            Application::get()->on_event(event);
             });
 
         glfwSetMouseButtonCallback(windowNativePtr, [](GLFWwindow* window, int button, int action, int mods) {
-
 
             MouseButton btn;
             switch (button)
@@ -86,28 +85,30 @@ namespace Wolf
 
             if (action == 1)
             {
-                auto event = ButtonDownEvent(btn, mods);
-                Application::get()->on_event(&event);
+                Unique<Event> event = std::make_unique<ButtonDownEvent>(btn, mods);
+                Application::get()->on_event(event);
 
             }
             else
             {
-                auto event = ButtonUpEvent(btn, mods);
-                Application::get()->on_event(&event);
+                Unique<Event> event = std::make_unique<ButtonUpEvent>(btn, mods);
+                Application::get()->on_event(event);
             }
             });
 
         glfwSetKeyCallback(windowNativePtr, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
             if (action == 1)
             {
-                KeyDownEvent event = KeyDownEvent(static_cast<KeyCode>(key), mods);
-                Application::get()->on_event(&event);
+
+
+                Unique<Event> event = std::make_unique<KeyDownEvent>(static_cast<KeyCode>(key), mods);
+                Application::get()->on_event(event);
 
             }
             else if (action == 0)
             {
-                KeyUpEvent event = KeyUpEvent(static_cast<KeyCode>(key), mods);
-                Application::get()->on_event(&event);
+                Unique<Event> event = std::make_unique<KeyUpEvent>(static_cast<KeyCode>(key), mods);
+                Application::get()->on_event(event);
             }
             });
 

@@ -23,16 +23,16 @@ namespace Wolf
         class CircleBatch : public Batch
         {
             public:
-            void init(Shared<Material>& material) override;    
-			void shutdown() override;
-			void new_frame() override;
-			void end_frame() override;
-            void submit_primitive(const glm::vec3& position, const float radius, const glm::vec4& color, float fade);
+                void init(Shared<Material>& material) override;    
+                void shutdown() override;
+                void new_frame() override;
+                void end_frame() override;
+                void submit_primitive(const glm::vec3& position, const float radius, const glm::vec4& color, float fade);
             private:
-            void _flush();
+                void _flush();
 
             private:
-            CircleVertex* _buffer;
+                CircleVertex* _buffer;
 
 
         };

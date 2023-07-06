@@ -224,6 +224,11 @@ namespace Wolf
             return _initialize_from_bitmap_impl(bitmap, config);
         }
 
+        Shared<Texture> Texture::from_bitmap(const Shared<BitMap<uint8_t>>& bitmap, const TextureConfig& config)
+        {
+            return _initialize_from_bitmap_impl(bitmap, config);
+        }
+
         Shared<Texture> Texture::from_bitmap(const Shared<BitMap<float>>& bitmap, const TextureConfig& config)
         {
             return _initialize_from_bitmap_impl(bitmap, config);

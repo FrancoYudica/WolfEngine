@@ -68,6 +68,7 @@ namespace Wolf
                 static Shared<Texture> from_bitmap(const Shared<BitMap<glm::u8vec3>>& bitmap, const TextureConfig& config);
                 static Shared<Texture> from_bitmap(const Shared<BitMap<glm::vec4>>& bitmap, const TextureConfig& config);
                 static Shared<Texture> from_bitmap(const Shared<BitMap<glm::vec3>>& bitmap, const TextureConfig& config);
+                static Shared<Texture> from_bitmap(const Shared<BitMap<uint8_t>>& bitmap, const TextureConfig& config);
                 static Shared<Texture> from_bitmap(const Shared<BitMap<float>>& bitmap, const TextureConfig& config);
 
             protected:

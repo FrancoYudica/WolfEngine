@@ -23,7 +23,7 @@ namespace Wolf
         }
         bool initialize(Window::Configuration config);
         void run();
-        void on_event(Event* event);
+        void on_event(const Unique<Event>& event);
         void on_update(const Time& time);
         void on_render();
         void add_layer(const Shared<Layer>& layer) { _layer_stack.add(layer); }

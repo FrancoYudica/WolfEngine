@@ -7,6 +7,8 @@
 #include "Material.h"
 #include "Texture.h"
 
+#define RENDERER_MAX_TEXTURE_SLOTS 32
+
 namespace Wolf
 {
 	namespace Rendering

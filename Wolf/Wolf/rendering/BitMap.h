@@ -47,19 +47,19 @@ namespace Wolf
                     memset(_raw_buffer, 0, sizeof(T) * width * height);
                 }
 
-                void set_color(const glm::u32vec2& position, const T& color) 
+                void set_pixel(const glm::u32vec2& position, const T& color) 
                 {
 #ifdef WOLF_DEBUG_MODE
                     if (position.x > width - 1 || position.y > height - 1)
                     {
                         std::cout << "Index out of bounds" << std::endl;
-                        throw "[BitMap::set_color] Pixel position out of bounds";
+                        throw "[BitMap::set_pixel] Pixel position out of bounds";
                     }
 #endif  
                     _raw_buffer[position.x + position.y * width] = color;
                 }
 
-                T get_color(const glm::u32vec2 position) const
+                T get_pixel(const glm::u32vec2 position) const
                 {
                     // Returns a copy of the color
                     return _raw_buffer[position.x + position.y * width];
