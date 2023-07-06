@@ -16,7 +16,7 @@ namespace Wolf
         glm::vec2 get_mouse_pos();
         void set_mouse_pos(glm::vec2 pos);
 
-
+        
         /// @brief Mouse position, but normalized
         /// @return in range [-1, 1] in both axis
         glm::vec2 get_mouse_pos_norm();

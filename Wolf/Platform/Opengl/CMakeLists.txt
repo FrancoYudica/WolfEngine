@@ -2,7 +2,7 @@
 message("Adding Platform-Opengl")
 
 file(GLOB WOLF_OPENGL_IMPL_CPP "*.cpp")
-file(GLOB WOLF_OPENGL_IMPL_H ".h")
+file(GLOB WOLF_OPENGL_IMPL_H "*.h" "*.tcc")
 
 add_library(
     opengl_lib STATIC

@@ -8,20 +8,20 @@ void CircleBatch::init(std::shared_ptr<Material>& material)
 {
     
     Batch::init(material);
-    _MAX_SUBMITIONS_CAPACITY = 10000;
-    _submitions_count = 0;
-    _buffer = new CircleVertex[_MAX_SUBMITIONS_CAPACITY * 4];
+    _MAX_SUBMISSIONS = 10000;
+    _submissions_count = 0;
+    _buffer = new CircleVertex[_MAX_SUBMISSIONS * 4];
 
     // The indices are always the same, so i set them once, therefore there is no
 	// need for indices allocation
 	unsigned int vertices_per_quad = 4;
 	unsigned int indices_per_quad = 6;
-	unsigned int total_vertices = _MAX_SUBMITIONS_CAPACITY * vertices_per_quad;
+	unsigned int total_vertices = _MAX_SUBMISSIONS * vertices_per_quad;
 	unsigned int indices_count = total_vertices * indices_per_quad;
 	unsigned int buffer_size = total_vertices * sizeof(CircleVertex);
 	// Creates the indices array, it's not necessary to re-calculate
 	auto indices = new unsigned int[indices_count];
-	for (unsigned int quad_index = 0; quad_index < _MAX_SUBMITIONS_CAPACITY; quad_index++)
+	for (unsigned int quad_index = 0; quad_index < _MAX_SUBMISSIONS; quad_index++)
 	{
 		unsigned int index = 		quad_index * indices_per_quad;
 		unsigned int vertex_index = quad_index * vertices_per_quad;
@@ -64,15 +64,15 @@ void CircleBatch::shutdown()
 void CircleBatch::new_frame()
 {
     // If not zero, it means we havent flushed
-    if (_submitions_count != 0)
+    if (_submissions_count != 0)
     {
-        std::cout  << "Error, batch didn't flush" << _submitions_count << std::endl;
+        std::cout  << "Error, batch didn't flush" << _submissions_count << std::endl;
         assert(false);
     }
 }
 void CircleBatch::end_frame()
 {
-    if (_submitions_count > 0)
+    if (_submissions_count > 0)
         _flush();
 }
 void CircleBatch::_flush()
@@ -85,16 +85,16 @@ void CircleBatch::_flush()
     _vertex_array->bind();
     _vertex_buffer->bind(); 
 	
-    _vertex_buffer->set_sub_data(_buffer, 4 * _submitions_count * sizeof(CircleVertex), 0);
-    RenderCommand::draw_indexed(_vertex_array, _submitions_count * 6, PrimitiveType::Triangles);
+    _vertex_buffer->set_sub_data(_buffer, 4 * _submissions_count * sizeof(CircleVertex), 0);
+    RenderCommand::draw_indexed(_vertex_array, _submissions_count * 6, PrimitiveType::Triangles);
     _vertex_array->unbind();
 	_vertex_buffer->unbind();
-    _submitions_count = 0;
+    _submissions_count = 0;
 }
 
 void CircleBatch::submit_primitive(const glm::vec3& position, const float radius, const glm::vec4& color, float fade)
 {   
-	unsigned int index = _submitions_count * 4;
+	unsigned int index = _submissions_count * 4;
 
 	// Sets the array data
 	_buffer[index + 0].position = position + glm::vec3(-radius, -radius, 0);
@@ -118,6 +118,6 @@ void CircleBatch::submit_primitive(const glm::vec3& position, const float radius
 	_buffer[index + 2].fade = fade;
 	_buffer[index + 3].fade = fade;
 
-	if (++_submitions_count == _MAX_SUBMITIONS_CAPACITY)
+	if (++_submissions_count == _MAX_SUBMISSIONS)
 		_flush();
 }

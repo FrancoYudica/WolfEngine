@@ -8,21 +8,21 @@ void LineBatch::init(Shared<Material>& material)
 {
     
     Batch::init(material);
-    _MAX_SUBMITIONS_CAPACITY = 10000;
-    _submitions_count = 0;
+    _MAX_SUBMISSIONS = 10000;
+    _submissions_count = 0;
 
 	unsigned int vertices_per_primitive = 6;
-    _buffer = new LineVertex[_MAX_SUBMITIONS_CAPACITY * vertices_per_primitive];
+    _buffer = new LineVertex[_MAX_SUBMISSIONS * vertices_per_primitive];
 
     // The indices are always the same, so i set them once, therefore there is no
 	// need for indices allocation
 	unsigned int indices_per_primitive = 12;
-	unsigned int total_vertices = _MAX_SUBMITIONS_CAPACITY * vertices_per_primitive;
+	unsigned int total_vertices = _MAX_SUBMISSIONS * vertices_per_primitive;
 	unsigned int indices_count = total_vertices * indices_per_primitive;
 	unsigned int buffer_size = total_vertices * sizeof(LineVertex);
 	// Creates the indices array, it's not necessary to re-calculate
 	auto indices = new unsigned int[indices_count];
-	for (unsigned int quad_index = 0; quad_index < _MAX_SUBMITIONS_CAPACITY; quad_index++)
+	for (unsigned int quad_index = 0; quad_index < _MAX_SUBMISSIONS; quad_index++)
 	{
 		unsigned int index = 		quad_index * indices_per_primitive;
 		unsigned int vertex_index = quad_index * vertices_per_primitive;
@@ -71,15 +71,15 @@ void LineBatch::shutdown()
 void LineBatch::new_frame()
 {
     // If not zero, it means we havent flushed
-    if (_submitions_count != 0)
+    if (_submissions_count != 0)
     {
-        std::cout  << "Error, batch didn't flush" << _submitions_count << std::endl;
+        std::cout  << "Error, batch didn't flush" << _submissions_count << std::endl;
         assert(false);
     }
 }
 void LineBatch::end_frame()
 {
-    if (_submitions_count > 0)
+    if (_submissions_count > 0)
         _flush();
 }
 void LineBatch::_flush()
@@ -92,11 +92,11 @@ void LineBatch::_flush()
     _vertex_array->bind();
     _vertex_buffer->bind(); 
 	
-    _vertex_buffer->set_sub_data(_buffer, 6 * _submitions_count * sizeof(LineVertex), 0);
-    RenderCommand::draw_indexed(_vertex_array, _submitions_count * 12, PrimitiveType::Triangles);
+    _vertex_buffer->set_sub_data(_buffer, 6 * _submissions_count * sizeof(LineVertex), 0);
+    RenderCommand::draw_indexed(_vertex_array, _submissions_count * 12, PrimitiveType::Triangles);
     _vertex_array->unbind();
 	_vertex_buffer->unbind();
-    _submitions_count = 0;
+    _submissions_count = 0;
 }
 
 void LineBatch::submit_primitive(const glm::vec2& p0, const glm::vec2& p1, const glm::vec4& color, const float thickness)
@@ -107,7 +107,7 @@ void LineBatch::submit_primitive(const glm::vec2& p0, const glm::vec2& p1, const
     float x_displacement = 0.5f * thickness * std::sin(-angle);
     float y_displacement = 0.5f * thickness * std::cos(-angle);
 
-	unsigned int index = _submitions_count * 6;
+	unsigned int index = _submissions_count * 6;
     float half_thickness = thickness * 0.5f;
 	// Sets the array data
 	_buffer[index + 0].position = {p0.x - x_displacement, p0.y - y_displacement, 0.0f};
@@ -124,7 +124,7 @@ void LineBatch::submit_primitive(const glm::vec2& p0, const glm::vec2& p1, const
 	_buffer[index + 3].color = color;
 	_buffer[index + 4].color = color;
     _buffer[index + 5].color = color;
-	if (++_submitions_count == _MAX_SUBMITIONS_CAPACITY)
+	if (++_submissions_count == _MAX_SUBMISSIONS)
 		_flush();
 }
 
@@ -136,7 +136,7 @@ void LineBatch::submit_primitive_interpolated(const glm::vec2& p0, const glm::ve
     float x_displacement = 0.5f * thickness * std::sin(-angle);
     float y_displacement = 0.5f * thickness * std::cos(-angle);
 
-	unsigned int index = _submitions_count * 6;
+	unsigned int index = _submissions_count * 6;
     float half_thickness = thickness * 0.5f;
 	// Sets the array data
 	_buffer[index + 0].position = {p0.x - x_displacement, p0.y - y_displacement, 0.0f};
@@ -154,6 +154,6 @@ void LineBatch::submit_primitive_interpolated(const glm::vec2& p0, const glm::ve
     _buffer[index + 4].color = color;
     _buffer[index + 5].color = glm::vec4(0);
 
-	if (++_submitions_count == _MAX_SUBMITIONS_CAPACITY)
+	if (++_submissions_count == _MAX_SUBMISSIONS)
 		_flush();
 }

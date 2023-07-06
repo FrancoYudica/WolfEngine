@@ -106,7 +106,7 @@ namespace Wolf
 		{
 			/*
 			Used for storing a set of VertexBuffer Attributes.
-			Provices automatic calculation of Offset and Stride
+			Provides automatic calculation of Offset and Stride
 			*/
 		public:
 			BufferLayout() = default;

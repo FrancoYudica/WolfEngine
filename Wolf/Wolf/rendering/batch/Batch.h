@@ -17,24 +17,23 @@ namespace Wolf
         class Batch
         {
             public:
-            
-            virtual void init(Shared<Material>& material) 
-            {
-                _material = material;
-            }    
-            virtual void begin_scene(const Camera& camera) { _camera = camera; }
-			virtual void shutdown() {}
-			virtual void new_frame() {}
-			virtual void end_frame() {}
+                virtual void init(Shared<Material>& material) 
+                {
+                    _material = material;
+                }    
+                virtual void begin_scene(const Camera& camera) { _camera = camera; }
+                virtual void shutdown() = 0;
+                virtual void new_frame() = 0;
+                virtual void end_frame() = 0;
 
             protected:
-            Shared<VertexArray> _vertex_array;
-            Shared<VertexBuffer> _vertex_buffer;
-            Shared<IndexBuffer> _index_buffer;
-            Shared<Material> _material;
-            uint32_t _submitions_count;
-            uint32_t _MAX_SUBMITIONS_CAPACITY;
-            Camera _camera;
+                Shared<VertexArray> _vertex_array;
+                Shared<VertexBuffer> _vertex_buffer;
+                Shared<IndexBuffer> _index_buffer;
+                Shared<Material> _material;
+                uint32_t _submissions_count;
+                uint32_t _MAX_SUBMISSIONS;
+                Camera _camera;
         };
     }
 

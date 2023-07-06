@@ -45,12 +45,12 @@ namespace Wolf
             static thread_local RandomFloat RandomFloatGenerator;
             static thread_local RandomDouble RandomDoubleGenerator;
     
-            // Acess to float methods
+            // Access to float methods
             static float unit_f() { return RandomFloatGenerator.unit(); }
             static float signed_unit_f() { return RandomFloatGenerator.signed_unit(); }
             static float range_f(float min, float max) { return RandomFloatGenerator.range(min, max); }
     
-            // Acess to double methods
+            // Access to double methods
             static double unit_d() { return RandomDoubleGenerator.unit(); }
             static double signed_unit_d() { return RandomDoubleGenerator.signed_unit(); }
             static double range_d(double min, double max) { return RandomDoubleGenerator.range(min, max); }

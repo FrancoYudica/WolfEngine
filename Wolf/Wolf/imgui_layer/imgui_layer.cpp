@@ -43,7 +43,7 @@ namespace Wolf
 
 		}
 
-		void ImGuiLayer::on_event(Event* event)
+		void ImGuiLayer::on_event(const Unique<Event>& event)
 		{
 			EventDispatcher dispatcher(event);
 			ImGuiIO io = ImGui::GetIO();

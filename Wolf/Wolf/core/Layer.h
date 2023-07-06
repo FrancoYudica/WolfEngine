@@ -22,7 +22,7 @@ namespace Wolf
 			virtual void on_render(){};					// Once per frame
 			virtual void on_ui_render_start(){};
 			virtual void on_ui_render_finish(){};
-			virtual void on_event(Event* event){};	// Once per frame at event poll
+			virtual void on_event(const Unique<Event>& event){};	// Once per frame at event poll
 
 		public:
 			std::string name = "DefaultLayer";
