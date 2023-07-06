@@ -135,11 +135,19 @@ namespace Tests
             virtual void on_end() override {}
             virtual void on_render() override 
             {
+                static const Rendering::Camera camera(200, 200, 1);
+                Rendering::Renderer2D::begin_scene(camera);
+                Rendering::Renderer2D::submit_quad(glm::vec3(0.0f), glm::vec3(0.3f), {1, 0.5, .9, 1}, texture);
+                Rendering::Renderer2D::end_frame();
+                
+                /*
                 material->get_shader()->bind();
                 uint8_t texture_slot = 0;
                 material->get_shader()->set_int("u_texture",  texture_slot);
                 Rendering::Texture::activate_texture(texture, texture_slot);
                 Rendering::Renderer2D::render_material(material);
+                */                
+
             }
     };
 }

@@ -120,6 +120,12 @@ namespace Wolf
 		{
 			_data.sprite_batch.submit_primitive(position, size, color);
 		}
+		void Renderer2D::submit_quad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, const Shared<Texture>& texture)
+		{
+			uint32_t slot = 1;
+			Texture::activate_texture(texture, slot);
+			_data.sprite_batch.submit_primitive(position, size, color, slot);
+		}
 
 
 		void Renderer2D::submit_circle(const glm::vec3& position, const float radius, const glm::vec4& color, float fade)

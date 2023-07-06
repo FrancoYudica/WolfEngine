@@ -45,6 +45,7 @@ void SpriteBatch::init(Shared<Material>& material)
 			{"Position", ShaderDataType::Float3, false},
 			{"Color", ShaderDataType::Float4, false},
 			{"UV", ShaderDataType::Float2, false},
+			{"TextureIndex", ShaderDataType::Int, false}
 		}
 
 	);
@@ -52,6 +53,15 @@ void SpriteBatch::init(Shared<Material>& material)
 	_vertex_array->set_index_buffer(_index_buffer);
 
 	_vertex_array->unbind();
+
+	Shared<ShaderProgram> shader = _material->get_shader();
+	shader->bind();
+	for (uint32_t i = 0; i < 32 ; i++)
+	{
+		std::string texture_name = "u_texture[" + std::to_string(i) + "]";
+		shader->set_int(texture_name, i);
+	}
+	shader->unbind();
 }
 
 void SpriteBatch::shutdown()
@@ -60,7 +70,7 @@ void SpriteBatch::shutdown()
 }
 void SpriteBatch::new_frame()
 {
-    // If not zero, it means we havent flushed
+    // If not zero, it means we haven't flushed
     if (_submitions_count != 0)
     {
         std::cout  << "Error, batch didn't flush" << _submitions_count << std::endl;
@@ -108,4 +118,33 @@ void SpriteBatch::submit_primitive(const glm::vec3& position, const glm::vec3& s
 
 	if (++_submitions_count == _MAX_SUBMITIONS_CAPACITY)
 		_flush();
+}
+
+
+void SpriteBatch::submit_primitive(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, uint32_t texture_slot)
+{
+
+	unsigned int index = _submitions_count * 4;
+
+	// Sets the array data
+	_buffer[index + 0].position = position + glm::vec3(-size.x, -size.y, 0);
+	_buffer[index + 1].position = position + glm::vec3( size.x, -size.y, 0);
+	_buffer[index + 2].position = position + glm::vec3( size.x,  size.y, 0);
+	_buffer[index + 3].position = position + glm::vec3(-size.x,  size.y, 0);
+	_buffer[index + 0].color = color;
+	_buffer[index + 1].color = color;
+	_buffer[index + 2].color = color;
+	_buffer[index + 3].color = color;
+	_buffer[index + 0].uv = glm::vec2(0, 0);
+	_buffer[index + 1].uv = glm::vec2(1, 0);
+	_buffer[index + 2].uv = glm::vec2(1, 1);
+	_buffer[index + 3].uv = glm::vec2(0, 1);
+	_buffer[index + 0].texture_slot = texture_slot;
+	_buffer[index + 1].texture_slot = texture_slot;
+	_buffer[index + 2].texture_slot = texture_slot;
+	_buffer[index + 3].texture_slot = texture_slot;
+	
+	if (++_submitions_count == _MAX_SUBMITIONS_CAPACITY)
+		_flush();
+
 }

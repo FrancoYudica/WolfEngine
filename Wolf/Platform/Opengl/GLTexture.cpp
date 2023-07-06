@@ -148,8 +148,6 @@ namespace Wolf
 #endif
             glActiveTexture(GL_TEXTURE0 + slot);
             texture->bind();
-
-            glActiveTexture(GL_TEXTURE0);
         }
 
         template<typename T>
