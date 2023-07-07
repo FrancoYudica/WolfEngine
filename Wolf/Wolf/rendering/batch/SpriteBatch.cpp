@@ -115,6 +115,10 @@ void SpriteBatch::submit_primitive(const glm::vec3& position, const glm::vec3& s
 	_buffer[index + 1].uv = glm::vec2(1, 0);
 	_buffer[index + 2].uv = glm::vec2(1, 1);
 	_buffer[index + 3].uv = glm::vec2(0, 1);
+	_buffer[index + 0].texture_slot = -1.0f;
+	_buffer[index + 1].texture_slot = -1.0f;
+	_buffer[index + 2].texture_slot = -1.0f;
+	_buffer[index + 3].texture_slot = -1.0f;
 
 	if (++_submissions_count == _MAX_SUBMISSIONS)
 		_flush();

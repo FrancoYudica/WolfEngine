@@ -113,7 +113,7 @@ void main()
             sampled_texture = texture(u_texture[31], fs_in.uv);
             break;
       default:
-         FragColor = vec4(fs_in.texture_index / 10e6);// * vec4(1.0, 0.4, 0.7, 1.0);
+         FragColor = fs_in.color;// * vec4(1.0, 0.4, 0.7, 1.0);
          return;
    }
 
