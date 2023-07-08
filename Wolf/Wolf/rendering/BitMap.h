@@ -65,6 +65,11 @@ namespace Wolf
                     return _raw_buffer[position.x + position.y * width];
                 }
 
+                void copy_buffer(const T* source)
+                {
+                    memcpy(_raw_buffer, source, sizeof(T) * width * height);
+                }
+
             private:
                 T* _raw_buffer;
         };
