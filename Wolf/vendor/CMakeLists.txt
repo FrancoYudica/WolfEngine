@@ -12,14 +12,14 @@ add_subdirectory(imgui)
 
 
 # Loads stb target as static library
-file(GLOB STB_HEADERS ./stb/*.h)
-add_library(stb STATIC ${STB_HEADERS})
-set_target_properties(stb PROPERTIES LINKER_LANGUAGE CXX)
+file(GLOB STB_FILES stb/*.h stb/*.c)
+add_library(stb_lib STATIC ${STB_FILES})
+set_target_properties(stb_lib PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(vendor_lib INTERFACE)
-
+target_include_directories(vendor_lib INTERFACE "./stb")
 target_link_libraries(vendor_lib INTERFACE glfw)
 target_link_libraries(vendor_lib INTERFACE glm)
 target_link_libraries(vendor_lib INTERFACE glad)
 target_link_libraries(vendor_lib INTERFACE imgui)
-target_link_libraries(vendor_lib INTERFACE stb)
+target_link_libraries(vendor_lib INTERFACE stb_lib)

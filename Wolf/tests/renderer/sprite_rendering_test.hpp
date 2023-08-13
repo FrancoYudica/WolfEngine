@@ -1,4 +1,3 @@
-#pragma once
 #ifndef SPRITE_BATCH_TEST_H
 #define SPRITE_BATCH_TEST_H
 

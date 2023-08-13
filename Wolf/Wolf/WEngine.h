@@ -1,4 +1,4 @@
-#pragma once
+
 #ifndef WOLF_ENGINE_INCLUDE_H
 #define WOLF_ENGINE_INCLUDE_H
 
@@ -40,6 +40,10 @@
 // Input
 #include "input/input_transform.h"
 #include "input/input.h"
+
+
+// Assets
+#include "assets/assets.h"
 
 
 namespace Wolf

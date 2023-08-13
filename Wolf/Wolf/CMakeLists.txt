@@ -19,6 +19,11 @@ file(GLOB WOLF_UTILS_CPP         utils/*.cpp)
 file(GLOB WOLF_INPUT_H           input/*.h)
 file(GLOB WOLF_INPUT_CPP         input/*.cpp)
 
+
+file(GLOB WOLF_ASSETS_H           assets/*.h)
+file(GLOB WOLF_ASSETS_CPP         assets/*.cpp)
+
+
 add_library(
     engine_lib STATIC
     WEngine.h
@@ -34,6 +39,8 @@ add_library(
     ${WOLF_UTILS_CPP}
     ${WOLF_INPUT_H}
     ${WOLF_INPUT_CPP}
+    ${WOLF_ASSETS_H}
+    ${WOLF_ASSETS_CPP}
     )
 
 target_link_libraries(engine_lib PRIVATE vendor_lib)

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef BATCH_LAYER_H
 #define BATCH_LAYER_H
 

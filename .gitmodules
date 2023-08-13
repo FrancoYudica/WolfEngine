@@ -6,4 +6,4 @@
 	url = https://github.com/g-truc/glm.git
 [submodule "Wolf/vendor/stb"]
 	path = Wolf/vendor/stb
-	url = git@github.com:nothings/stb.git
+	url = https://github.com/nothings/stb.git
