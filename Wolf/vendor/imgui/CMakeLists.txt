@@ -5,8 +5,8 @@ add_library(
     ./imgui/imconfig.h
     ./imgui/imgui.cpp
     ./imgui/imgui.h
-    ./imgui/imgui_demo.cpp
     ./imgui/imgui_draw.cpp
+    ./imgui/imgui_demo.cpp
     ./imgui/imgui_impl_glfw.cpp
     ./imgui/imgui_impl_glfw.h
     ./imgui/imgui_impl_opengl3.cpp

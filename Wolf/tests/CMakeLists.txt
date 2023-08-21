@@ -4,10 +4,14 @@ set(TEST_EXECUTABLE_NAME TestWolf)
 
 project(${TEST_EXECUTABLE_NAME})
 
-file(GLOB TEST_RENDERER_FILES renderer/*.cpp renderer/*.h renderer/*.hpp)
-file(GLOB TEST_FILES *.cpp *.h *.hpp)
+file(
+    GLOB TEST_FILES
+    renderer/*.cpp renderer/*.h renderer/*.hpp
+    imgui_tests/*.cpp imgui_tests/*.hpp
+    *.cpp *.h *.hpp
+)
 
-add_executable(${TEST_EXECUTABLE_NAME} test.cpp ${TEST_FILES} ${TEST_RENDERER_FILES})
+add_executable(${TEST_EXECUTABLE_NAME} test.cpp ${TEST_FILES})
 
 target_link_libraries(${TEST_EXECUTABLE_NAME} wolf_engine)
 

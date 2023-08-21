@@ -5,7 +5,7 @@
 #include"imgui/imgui.h"
 #include"imgui/imgui_impl_glfw.h"
 #include"imgui/imgui_impl_opengl3.h"
-
+#include <GLFW/glfw3.h>
 
 
 namespace Wolf
@@ -16,7 +16,10 @@ namespace Wolf
 		{
 			IMGUI_CHECKVERSION();
 			ImGui::CreateContext();
-			ImGuiIO& io = ImGui::GetIO(); 
+			ImGuiIO& io = ImGui::GetIO();
+			io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+			io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+			//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 			ImGui::StyleColorsDark();
 			auto& app = Application::get();
 			Unique<Window>& window = app->get_main_window();
@@ -58,7 +61,7 @@ namespace Wolf
 			}
 		}
 		void ImGuiLayer::on_ui_render_start()
-		{
+		{ 
 			// Tell OpenGL a new frame is about to begin
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
@@ -68,9 +71,23 @@ namespace Wolf
 		void ImGuiLayer::on_ui_render_finish()
 		{
 			// Renders the ImGUI elements
+			ImGuiIO& io = ImGui::GetIO();
+			auto& app = Application::get();
+			io.DisplaySize = ImVec2(
+				app->get_main_window()->get_width(),
+				app->get_main_window()->get_height());
+
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-			//ImGui::EndFrame();
+
+			if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+			{
+				GLFWwindow* current_context = glfwGetCurrentContext();
+				ImGui::UpdatePlatformWindows();
+				ImGui::RenderPlatformWindowsDefault();
+				glfwMakeContextCurrent(current_context);
+			}
+
 		}
 
 	}

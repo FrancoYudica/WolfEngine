@@ -8,6 +8,7 @@
 #include "renderer/sprite_rendering_test.hpp"
 #include "assets/texture_load_test.hpp"
 #include "assets/image_write_test.hpp"
+#include "imgui_tests/imgui_docking.hpp"
 #include <memory>
 
 using namespace Wolf;
@@ -23,7 +24,7 @@ int main()
 	Shared<Wolf::Layer> performance_layer = std::make_shared<Tests::PerformanceDisplayLayer>();
 	app->add_layer(performance_layer);
 
-	Shared<Wolf::Layer> test_layer = std::make_shared<Tests::Renderer::BatchLayer>();
+	Shared<Wolf::Layer> test_layer = std::make_shared<Tests::ImGuiTests::DockingTest>();
 	app->add_layer(test_layer);
 	app->run();
 	return 0;
