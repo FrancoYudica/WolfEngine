@@ -23,7 +23,7 @@ int main()
 	Shared<Wolf::Layer> performance_layer = std::make_shared<Tests::PerformanceDisplayLayer>();
 	app->add_layer(performance_layer);
 
-	Shared<Wolf::Layer> test_layer = std::make_shared<Tests::Assets::ImageWriteTest>();
+	Shared<Wolf::Layer> test_layer = std::make_shared<Tests::Renderer::BatchLayer>();
 	app->add_layer(test_layer);
 	app->run();
 	return 0;
