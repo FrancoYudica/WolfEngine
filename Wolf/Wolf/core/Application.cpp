@@ -6,7 +6,7 @@
 
 namespace Wolf {
 
-bool Application::initialize(Window::Configuration config)
+bool Application::initialize(const Window::Configuration& config)
 {
     /* Initialize the library */
     if (!glfwInit()) {
