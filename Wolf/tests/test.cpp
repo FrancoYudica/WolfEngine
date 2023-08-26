@@ -2,8 +2,8 @@
 #include <iostream>
 
 #include "WEngine.h"
-#include "assets/image_write_test.hpp"
-#include "assets/texture_load_test.hpp"
+#include "assets/bitmap_load_test.hpp"
+#include "assets/bitmap_save_test.hpp"
 #include "imgui_tests/imgui_docking.hpp"
 #include "performance_display.hpp"
 #include "renderer/batch_renderer_test.hpp"
@@ -24,7 +24,7 @@ int main()
     Shared<Wolf::Layer> performance_layer = std::make_shared<Tests::PerformanceDisplayLayer>();
     app->add_layer(performance_layer);
 
-    Shared<Wolf::Layer> test_layer = std::make_shared<Tests::ImGuiTests::DockingTest>();
+    Shared<Wolf::Layer> test_layer = std::make_shared<Tests::Assets::BitmapSaveTest>();
     app->add_layer(test_layer);
     app->run();
     return 0;

@@ -1,40 +1,28 @@
 #ifndef __WOLF_ASSETS_H__
 #define __WOLF_ASSETS_H__
-#define STB_IMAGE_IMPLEMENTATION
 #include "../core/wolf_types.h"
 #include "../rendering/BitMap.h"
 #include "../utils/PathManager.h"
 
+namespace Wolf {
+namespace Assets {
 
-namespace Wolf
-{
-    namespace Assets
-    {
-        class Loader
-        {
-            public:
-                static Shared<Rendering::BitMap<RGBA8_UI>> load_bitmap(
-                    const Wolf::Path& path,
-                    bool& success
-                );
-        };
+    /// @brief Loads bitmap from disk
+    Shared<Rendering::BitMap<RGBA8_UI>> load_bitmap(
+        const Path path,
+        bool& success);
 
-        class Writer
-        {
-            public:
+    /// @brief Writes bitmap to disk with png format
+    bool save_bitmap_png(
+        const Path path,
+        const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap);
 
-                static bool write_bitmap_png(
-                    const Wolf::Path& path,
-                    const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap
-                );
-                static bool write_bitmap_jpg(
-                    const Wolf::Path& path,
-                    const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
-                    uint32_t quality
-                );
-        };
-    }
+    /// @brief Writes bitmap to disk with jpg format
+    bool save_bitmap_jpg(
+        const Path path,
+        const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
+        uint32_t quality);
 }
-
+}
 
 #endif

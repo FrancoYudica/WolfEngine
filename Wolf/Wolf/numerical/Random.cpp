@@ -2,7 +2,6 @@
 
 using namespace Wolf::Numerical::Random;
 
-
 RandomFloat::RandomFloat(uint32_t seed)
 {
     _seed = seed;
@@ -47,10 +46,7 @@ double RandomDouble::range(double min, double max)
     return min + _distribution(_generator) * (max - min);
 }
 
-
-
 static int32_t max_int = std::numeric_limits<int32_t>::max();
-
 
 RandomInt::RandomInt(uint32_t seed)
 {

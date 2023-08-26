@@ -2,13 +2,12 @@
 #include "GLBuffer.h"
 #include "GLShaderProgram.h"
 #include "GLVertexArray.h"
-#include <memory>
-#include <glad/glad.h>
 #include "core/Window.h"
 #include "core/wolf_types.h"
 #include "rendering/RenderCommand.h"
+#include <glad/glad.h> // GLFW should be included after GLAD
 #include <GLFW/glfw3.h>
-
+#include <memory>
 
 using namespace Wolf;
 using namespace Wolf::Rendering;

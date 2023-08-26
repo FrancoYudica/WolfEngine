@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WOLF_APPLICATION_H
-#define WOLF_APPLICATION_H
+#ifndef __WOLF_APPLICATION__
+#define __WOLF_APPLICATION__
 
 #include "GraphicsContext.h"
 #include "Layer.h"

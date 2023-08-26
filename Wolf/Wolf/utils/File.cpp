@@ -1,7 +1,6 @@
 #include "File.h"
 #include <fstream>
 
-
 string Wolf::File::read() const
 {
     std::ifstream file(_fpath);
@@ -18,8 +17,7 @@ string Wolf::File::read() const
 
     data.assign(
         (std::istreambuf_iterator<char>(file)),
-        std::istreambuf_iterator<char>()
-    );
+        std::istreambuf_iterator<char>());
     file.close();
     return data;
 }

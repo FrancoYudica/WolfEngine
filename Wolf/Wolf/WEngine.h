@@ -1,6 +1,6 @@
 
-#ifndef WOLF_ENGINE_INCLUDE_H
-#define WOLF_ENGINE_INCLUDE_H
+#ifndef __WOLF_ENGINE_INCLUDE__
+#define __WOLF_ENGINE_INCLUDE__
 
 #include <glm/glm.hpp>
 #include <iostream>
