@@ -30,8 +30,11 @@ Shared<Rendering::BitMap<RGBA8_UI>> Assets::load_bitmap(
 
 bool Assets::save_bitmap_png(
     const Path path,
-    const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap)
+    const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
+    bool flip_vertically)
 {
+    stbi_flip_vertically_on_write(flip_vertically);
+
     int success = stbi_write_png(
         path.c_str(),
         bitmap->width,
@@ -52,8 +55,11 @@ bool Assets::save_bitmap_png(
 bool Assets::save_bitmap_jpg(
     const Path path,
     const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
-    uint32_t quality)
+    uint32_t quality,
+    bool flip_vertically)
 {
+    stbi_flip_vertically_on_write(flip_vertically);
+
     int success = stbi_write_jpg(
         path.c_str(),
         bitmap->width,
