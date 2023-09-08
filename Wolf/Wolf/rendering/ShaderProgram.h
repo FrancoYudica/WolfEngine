@@ -29,8 +29,8 @@ namespace Rendering {
         static Shared<ShaderProgram> create(const string& vertex_src, const string& fragment_src);
 
         static Shared<ShaderProgram> create(
-            const Wolf::Path& vertex_path,
-            const Wolf::Path& fragment_path)
+            const Wolf::FilePath& vertex_path,
+            const Wolf::FilePath& fragment_path)
         {
 
             if (!vertex_path.exists()) {

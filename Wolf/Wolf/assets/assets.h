@@ -6,21 +6,21 @@
 
 namespace Wolf {
 namespace Assets {
-
+    
     /// @brief Loads bitmap from disk
     Shared<Rendering::BitMap<RGBA8_UI>> load_bitmap(
-        const Path path,
+        const FilePath path,
         bool& success);
 
     /// @brief Writes bitmap to disk with png format
     bool save_bitmap_png(
-        const Path path,
+        const FilePath path,
         const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
         bool flip_vertically = true);
 
     /// @brief Writes bitmap to disk with jpg format
     bool save_bitmap_jpg(
-        const Path path,
+        const FilePath path,
         const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
         uint32_t quality,
         bool flip_vertically = true);

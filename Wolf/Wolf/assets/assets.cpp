@@ -6,7 +6,7 @@
 
 namespace Wolf {
 Shared<Rendering::BitMap<RGBA8_UI>> Assets::load_bitmap(
-    const Wolf::Path path,
+    const FilePath path,
     bool& success)
 {
     if (!path.exists()) {
@@ -29,7 +29,7 @@ Shared<Rendering::BitMap<RGBA8_UI>> Assets::load_bitmap(
 }
 
 bool Assets::save_bitmap_png(
-    const Path path,
+    const FilePath path,
     const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
     bool flip_vertically)
 {
@@ -53,7 +53,7 @@ bool Assets::save_bitmap_png(
 }
 
 bool Assets::save_bitmap_jpg(
-    const Path path,
+    const FilePath path,
     const Shared<Rendering::BitMap<RGBA8_UI>>& bitmap,
     uint32_t quality,
     bool flip_vertically)
