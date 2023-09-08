@@ -14,6 +14,7 @@ Exceptions only work WOLF_DEBUG_MODE
 #ifdef WOLF_DEBUG_MODE
 #include <cstring>
 #include <iostream>
+#include <cassert>
 #define WOLF_ASSERT(expr, msg)                                                                            \
     if (!(expr)) {                                                                                        \
         std::cout << "[WOLF_ASSERT]: " << __FILE__ << " at line " << __LINE__ << " " << msg << std::endl; \

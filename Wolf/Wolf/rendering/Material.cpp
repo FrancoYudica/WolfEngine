@@ -67,6 +67,8 @@ namespace Rendering {
                 return prop;
 
         std::cout << "Unable to find property named: " << name << std::endl;
+        throw "Exception in Material::get_property";
+
         // TODO -- Raise exception
     }
 }
