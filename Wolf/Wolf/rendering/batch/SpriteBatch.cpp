@@ -144,3 +144,35 @@ void SpriteBatch::submit_primitive(const glm::vec3& position, const glm::vec3& s
     if (++_submissions_count == _MAX_SUBMISSIONS)
         _flush();
 }
+
+void SpriteBatch::submit_primitive(
+    const glm::vec3& position,
+    const glm::vec3& size,
+    const glm::vec4& color,
+    uint32_t texture_slot,
+    const glm::vec2& min_uv,
+    const glm::vec2& max_uv)
+{
+    unsigned int index = _submissions_count * 4;
+
+    // Sets the array data
+    _buffer[index + 0].position = position + glm::vec3(-size.x, -size.y, 0);
+    _buffer[index + 1].position = position + glm::vec3(size.x, -size.y, 0);
+    _buffer[index + 2].position = position + glm::vec3(size.x, size.y, 0);
+    _buffer[index + 3].position = position + glm::vec3(-size.x, size.y, 0);
+    _buffer[index + 0].color = color;
+    _buffer[index + 1].color = color;
+    _buffer[index + 2].color = color;
+    _buffer[index + 3].color = color;
+    _buffer[index + 0].uv = glm::vec2(min_uv.x, min_uv.y);
+    _buffer[index + 1].uv = glm::vec2(max_uv.x, min_uv.y);
+    _buffer[index + 2].uv = glm::vec2(max_uv.x, max_uv.y);
+    _buffer[index + 3].uv = glm::vec2(min_uv.x, max_uv.y);
+    _buffer[index + 0].texture_slot = (float)texture_slot;
+    _buffer[index + 1].texture_slot = (float)texture_slot;
+    _buffer[index + 2].texture_slot = (float)texture_slot;
+    _buffer[index + 3].texture_slot = (float)texture_slot;
+
+    if (++_submissions_count == _MAX_SUBMISSIONS)
+        _flush();
+}

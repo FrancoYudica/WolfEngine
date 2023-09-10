@@ -9,7 +9,6 @@ file(GLOB WOLF_IMGUI_LAYER_CPP   imgui_layer/*.cpp)
 file(GLOB WOLF_RENDERING_H       rendering/*.h rendering/batch/*.h)
 file(GLOB WOLF_RENDERING_CPP     rendering/*.cpp rendering/batch/*.cpp)
 
-
 file(GLOB WOLF_NUMERICAL_H       numerical/*.h)
 file(GLOB WOLF_NUMERICAL_CPP     numerical/*.cpp)
 
@@ -19,9 +18,11 @@ file(GLOB WOLF_UTILS_CPP         utils/*.cpp)
 file(GLOB WOLF_INPUT_H           input/*.h)
 file(GLOB WOLF_INPUT_CPP         input/*.cpp)
 
-
 file(GLOB WOLF_ASSETS_H           assets/*.h)
 file(GLOB WOLF_ASSETS_CPP         assets/*.cpp)
+
+file(GLOB WOLF_ANIMATION_H           animation/*.h)
+file(GLOB WOLF_ANIMATION_CPP         animation/*.cpp)
 
 
 add_library(
@@ -41,6 +42,8 @@ add_library(
     ${WOLF_INPUT_CPP}
     ${WOLF_ASSETS_H}
     ${WOLF_ASSETS_CPP}
+    ${WOLF_ANIMATION_H}
+    ${WOLF_ANIMATION_CPP}
     )
 
 target_link_libraries(engine_lib PRIVATE vendor_lib)

@@ -32,6 +32,7 @@
 // Numerical
 #include "numerical/Random.h"
 #include "numerical/numerical.h"
+#include "numerical/Bounds.h"
 
 // Utils
 #include "utils/File.h"
@@ -43,6 +44,9 @@
 
 // Assets
 #include "assets/assets.h"
+
+// Animation
+#include "animation/SpriteAnimation.h"
 
 namespace Wolf {
 static bool init(const Window::Configuration& window_config)

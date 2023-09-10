@@ -118,7 +118,12 @@ namespace Rendering {
     {
         sprite_batch->submit_primitive(position, size, color);
     }
-    void Renderer2D::submit_quad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, const Shared<Texture>& texture)
+
+    void Renderer2D::submit_quad(
+        const glm::vec3& position,
+        const glm::vec3& size,
+        const glm::vec4& color,
+        const Shared<Texture>& texture)
     {
         uint32_t texture_slot;
         if (used_textures.count(texture->get_id())) {
@@ -129,6 +134,30 @@ namespace Rendering {
             Texture::activate_texture(texture, texture_slot);
         }
         sprite_batch->submit_primitive(position, size, color, texture_slot);
+
+        // Out of texture slots
+        if (used_textures.size() + 1 > RENDERER_MAX_TEXTURE_SLOTS - 1) {
+            sprite_batch->end_frame();
+            used_textures.clear();
+        }
+    }
+
+    void Renderer2D::submit_quad(
+        const glm::vec3& position,
+        const glm::vec3& size,
+        const glm::vec4& color,
+        const Shared<Texture>& texture,
+        const Numerical::Bounds<glm::vec2>& bounds)
+    {
+        uint32_t texture_slot;
+        if (used_textures.count(texture->get_id())) {
+            texture_slot = used_textures[texture->get_id()];
+        } else {
+            texture_slot = used_textures.size();
+            used_textures[texture->get_id()] = texture_slot;
+            Texture::activate_texture(texture, texture_slot);
+        }
+        sprite_batch->submit_primitive(position, size, color, texture_slot, bounds.min, bounds.max);
 
         // Out of texture slots
         if (used_textures.size() + 1 > RENDERER_MAX_TEXTURE_SLOTS - 1) {
