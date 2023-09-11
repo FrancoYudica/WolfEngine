@@ -10,6 +10,7 @@
 #include "renderer/sprite_rendering_test.hpp"
 #include "renderer/texture_test.hpp"
 #include "renderer/sprite_animation_test.hpp"
+#include "character_controller/character_controller_test.hpp"
 #include <memory>
 
 using namespace Wolf;
@@ -25,7 +26,7 @@ int main()
     Shared<Wolf::Layer> performance_layer = std::make_shared<Tests::PerformanceDisplayLayer>();
     app->add_layer(performance_layer);
 
-    Shared<Wolf::Layer> test_layer = std::make_shared<Tests::Renderer::SpriteAnimationLayer>();
+    Shared<Wolf::Layer> test_layer = std::make_shared<Tests::CharacterControllerLayer>();
     app->add_layer(test_layer);
     app->run();
     return 0;

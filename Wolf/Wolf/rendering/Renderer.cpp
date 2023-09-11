@@ -22,10 +22,10 @@ namespace Rendering {
     {
 
         // Gets the default material for SpriteBatch
-        const FilePath& assets_path = Wolf::PathManager::get_instance().get_engine_assets_path();
+        const Path::FilePath& assets_path = Path::get_engine_assets_folder();
         {
-            const FilePath vertex_path = assets_path / "shaders/default_sprite/renderer2d.vert";
-            const FilePath fragment_path = assets_path / "shaders/default_sprite/renderer2d.frag";
+            const Path::FilePath vertex_path = assets_path / "shaders/default_sprite/renderer2d.vert";
+            const Path::FilePath fragment_path = assets_path / "shaders/default_sprite/renderer2d.frag";
             auto _material = std::make_shared<Material>();
             _material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
             sprite_batch = std::make_unique<SpriteBatch>();
@@ -33,8 +33,8 @@ namespace Rendering {
         }
 
         {
-            const FilePath vertex_path = assets_path / "shaders/default_circle/circle.vert";
-            const FilePath fragment_path = assets_path / "shaders/default_circle/circle.frag";
+            const Path::FilePath vertex_path = assets_path / "shaders/default_circle/circle.vert";
+            const Path::FilePath fragment_path = assets_path / "shaders/default_circle/circle.frag";
             auto _material = std::make_shared<Material>();
             _material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
 
@@ -43,8 +43,8 @@ namespace Rendering {
         }
 
         {
-            const FilePath vertex_path = assets_path / "shaders/default_line/line.vert";
-            const FilePath fragment_path = assets_path / "shaders/default_line/line.frag";
+            const Path::FilePath vertex_path = assets_path / "shaders/default_line/line.vert";
+            const Path::FilePath fragment_path = assets_path / "shaders/default_line/line.frag";
             auto _material = std::make_shared<Material>();
             _material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
             line_batch = std::make_unique<LineBatch>();

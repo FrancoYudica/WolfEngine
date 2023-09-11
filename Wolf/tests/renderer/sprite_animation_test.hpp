@@ -10,11 +10,17 @@ using namespace Wolf::Rendering;
 
 namespace Tests {
 namespace Renderer {
+
+    struct AnimationData {
+        Path::FilePath path;
+        uint32_t width;
+        uint32_t height;
+    };
+
     class SpriteAnimationLayer : public Layer {
     private:
         Wolf::Rendering::Camera _camera;
-        Shared<Rendering::Texture> _sprite_sheet;
-        Animation::SpriteSheetAnimation _animation;
+        std::vector<Animation::SpriteSheetAnimation> _animations;
 
     public:
         void on_start()
@@ -22,20 +28,39 @@ namespace Renderer {
             Wolf::Unique<Window>& window = Application::get()->get_main_window();
             _camera = Wolf::Rendering::Camera(window->get_width(), window->get_height(), 1);
 
-            bool load_success = true;
-            auto bitmap = Wolf::Assets::load_bitmap("./Chest.png", load_success);
+            Path::FilePath assets_path = Path::get_engine_assets_folder();
+            assets_path /= "tests/animated_character";
 
-            RenderCommand::set_blending_mode(BlendMode::Transparent);
-            RenderCommand::set_clear_color(0.1, 0.1, 0.1, 1.0);
+            std::array<AnimationData, 9> anim_data = {
+                AnimationData { assets_path / "Player Death 64x64.png", 64, 64 },
+                AnimationData { assets_path / "Player Hurt 48x48.png", 48, 48 },
+                AnimationData { assets_path / "Player Punch 64x64.png", 64, 64 },
+                AnimationData { assets_path / "Player push idle 48x48.png", 48, 48 },
+                AnimationData { assets_path / "Player sword atk 64x64.png", 64, 64 },
+                AnimationData { assets_path / "Player Sword Idle 48x48.png", 48, 48 },
+                AnimationData { assets_path / "Player Sword Run 48x48.png", 48, 48 },
+                AnimationData { assets_path / "Player Sword Stab 96x48.png", 96, 48 },
+                AnimationData { assets_path / "PlayerWalk 48x48.png", 48, 48 }
+            };
 
             TextureConfig texture_config;
             texture_config.mag_filter = TextureTypes::Filter::NEAREST;
-            _sprite_sheet = Rendering::Texture::from_bitmap(bitmap, texture_config);
 
-            // Animation setup
-            _animation.set_sheet(_sprite_sheet);
-            _animation.set_frame_duration(0.1f);
-            _animation.set_frames_count(8);
+            for (const AnimationData& data : anim_data) {
+
+                bool load_success = true;
+                auto bitmap = Wolf::Assets::load_bitmap(data.path, load_success);
+                int frames_count = bitmap->width / data.width;
+                Shared<Texture> sheet = Rendering::Texture::from_bitmap(bitmap, texture_config);
+                // Animation setup
+                Animation::SpriteSheetAnimation animation;
+                animation.set_sheet(sheet);
+                animation.set_frame_duration(0.1f);
+                animation.set_frames_count(frames_count);
+                _animations.push_back(animation);
+            }
+            RenderCommand::set_blending_mode(BlendMode::Transparent);
+            RenderCommand::set_clear_color(0.1, 0.1, 0.1, 1.0);
         }
 
         void on_event(const Unique<Event>& event)
@@ -63,7 +88,8 @@ namespace Renderer {
         void on_update(const Time& delta)
         {
 
-            _animation.on_update(delta);
+            for (auto& animation : _animations)
+                animation.on_update(delta);
 
             // Updates camera translation
             float speed = 2.0f * delta.seconds() / _camera.get_zoom();
@@ -82,26 +108,28 @@ namespace Renderer {
 
             static bool repeat = true;
             if (ImGui::Checkbox("Repeat", &repeat)) {
-                _animation.set_animation_mode(repeat ? Animation::AnimationMode::Repeat : Animation::AnimationMode::Once);
-                _animation.restart();
+                for (auto& animation : _animations) {
+                    animation.set_animation_mode(repeat ? Animation::AnimationMode::Repeat : Animation::AnimationMode::Once);
+                    animation.restart();
+                }
             }
 
             if (!repeat) {
 
                 if (ImGui::Button("Restart")) {
-                    _animation.restart();
+                    for (auto& animation : _animations) {
+                        animation.restart();
+                    }
                 }
-
-                if (_animation.ended())
-                    ImGui::Text("Animation ended");
             }
 
             static float frame_duration = 0.1f;
             if (ImGui::InputFloat("Frame duration", &frame_duration)) {
-                _animation.set_frame_duration(frame_duration);
-                _animation.restart();
+                for (auto& animation : _animations) {
+                    animation.set_frame_duration(frame_duration);
+                    animation.restart();
+                }
             }
-
             ImGui::End();
         }
 
@@ -112,12 +140,15 @@ namespace Renderer {
             Rendering::Renderer2D::begin_scene(_camera);
             Rendering::Renderer2D::new_frame();
 
-            Rendering::Renderer2D::submit_quad(
-                glm::vec3(0),
-                glm::vec3(1),
-                glm::vec4(1),
-                _animation.get_texture(),
-                _animation.get_bounds());
+            int i = 0;
+            for (auto& animation : _animations) {
+                Rendering::Renderer2D::submit_quad(
+                    glm::vec3(i++, 0, 0),
+                    glm::vec3(0.5f),
+                    glm::vec4(1),
+                    animation.get_texture(),
+                    animation.get_bounds());
+            }
             Rendering::Renderer2D::end_frame();
         }
     };

@@ -13,6 +13,8 @@ struct Time {
 
     Time operator-(const Time& other) { return Time(_time - other.seconds()); }
     Time operator+(const Time& other) { return Time(_time + other.seconds()); }
+    float operator*(const float& v) const { return _time * v; }
+    operator float() const { return _time; }
     friend std::ostream& operator<<(std::ostream& stream, const Time& time);
 
 private:

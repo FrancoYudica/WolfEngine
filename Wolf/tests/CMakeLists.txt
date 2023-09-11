@@ -7,6 +7,7 @@ project(${TEST_EXECUTABLE_NAME})
 file(
     GLOB TEST_FILES
     renderer/*.cpp renderer/*.h renderer/*.hpp
+    character_controller/*.cpp character_controller/*.h character_controller/*.hpp
     imgui_tests/*.cpp imgui_tests/*.hpp
     *.cpp *.h *.hpp
 )

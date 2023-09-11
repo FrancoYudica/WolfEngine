@@ -25,55 +25,55 @@ Exceptions only work WOLF_DEBUG_MODE
 #endif
 
 namespace Wolf {
+namespace Path {
+    class FilePath {
+    public:
+        FilePath()
+            : _path("./")
+        {
+        }
+        FilePath(const FilePath& p)
+            : _path(p.c_str())
+        {
+            WOLF_ASSERT((char)p.c_str()[0] == '.', "Trying to create non relative FilePath: " << p.c_str());
+        }
+        FilePath(const std::string& file_path)
+            : _path(file_path)
+        {
+            WOLF_ASSERT((char)file_path.at(0) == '.', "Trying to create non relative path: " << file_path);
+        }
 
-class FilePath {
-public:
-    FilePath()
-        : _path("./")
-    {
-    }
-    FilePath(const FilePath& p) 
-        : _path(p.c_str())
-    {
-        WOLF_ASSERT((char)p.c_str()[0] == '.', "Trying to create non relative FilePath: " << p.c_str());
-    }
-    FilePath(const std::string& file_path)
-        : _path(file_path)
-    {
-        WOLF_ASSERT((char)file_path.at(0) == '.', "Trying to create non relative path: " << file_path);
-    }
+        FilePath(const char* c_str)
+            : _path(c_str)
+        {
+            WOLF_ASSERT((char)c_str[0] == '.', "Trying to create non relative FilePath: " << c_str);
+        }
 
-    FilePath(const char* c_str)
-        : _path(c_str)
-    {
-        WOLF_ASSERT((char)c_str[0] == '.', "Trying to create non relative FilePath: " << c_str);
-    }
+        bool exists() const;
+        bool is_directory() const;
+        operator std::string() const
+        {
+            return _path;
+        }
 
-    bool exists() const;
-    bool is_directory() const;
+        FilePath operator/(const std::string& extra) const
+        {
+            return _path + '/' + extra;
+        }
+        FilePath& operator/=(const std::string& extra)
+        {
+            _path = *this / extra;
+            return *this;
+        }
+        inline const char* c_str() const
+        {
+            return _path.c_str();
+        }
+        std::string string() const { return _path; }
 
-    operator std::string() const
-    {
-        return _path;
-    }
-
-    FilePath operator/(const std::string& extra) const
-    {
-        return _path + '/' + extra;
-    }
-    FilePath& operator/=(const std::string& extra)
-    {
-        _path = *this / extra;
-        return *this;
-    }
-    inline const char* c_str() const
-    {
-        return _path.c_str();
-    }
-
-private:
-    std::string _path;
-};
+    private:
+        std::string _path;
+    };
 }
-
+}
 #endif
