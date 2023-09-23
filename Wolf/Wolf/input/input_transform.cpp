@@ -1,5 +1,4 @@
 #include "input_transform.h"
-#include <GLFW/glfw3.h>
 
 namespace Wolf {
 namespace Input {

@@ -40,6 +40,7 @@
 // Input
 #include "input/input.h"
 #include "input/input_transform.h"
+#include "input/Cursor.h"
 
 // Assets
 #include "assets/assets.h"

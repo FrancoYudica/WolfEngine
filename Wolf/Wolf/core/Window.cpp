@@ -10,9 +10,7 @@ bool Window::initialize(const Window::Configuration& config)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
     GLFWwindow* windowNativePtr = glfwCreateWindow(config.width, config.height, config.title, monitor, NULL);
-
     _window_ptr = windowNativePtr;
 
     if (!_window_ptr) {
