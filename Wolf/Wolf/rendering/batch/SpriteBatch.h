@@ -23,8 +23,25 @@ namespace Rendering {
         void shutdown() override;
         void new_frame() override;
         void end_frame() override;
-        void submit_primitive(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color);
-        void submit_primitive(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, uint32_t texture_slot);
+
+        void submit_primitive(
+            const glm::vec3& position,
+            const glm::vec3& size,
+            const glm::vec4& color);
+
+        void submit_primitive(
+            const glm::vec3& position,
+            const glm::vec3& size,
+            const glm::vec4& color,
+            uint32_t texture_slot);
+
+        void submit_primitive(
+            const glm::vec3& position,
+            const glm::vec3& size,
+            const glm::vec4& color,
+            uint32_t texture_slot,
+            const glm::vec2& min_uv,
+            const glm::vec2& max_uv);
 
     private:
         void _flush();

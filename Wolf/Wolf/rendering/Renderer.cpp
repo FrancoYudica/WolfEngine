@@ -22,10 +22,10 @@ namespace Rendering {
     {
 
         // Gets the default material for SpriteBatch
-        const Path& assets_path = Wolf::PathManager::get_instance().get_engine_assets_path();
+        const Path::FilePath& assets_path = Path::get_engine_assets_folder();
         {
-            const Path vertex_path = assets_path / "shaders/default_sprite/renderer2d.vert";
-            const Path fragment_path = assets_path / "shaders/default_sprite/renderer2d.frag";
+            const Path::FilePath vertex_path = assets_path / "shaders/default_sprite/renderer2d.vert";
+            const Path::FilePath fragment_path = assets_path / "shaders/default_sprite/renderer2d.frag";
             auto _material = std::make_shared<Material>();
             _material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
             sprite_batch = std::make_unique<SpriteBatch>();
@@ -33,8 +33,8 @@ namespace Rendering {
         }
 
         {
-            const Path vertex_path = assets_path / "shaders/default_circle/circle.vert";
-            const Path fragment_path = assets_path / "shaders/default_circle/circle.frag";
+            const Path::FilePath vertex_path = assets_path / "shaders/default_circle/circle.vert";
+            const Path::FilePath fragment_path = assets_path / "shaders/default_circle/circle.frag";
             auto _material = std::make_shared<Material>();
             _material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
 
@@ -43,8 +43,8 @@ namespace Rendering {
         }
 
         {
-            const Path vertex_path = assets_path / "shaders/default_line/line.vert";
-            const Path fragment_path = assets_path / "shaders/default_line/line.frag";
+            const Path::FilePath vertex_path = assets_path / "shaders/default_line/line.vert";
+            const Path::FilePath fragment_path = assets_path / "shaders/default_line/line.frag";
             auto _material = std::make_shared<Material>();
             _material->set_shader_program(ShaderProgram::create(vertex_path, fragment_path));
             line_batch = std::make_unique<LineBatch>();
@@ -118,7 +118,12 @@ namespace Rendering {
     {
         sprite_batch->submit_primitive(position, size, color);
     }
-    void Renderer2D::submit_quad(const glm::vec3& position, const glm::vec3& size, const glm::vec4& color, const Shared<Texture>& texture)
+
+    void Renderer2D::submit_quad(
+        const glm::vec3& position,
+        const glm::vec3& size,
+        const glm::vec4& color,
+        const Shared<Texture>& texture)
     {
         uint32_t texture_slot;
         if (used_textures.count(texture->get_id())) {
@@ -129,6 +134,30 @@ namespace Rendering {
             Texture::activate_texture(texture, texture_slot);
         }
         sprite_batch->submit_primitive(position, size, color, texture_slot);
+
+        // Out of texture slots
+        if (used_textures.size() + 1 > RENDERER_MAX_TEXTURE_SLOTS - 1) {
+            sprite_batch->end_frame();
+            used_textures.clear();
+        }
+    }
+
+    void Renderer2D::submit_quad(
+        const glm::vec3& position,
+        const glm::vec3& size,
+        const glm::vec4& color,
+        const Shared<Texture>& texture,
+        const Numerical::Bounds<glm::vec2>& bounds)
+    {
+        uint32_t texture_slot;
+        if (used_textures.count(texture->get_id())) {
+            texture_slot = used_textures[texture->get_id()];
+        } else {
+            texture_slot = used_textures.size();
+            used_textures[texture->get_id()] = texture_slot;
+            Texture::activate_texture(texture, texture_slot);
+        }
+        sprite_batch->submit_primitive(position, size, color, texture_slot, bounds.min, bounds.max);
 
         // Out of texture slots
         if (used_textures.size() + 1 > RENDERER_MAX_TEXTURE_SLOTS - 1) {

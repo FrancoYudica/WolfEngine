@@ -150,8 +150,8 @@ namespace Renderer {
 
             material = std::make_shared<Rendering::Material>();
             Shared<Rendering::ShaderProgram> shader = Rendering::ShaderProgram::create(
-                PathManager::get_instance().get_engine_assets_path() / "shaders/texture/renderer2d.vert",
-                PathManager::get_instance().get_engine_assets_path() / "shaders/texture/renderer2d.frag");
+                Path::get_engine_assets_folder() / "shaders/texture/renderer2d.vert",
+                Path::get_engine_assets_folder() / "shaders/texture/renderer2d.frag");
             material->set_shader_program(shader);
         }
 
