@@ -4,6 +4,8 @@
 
 namespace Wolf {
 namespace Input {
+
+    /// @brief Returns mouse position in [0, width] and [0, height] ranges
     glm::vec2 get_pixel_mouse_pos()
     {
         double x, y;
@@ -12,12 +14,14 @@ namespace Input {
         return { x, y };
     }
 
+    /// @brief Sets mouse position in [0, width] and [0, height] ranges
     void set_pixel_mouse_pos(glm::vec2 pos)
     {
         Unique<Wolf::Window>& window = Application::get()->get_main_window();
         glfwSetCursorPos(static_cast<GLFWwindow*>(window->get_native_ptr()), pos.x, pos.y);
     }
 
+    /// @brief Returns mouse position in [-1, 1] cartesian range
     glm::vec2 get_mouse_pos_norm()
     {
         double x_pixel, y_pixel;
@@ -30,6 +34,9 @@ namespace Input {
         return { (norm_x - 0.5) * 2, ((1 - norm_y) - 0.5) * 2 };
     }
 
+    /// @brief Returns mouse position.
+    /// X axis ranges in [-aspect_ratio, aspect_ratio]
+    /// Y axis ranges in [-1.0, 1.0]
     glm::vec2 get_mouse_pos()
     {
 
@@ -46,16 +53,17 @@ namespace Input {
     {
         Unique<Wolf::Window>& window = Application::get()->get_main_window();
         float aspect_ratio = static_cast<float>(window->get_width()) / static_cast<float>(window->get_height());
-        uint32_t x = ((pos.x + 1.0) / (2.0 * aspect_ratio)) * window->get_width();
-        uint32_t y = (1 - (pos.y + 1.0) / 2.0) * window->get_width();
+        uint32_t x = 0.5f * (1.0f + pos.x / aspect_ratio) * window->get_width();
+        uint32_t y = 0.5f * (1.0f - pos.y) * window->get_height();
+
         glfwSetCursorPos(static_cast<GLFWwindow*>(window->get_native_ptr()), x, y);
     }
 
     void set_mouse_pos_norm(glm::vec2 pos)
     {
         Unique<Wolf::Window>& window = Application::get()->get_main_window();
-        uint32_t x = ((pos.x + 1.0) / 2.0) * window->get_width();
-        uint32_t y = (1 - (pos.y + 1.0) / 2.0) * window->get_width();
+        uint32_t x = 0.5f * (1.0f + pos.x) * window->get_width();
+        uint32_t y = 0.5f * (1.0f - pos.y) * window->get_height();
         glfwSetCursorPos(static_cast<GLFWwindow*>(window->get_native_ptr()), x, y);
     }
 
