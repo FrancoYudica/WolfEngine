@@ -4,7 +4,7 @@
 namespace Wolf {
 namespace Path {
     static FilePath s_root_path = "./..";
-    static FilePath s_engine_assets_path = s_root_path / (std::string(WOLF_ENGINE_PATH) + "/Wolf/engine_assets");
+    static FilePath s_engine_assets_path = s_root_path / (std::string(WOLF_ENGINE_PATH) + "Wolf/engine_assets");
     FilePath get_root_folder()
     {
         return s_root_path;

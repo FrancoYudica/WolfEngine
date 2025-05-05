@@ -1,6 +1,6 @@
 # Wolf Engine
 
-General propose engine.
+Simple general purpose engine.
 
 Features
 
